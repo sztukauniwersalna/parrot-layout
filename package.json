@@ -1,0 +1,26 @@
+{
+  "name": "parrot-layout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sztukauniwersalna/parrot-layout.git"
+  },
+  "keywords": [
+    "sztukauniwersalna",
+    "blog",
+    "react",
+    "layout",
+    "parrot"
+  ],
+  "author": "Maciej Chałapuk (maciej@chalapuk.pl)",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/sztukauniwersalna/parrot-layout/issues"
+  },
+  "homepage": "https://github.com/sztukauniwersalna/parrot-layout#readme"
+}
