@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf lib #",
+    "compile-ts": "tsc",
+    "compile-sass": "node-sass -r -o ./lib ./src",
+    "compile": "npm run compile-sass && npm run compile-ts",
+    "build": "npm run compile",
+    "clean-build": "npm run clean && npm run compile"
   },
   "repository": {
     "type": "git",
@@ -22,5 +27,20 @@
   "bugs": {
     "url": "https://github.com/sztukauniwersalna/parrot-layout/issues"
   },
-  "homepage": "https://github.com/sztukauniwersalna/parrot-layout#readme"
+  "homepage": "https://github.com/sztukauniwersalna/parrot-layout#readme",
+  "devDependencies": {
+    "@types/react": "^16.0.20",
+    "@types/react-router-dom": "^4.2.0",
+    "@types/webpack": "^3.0.14",
+    "@types/webpack-env": "^1.13.2",
+    "isomorphic-style-loader": "^4.0.0",
+    "node-sass": "^4.6.0",
+    "react": "^16.0.0",
+    "react-disqus-comments": "^1.1.1",
+    "react-router-dom": "^4.2.2",
+    "typescript": "^2.6.1"
+  },
+  "dependencies": {
+    "paramorph": "^1.0.2"
+  }
 }
