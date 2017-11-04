@@ -1,0 +1,23 @@
+.more {
+  padding: 7rem 0 12rem 0;
+  text-align: center; }
+  @media only screen and (min-width: 1020px) {
+    .more {
+      padding: 9rem 0 16rem 0; } }
+  @media only screen and (min-width: 568px) and (max-width: 835px) {
+    .more {
+      text-align: left; } }
+  @media only screen and (min-width: 836px) and (max-width: 1019px) {
+    .more {
+      text-align: left; } }
+  @media only screen and (min-width: 1020px) {
+    .more {
+      text-align: left; } }
+  .more a {
+    padding: 0 13rem; }
+    @media only screen and (min-width: 836px) and (max-width: 1019px) {
+      .more a {
+        padding: 0 7rem; } }
+    @media only screen and (min-width: 1020px) {
+      .more a {
+        padding: 0 9rem; } }

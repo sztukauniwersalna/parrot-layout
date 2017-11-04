@@ -1,0 +1,64 @@
+html {
+  font-size: 4px; }
+
+.button {
+  display: inline-flex;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none; }
+  .button a, .button button {
+    height: 10rem;
+    font-family: "Roboto Slab", serif;
+    font-weight: 700;
+    letter-spacing: -0.003rem;
+    font-size: 16px;
+    line-height: 10rem;
+    text-transform: uppercase;
+    text-align: center;
+    border: 0;
+    display: block;
+    cursor: pointer; }
+    .button a:link, .button a:visited, .button a:hover, .button a:active, .button button:link, .button button:visited, .button button:hover, .button button:active {
+      text-decoration: none; }
+
+.flat a, .raised a, .action a, .flat button, .raised button, .action button {
+  background-color: transparent;
+  padding: 0 3rem; }
+  .flat a:link, .raised a:link, .action a:link, .flat a:visited, .raised a:visited, .action a:visited, .flat a:hover, .raised a:hover, .action a:hover, .flat a:active, .raised a:active, .action a:active, .flat button:link, .raised button:link, .action button:link, .flat button:visited, .raised button:visited, .action button:visited, .flat button:hover, .raised button:hover, .action button:hover, .flat button:active, .raised button:active, .action button:active {
+    color: rgba(51, 51, 51, 0.9); }
+    :global(.contrast) .flat a:link, :global(.contrast) .raised a:link, :global(.contrast) .action a:link, :global(.contrast) .flat a:visited, :global(.contrast) .raised a:visited, :global(.contrast) .action a:visited, :global(.contrast) .flat a:hover, :global(.contrast) .raised a:hover, :global(.contrast) .action a:hover, :global(.contrast) .flat a:active, :global(.contrast) .raised a:active, :global(.contrast) .action a:active, :global(.contrast) .flat button:link, :global(.contrast) .raised button:link, :global(.contrast) .action button:link, :global(.contrast) .flat button:visited, :global(.contrast) .raised button:visited, :global(.contrast) .action button:visited, :global(.contrast) .flat button:hover, :global(.contrast) .raised button:hover, :global(.contrast) .action button:hover, :global(.contrast) .flat button:active, :global(.contrast) .raised button:active, :global(.contrast) .action button:active {
+      color: rgba(255, 255, 255, 0.9); }
+
+.raised a, .action a, .raised button, .action button {
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); }
+
+.action a, .action button {
+  width: 14rem;
+  height: 14rem;
+  box-sizing: border-box;
+  padding: 4rem;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.action :global(.material-icons) {
+  display: block;
+  position: relative;
+  top: -1px; }
+
+.green a, .green button {
+  background-color: #2caa3e; }
+  .green a:link, .green a:visited, .green a:hover, .green a:active, .green button:link, .green button:visited, .green button:hover, .green button:active {
+    color: rgba(255, 255, 255, 0.9); }
+
+.purple a, .purple button {
+  background-color: #9f2bd8; }
+  .purple a:link, .purple a:visited, .purple a:hover, .purple a:active, .purple button:link, .purple button:visited, .purple button:hover, .purple button:active {
+    color: rgba(255, 255, 255, 0.9); }
+
+.gray a, .gray button {
+  background-color: #a5a5a5; }
+  .gray a:link, .gray a:visited, .gray a:hover, .gray a:active, .gray button:link, .gray button:visited, .gray button:hover, .gray button:active {
+    color: rgba(255, 255, 255, 0.9); }

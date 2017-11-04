@@ -1,0 +1,889 @@
+@charset "UTF-8";
+.main img {
+  display: block;
+  width: 100vw;
+  margin-left: calc(50% - 50vw); }
+
+.main main, .comments > div, .bottom .logo {
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  margin: 0; }
+  @media only screen and (min-width: 836px) and (max-width: 1019px) {
+    .main main, .comments > div, .bottom .logo {
+      width: 764px;
+      margin: 0 auto; } }
+  @media only screen and (min-width: 1020px) {
+    .main main, .comments > div, .bottom .logo {
+      width: 932px;
+      margin: 0 auto; } }
+
+.main img {
+  display: block;
+  width: 100vw;
+  margin-left: calc(50% - 50vw); }
+
+.main main, .comments > div, .bottom .logo {
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  margin: 0; }
+  @media only screen and (min-width: 836px) and (max-width: 1019px) {
+    .main main, .comments > div, .bottom .logo {
+      width: 764px;
+      margin: 0 auto; } }
+  @media only screen and (min-width: 1020px) {
+    .main main, .comments > div, .bottom .logo {
+      width: 932px;
+      margin: 0 auto; } }
+
+html {
+  font-size: 4px; }
+
+.main img {
+  display: block;
+  width: 100vw;
+  margin-left: calc(50% - 50vw); }
+
+.main main, .comments > div, .bottom .logo {
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  margin: 0; }
+  @media only screen and (min-width: 836px) and (max-width: 1019px) {
+    .main main, .comments > div, .bottom .logo {
+      width: 764px;
+      margin: 0 auto; } }
+  @media only screen and (min-width: 1020px) {
+    .main main, .comments > div, .bottom .logo {
+      width: 932px;
+      margin: 0 auto; } }
+
+.main img {
+  display: block;
+  width: 100vw;
+  margin-left: calc(50% - 50vw); }
+
+.main main, .comments > div, .bottom .logo {
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  margin: 0; }
+  @media only screen and (min-width: 836px) and (max-width: 1019px) {
+    .main main, .comments > div, .bottom .logo {
+      width: 764px;
+      margin: 0 auto; } }
+  @media only screen and (min-width: 1020px) {
+    .main main, .comments > div, .bottom .logo {
+      width: 932px;
+      margin: 0 auto; } }
+
+html {
+  font-size: 4px; }
+
+h1 {
+  margin: 2rem 0 0 0;
+  color: rgba(51, 51, 51, 0.7);
+  font-family: "Andada", serif;
+  font-weight: 400;
+  letter-spacing: 0.14rem;
+  font-size: 26px;
+  line-height: 9rem;
+  padding-top: 2.225rem;
+  padding-bottom: 6.775rem; }
+  :global(.contrast) h1 {
+    color: rgba(255, 255, 255, 0.9); }
+  @media only screen and (min-width: 1020px) {
+    h1 {
+      font-size: 32px; } }
+  @media only screen and (min-width: 1020px) {
+    h1 {
+      line-height: 11rem;
+      padding-top: 2.7rem;
+      padding-bottom: 8.3rem; } }
+  :global(.compact) h1 {
+    margin: 2rem 0 -8rem 0;
+    font-family: "Andada", serif;
+    font-weight: 400;
+    letter-spacing: 0.14rem;
+    font-size: 26px;
+    line-height: 9rem;
+    padding-top: 2.225rem;
+    padding-bottom: 6.775rem; }
+  :global(.strong) h1 {
+    font-weight: 700;
+    color: rgba(51, 51, 51, 0.9); }
+    :global(.contrast) :global(.strong) h1 {
+      color: rgba(255, 255, 255, 0.9); }
+  :global(.strong.contrast) h1 {
+    color: rgba(255, 255, 255, 0.9); }
+
+h2 {
+  margin: 2rem 0 0 0;
+  color: rgba(51, 51, 51, 0.7);
+  font-family: "Andada", serif;
+  font-weight: 400;
+  letter-spacing: 0.08rem;
+  font-size: 24px;
+  line-height: 9rem;
+  padding-top: 2.4rem;
+  padding-bottom: 6.6rem; }
+  :global(.contrast) h2 {
+    color: rgba(255, 255, 255, 0.9); }
+  @media only screen and (min-width: 1020px) {
+    h2 {
+      font-size: 30px; } }
+  @media only screen and (min-width: 1020px) {
+    h2 {
+      line-height: 11rem;
+      padding-top: 2.875rem;
+      padding-bottom: 8.125rem; } }
+  :global(.compact) h2 {
+    margin: 2rem 0 -8rem 0;
+    font-family: "Andada", serif;
+    font-weight: 400;
+    letter-spacing: 0.08rem;
+    font-size: 24px;
+    line-height: 9rem;
+    padding-top: 2.4rem;
+    padding-bottom: 6.6rem; }
+  :global(.strong) h2 {
+    font-weight: 700;
+    color: rgba(51, 51, 51, 0.9); }
+    :global(.contrast) :global(.strong) h2 {
+      color: rgba(255, 255, 255, 0.9); }
+  :global(.strong.contrast) h2 {
+    color: rgba(255, 255, 255, 0.9); }
+
+h3 {
+  margin: 2rem 0 0 0;
+  color: rgba(51, 51, 51, 0.7);
+  font-family: "Andada", serif;
+  font-weight: 400;
+  letter-spacing: 0.06rem;
+  font-size: 22px;
+  line-height: 8rem;
+  padding-top: 2.075rem;
+  padding-bottom: 5.925rem; }
+  :global(.contrast) h3 {
+    color: rgba(255, 255, 255, 0.9); }
+  @media only screen and (min-width: 1020px) {
+    h3 {
+      font-size: 26px; } }
+  @media only screen and (min-width: 1020px) {
+    h3 {
+      line-height: 10rem;
+      padding-top: 2.725rem;
+      padding-bottom: 7.275rem; } }
+  :global(.compact) h3 {
+    margin: 2rem 0 -7rem 0;
+    font-family: "Andada", serif;
+    font-weight: 400;
+    letter-spacing: 0.06rem;
+    font-size: 22px;
+    line-height: 8rem;
+    padding-top: 2.075rem;
+    padding-bottom: 5.925rem; }
+  :global(.strong) h3 {
+    font-weight: 700;
+    color: rgba(51, 51, 51, 0.9); }
+    :global(.contrast) :global(.strong) h3 {
+      color: rgba(255, 255, 255, 0.9); }
+  :global(.strong.contrast) h3 {
+    color: rgba(255, 255, 255, 0.9); }
+
+h4 {
+  margin: 2rem 0 0 0;
+  color: rgba(51, 51, 51, 0.7);
+  font-family: "Andada", serif;
+  font-weight: 400;
+  letter-spacing: 0.04rem;
+  font-size: 20px;
+  line-height: 8rem;
+  padding-top: 2.25rem;
+  padding-bottom: 5.75rem; }
+  :global(.contrast) h4 {
+    color: rgba(255, 255, 255, 0.9); }
+  @media only screen and (min-width: 1020px) {
+    h4 {
+      font-size: 24px; } }
+  @media only screen and (min-width: 1020px) {
+    h4 {
+      line-height: 10rem;
+      padding-top: 2.9rem;
+      padding-bottom: 7.1rem; } }
+  :global(.compact) h4 {
+    margin: 2rem 0 -7rem 0;
+    font-family: "Andada", serif;
+    font-weight: 400;
+    letter-spacing: 0.04rem;
+    font-size: 20px;
+    line-height: 8rem;
+    padding-top: 2.25rem;
+    padding-bottom: 5.75rem; }
+  :global(.strong) h4 {
+    font-weight: 700;
+    color: rgba(51, 51, 51, 0.9); }
+    :global(.contrast) :global(.strong) h4 {
+      color: rgba(255, 255, 255, 0.9); }
+  :global(.strong.contrast) h4 {
+    color: rgba(255, 255, 255, 0.9); }
+
+h5 {
+  margin: 2rem 0 0 0;
+  color: rgba(51, 51, 51, 0.7);
+  font-family: "Andada", serif;
+  font-weight: 400;
+  letter-spacing: 0.02rem;
+  font-size: 18px;
+  line-height: 7rem;
+  padding-top: 1.925rem;
+  padding-bottom: 5.075rem; }
+  :global(.contrast) h5 {
+    color: rgba(255, 255, 255, 0.9); }
+  @media only screen and (min-width: 1020px) {
+    h5 {
+      font-size: 22px; } }
+  @media only screen and (min-width: 1020px) {
+    h5 {
+      line-height: 9rem;
+      padding-top: 2.575rem;
+      padding-bottom: 6.425rem; } }
+  :global(.compact) h5 {
+    margin: 2rem 0 -6rem 0;
+    font-family: "Andada", serif;
+    font-weight: 400;
+    letter-spacing: 0.02rem;
+    font-size: 18px;
+    line-height: 7rem;
+    padding-top: 1.925rem;
+    padding-bottom: 5.075rem; }
+  :global(.strong) h5 {
+    font-weight: 700;
+    color: rgba(51, 51, 51, 0.9); }
+    :global(.contrast) :global(.strong) h5 {
+      color: rgba(255, 255, 255, 0.9); }
+  :global(.strong.contrast) h5 {
+    color: rgba(255, 255, 255, 0.9); }
+
+h6 {
+  margin: 2rem 0 0 0;
+  color: rgba(51, 51, 51, 0.7);
+  font-family: "Andada", serif;
+  font-weight: 400;
+  letter-spacing: 0.01rem;
+  font-size: 16px;
+  line-height: 7rem;
+  padding-top: 2.1rem;
+  padding-bottom: 4.9rem; }
+  :global(.contrast) h6 {
+    color: rgba(255, 255, 255, 0.9); }
+  @media only screen and (min-width: 1020px) {
+    h6 {
+      font-size: 20px; } }
+  @media only screen and (min-width: 1020px) {
+    h6 {
+      line-height: 9rem;
+      padding-top: 2.75rem;
+      padding-bottom: 6.25rem; } }
+  :global(.compact) h6 {
+    margin: 2rem 0 -6rem 0;
+    font-family: "Andada", serif;
+    font-weight: 400;
+    letter-spacing: 0.01rem;
+    font-size: 16px;
+    line-height: 7rem;
+    padding-top: 2.1rem;
+    padding-bottom: 4.9rem; }
+  :global(.strong) h6 {
+    font-weight: 700;
+    color: rgba(51, 51, 51, 0.9); }
+    :global(.contrast) :global(.strong) h6 {
+      color: rgba(255, 255, 255, 0.9); }
+  :global(.strong.contrast) h6 {
+    color: rgba(255, 255, 255, 0.9); }
+
+p, li, dt, dd, input, textarea, olela-narrative, img {
+  display: block;
+  margin: 0;
+  color: #333333;
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+  letter-spacing: -0.003rem;
+  font-size: 16px;
+  line-height: 7rem;
+  padding-top: 2.06rem;
+  padding-bottom: 4.94rem; }
+  @media only screen and (min-width: 1020px) {
+    p, li, dt, dd, input, textarea, olela-narrative, img {
+      font-size: 20px; } }
+  @media only screen and (min-width: 1020px) {
+    p, li, dt, dd, input, textarea, olela-narrative, img {
+      line-height: 9rem;
+      padding-top: 2.7rem;
+      padding-bottom: 6.3rem; } }
+  :global(.contrast) p, :global(.contrast) li, :global(.contrast) dt, :global(.contrast) dd, :global(.contrast) input, :global(.contrast) textarea, :global(.contrast) olela-narrative, :global(.contrast) img {
+    color: white; }
+  :global(.non-responsive) p, :global(.non-responsive) li, :global(.non-responsive) dt, :global(.non-responsive) dd, :global(.non-responsive) input, :global(.non-responsive) textarea, :global(.non-responsive) olela-narrative, :global(.non-responsive) img {
+    font-family: "Roboto Slab", serif;
+    font-weight: 300;
+    letter-spacing: -0.003rem;
+    font-size: 16px;
+    line-height: 7rem;
+    padding-top: 2.06rem;
+    padding-bottom: 4.94rem; }
+  :global(.strong) p, :global(.strong) li, :global(.strong) dt, :global(.strong) dd, :global(.strong) input, :global(.strong) textarea, :global(.strong) olela-narrative, :global(.strong) img {
+    font-weight: 500; }
+
+blockquote {
+  margin: 0;
+  padding: 0 0 4rem 0; }
+
+blockquote p,
+olela-narrative {
+  font-weight: 500;
+  color: rgba(51, 51, 51, 0.5); }
+  :global(.contrast) blockquote p, :global(.contrast)
+  olela-narrative {
+    color: rgba(255, 255, 255, 0.5); }
+
+@media only screen and (min-width: 1020px) {
+  blockquote {
+    position: relative; }
+    blockquote::before {
+      content: '“';
+      font-family: "Roboto Slab", serif;
+      font-weight: 700;
+      letter-spacing: -0.003rem;
+      font-size: 16px;
+      font-size: 48rem !important;
+      margin: 0;
+      padding: 0;
+      display: block;
+      color: rgba(51, 51, 51, 0.05);
+      position: absolute;
+      left: -29rem;
+      top: calc(50% - 25rem); } }
+    @media only screen and (min-width: 1020px) and (min-width: 1020px) {
+      blockquote::before {
+        font-size: 20px; } }
+
+@media only screen and (min-width: 1020px) {
+      :global(.contrast) blockquote::before {
+        color: rgba(255, 255, 255, 0.05); } }
+
+button, input[type=submit], input[type=button] {
+  margin: 0;
+  color: rgba(51, 51, 51, 0.95);
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  letter-spacing: -0.003rem;
+  font-size: 16px; }
+  @media only screen and (min-width: 1020px) {
+    button, input[type=submit], input[type=button] {
+      font-size: 20px; } }
+  :global(.contrast) button, :global(.contrast) input[type=submit], :global(.contrast) input[type=button] {
+    color: rgba(255, 255, 255, 0.95); }
+
+a:link, a:visited {
+  color: rgba(159, 43, 216, 0.9); }
+
+a:hover, a:active {
+  color: #9f2bd8; }
+
+h1 a:link, h1 a:visited {
+  color: rgba(159, 43, 216, 0.7);
+  text-decoration: none; }
+
+h1 a:hover, h1 a:active {
+  color: rgba(159, 43, 216, 0.8);
+  text-decoration: underline; }
+
+h2 a:link, h2 a:visited {
+  color: rgba(159, 43, 216, 0.7);
+  text-decoration: none; }
+
+h2 a:hover, h2 a:active {
+  color: rgba(159, 43, 216, 0.8);
+  text-decoration: underline; }
+
+h3 a:link, h3 a:visited {
+  color: rgba(159, 43, 216, 0.7);
+  text-decoration: none; }
+
+h3 a:hover, h3 a:active {
+  color: rgba(159, 43, 216, 0.8);
+  text-decoration: underline; }
+
+h4 a:link, h4 a:visited {
+  color: rgba(159, 43, 216, 0.7);
+  text-decoration: none; }
+
+h4 a:hover, h4 a:active {
+  color: rgba(159, 43, 216, 0.8);
+  text-decoration: underline; }
+
+h5 a:link, h5 a:visited {
+  color: rgba(159, 43, 216, 0.7);
+  text-decoration: none; }
+
+h5 a:hover, h5 a:active {
+  color: rgba(159, 43, 216, 0.8);
+  text-decoration: underline; }
+
+h6 a:link, h6 a:visited {
+  color: rgba(159, 43, 216, 0.7);
+  text-decoration: none; }
+
+h6 a:hover, h6 a:active {
+  color: rgba(159, 43, 216, 0.8);
+  text-decoration: underline; }
+
+:global(.contrast) a:link, :global(.contrast) a:visited {
+  color: rgba(255, 255, 255, 0.9); }
+
+:global(.contrast) a:hover, :global(.contrast) a:active {
+  color: white; }
+
+h1 :global(.contrast) a:link, h1 :global(.contrast) a:visited {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none; }
+
+h1 :global(.contrast) a:hover, h1 :global(.contrast) a:active {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline; }
+
+h2 :global(.contrast) a:link, h2 :global(.contrast) a:visited {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none; }
+
+h2 :global(.contrast) a:hover, h2 :global(.contrast) a:active {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline; }
+
+h3 :global(.contrast) a:link, h3 :global(.contrast) a:visited {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none; }
+
+h3 :global(.contrast) a:hover, h3 :global(.contrast) a:active {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline; }
+
+h4 :global(.contrast) a:link, h4 :global(.contrast) a:visited {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none; }
+
+h4 :global(.contrast) a:hover, h4 :global(.contrast) a:active {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline; }
+
+h5 :global(.contrast) a:link, h5 :global(.contrast) a:visited {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none; }
+
+h5 :global(.contrast) a:hover, h5 :global(.contrast) a:active {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline; }
+
+h6 :global(.contrast) a:link, h6 :global(.contrast) a:visited {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none; }
+
+h6 :global(.contrast) a:hover, h6 :global(.contrast) a:active {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline; }
+
+ul, ol {
+  list-style-type: none;
+  padding-left: 0;
+  line-height: 7rem;
+  padding-top: 2.06rem;
+  padding-bottom: 4.94rem; }
+  :global(.compact) ul ul, :global(.compact) ul ol, :global(.compact) ul li, :global(.compact) ol ul, :global(.compact) ol ol, :global(.compact) ol li {
+    padding-top: 0;
+    padding-bottom: 0; }
+  @media only screen and (min-width: 1020px) {
+    ul, ol {
+      line-height: 9rem;
+      padding-top: 2.7rem;
+      padding-bottom: 6.3rem; } }
+  :global(.non-reponsive) ul, :global(.non-reponsive) ol {
+    line-height: 7rem;
+    padding-top: 2.06rem;
+    padding-bottom: 4.94rem; }
+  ul ul, ul ol, ol ul, ol ol {
+    padding-left: 6rem; }
+    @media only screen and (min-width: 1020px) {
+      ul ul, ul ol, ol ul, ol ol {
+        padding-left: 8rem; }
+        :global(.non-responsive) ul ul, :global(.non-responsive) ul ol, :global(.non-responsive) ol ul, :global(.non-responsive) ol ol {
+          padding-left: 6rem; } }
+
+ul li::before, ol li::before {
+  display: inline-block;
+  text-align: right;
+  vertical-align: top;
+  height: 1rem;
+  width: 7rem; }
+  :not(ul) ul li::before, :not(ol) ul li::before, :not(ul) ol li::before, :not(ol) ol li::before {
+    width: auto; }
+    @media only screen and (min-width: 836px) and (max-width: 1019px) {
+      :not(ul) ul li::before, :not(ol) ul li::before, :not(ul) ol li::before, :not(ol) ol li::before {
+        width: 7rem; } }
+    @media only screen and (min-width: 1020px) {
+      :not(ul) ul li::before, :not(ol) ul li::before, :not(ul) ol li::before, :not(ol) ol li::before {
+        width: 7rem; } }
+  :global(.centered) ul li::before, :not(ul) :global(.centered) ul li::before, :not(ol) :global(.centered) ul li::before, :global(.centered) ol li::before, :not(ul) :global(.centered) ol li::before, :not(ol) :global(.centered) ol li::before {
+    width: 7rem; }
+
+ul li::before {
+  content: '⇨';
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  letter-spacing: -0.01rem;
+  font-size: 20px;
+  opacity: .7;
+  margin-right: 1rem;
+  margin-left: -8rem; }
+  @media only screen and (min-width: 1020px) {
+    ul li::before {
+      font-size: 24px; } }
+  @media only screen and (min-width: 1020px) {
+    ul li::before {
+      opacity: .6;
+      margin-right: 3rem;
+      margin-left: -10rem; } }
+  :global(.non-responsive) ul li::before {
+    font-family: "Roboto Slab", serif;
+    font-weight: 400;
+    letter-spacing: -0.01rem;
+    font-size: 20px; }
+    @media only screen and (min-width: 1020px) {
+      :global(.non-responsive) ul li::before {
+        opacity: .7;
+        margin-right: 1rem;
+        margin-left: -8rem; } }
+  :not(ul) ul li::before, :not(ol) ul li::before {
+    margin-left: 0; }
+    @media only screen and (min-width: 836px) and (max-width: 1019px) {
+      :not(ul) ul li::before, :not(ol) ul li::before {
+        margin-left: -8rem; } }
+    @media only screen and (min-width: 1020px) {
+      :not(ul) ul li::before, :not(ol) ul li::before {
+        margin-left: -10rem; }
+        :global(.non-responsive) :not(ul) ul li::before, :global(.non-responsive) :not(ol) ul li::before {
+          margin-left: -8rem; } }
+  :global(.centered) ul li::before, :not(ul) :global(.centered) ul li::before, :not(ol) :global(.centered) ul li::before {
+    margin-left: -8rem; }
+
+ol li::before {
+  font-family: "Andada", serif;
+  font-weight: 400;
+  letter-spacing: -0.01rem;
+  font-size: 12px;
+  opacity: .9;
+  margin-right: 4rem;
+  margin-left: -11rem; }
+  @media only screen and (min-width: 1020px) {
+    ol li::before {
+      font-size: 14px; } }
+  @media only screen and (min-width: 1020px) {
+    ol li::before {
+      opacity: .8;
+      margin-right: 6rem;
+      margin-left: -13rem; } }
+  :global(.non-responsive) ol li::before {
+    font-family: "Andada", serif;
+    font-weight: 400;
+    letter-spacing: -0.01rem;
+    font-size: 12px; }
+    @media only screen and (min-width: 1020px) {
+      :global(.non-responsive) ol li::before {
+        opacity: .9;
+        margin-right: 4rem;
+        margin-left: -11rem; } }
+  :not(ul) ol li::before, :not(ol) ol li::before {
+    margin-left: 0; }
+    @media only screen and (min-width: 836px) and (max-width: 1019px) {
+      :not(ul) ol li::before, :not(ol) ol li::before {
+        margin-left: -11rem; } }
+    @media only screen and (min-width: 1020px) {
+      :not(ul) ol li::before, :not(ol) ol li::before {
+        margin-left: -13rem; }
+        :global(.non-responsive) :not(ul) ol li::before, :global(.non-responsive) :not(ol) ol li::before {
+          margin-left: -11rem; } }
+  :global(.centered) ol li::before, :not(ul) :global(.centered) ol li::before, :not(ol) :global(.centered) ol li::before {
+    margin-left: -11rem; }
+
+ol li {
+  counter-increment: top-level; }
+  ol li::before {
+    content: counter(top-level) ".";
+    -webkit-font-feature-settings: 'lnum', 'tnum';
+    font-feature-settings: 'lnum', 'tnum'; }
+  ol li ul li::before {
+    content: ''; }
+  ol li ul li ol li {
+    counter-increment: alt-level; }
+    ol li ul li ol li::before {
+      content: counter(alt-level) "."; }
+  ol li ol li {
+    counter-increment: sub-level; }
+    ol li ol li::before {
+      content: counter(top-level) "." counter(sub-level) "."; }
+    ol li ol li ul li::before {
+      content: ''; }
+    ol li ol li ol li {
+      counter-increment: sub-sub-level; }
+      ol li ol li ol li::before {
+        content: counter(top-level) "." counter(sub-level) "." counter(sub-sub-level) "."; }
+
+hr {
+  border: 0;
+  background: transparent;
+  color: rgba(51, 51, 51, 0.3);
+  padding: 7rem 0; }
+  :global(.contrast) hr {
+    color: rgba(255, 255, 255, 0.3); }
+  hr::after {
+    content: '~ ~ ~';
+    display: block;
+    text-align: center;
+    font-family: "Roboto Slab", serif;
+    font-weight: 700;
+    letter-spacing: -0.003rem;
+    font-size: 16px;
+    line-height: 7rem;
+    padding-top: 2.06rem;
+    padding-bottom: 4.94rem; }
+    @media only screen and (min-width: 1020px) {
+      hr::after {
+        font-size: 20px; } }
+    @media only screen and (min-width: 1020px) {
+      hr::after {
+        line-height: 9rem;
+        padding-top: 2.7rem;
+        padding-bottom: 6.3rem; } }
+  @media only screen and (min-width: 1020px) {
+    hr {
+      padding: 9rem 0; } }
+
+.tagJumbo h2::before, .menuEntryJumbo h2 i {
+  display: inline-block;
+  width: 0;
+  height: 1rem;
+  vertical-align: top;
+  margin: -3rem 16rem 0 -16rem;
+  font-size: 46rem;
+  opacity: .1; }
+  @media only screen and (min-width: 568px) and (max-width: 835px) {
+    .tagJumbo h2::before, .menuEntryJumbo h2 i {
+      margin: -3rem 20rem 0 -20rem; } }
+  @media only screen and (min-width: 836px) and (max-width: 1019px) {
+    .tagJumbo h2::before, .menuEntryJumbo h2 i {
+      vertical-align: inherit;
+      margin: 0 5rem 0 -5rem;
+      font-size: inherit;
+      opacity: 1; } }
+  @media only screen and (min-width: 1020px) {
+    .tagJumbo h2::before, .menuEntryJumbo h2 i {
+      vertical-align: inherit;
+      margin: 0 5rem 0 -5rem;
+      font-size: inherit;
+      opacity: 1; } }
+
+.tagJumbo {
+  padding-left: 10rem; }
+  @media only screen and (min-width: 836px) and (max-width: 1019px) {
+    .tagJumbo {
+      padding-left: 0; } }
+  @media only screen and (min-width: 1020px) {
+    .tagJumbo {
+      padding-left: 0; } }
+  .tagJumbo h2 {
+    text-transform: uppercase; }
+    .tagJumbo h2::before {
+      content: '#'; }
+
+.menuEntryJumbo {
+  padding-left: 7rem; }
+  @media only screen and (min-width: 836px) and (max-width: 1019px) {
+    .menuEntryJumbo {
+      padding-left: 0; } }
+  @media only screen and (min-width: 1020px) {
+    .menuEntryJumbo {
+      padding-left: 0; } }
+  .menuEntryJumbo h2 i {
+    margin-top: -19rem; }
+    @media only screen and (min-width: 836px) and (max-width: 1019px) {
+      .menuEntryJumbo h2 i {
+        vertical-align: top;
+        margin: 1.5rem 8rem 0 -8rem;
+        font-size: inherit;
+        opacity: 1; } }
+    @media only screen and (min-width: 1020px) {
+      .menuEntryJumbo h2 i {
+        vertical-align: top;
+        margin: 1.5rem 8rem 0 -8rem;
+        font-size: inherit;
+        opacity: 1; } }
+
+html {
+  height: 100%;
+  overflow-y: scroll; }
+
+body {
+  background-color: #e2e2e2;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QcZCzkbBkkNNQAAAHFJREFUaN7t1bENACAIBEBwJPefwZnsYQLIfWesPnlyGT23vN/k/xPLo+D05Labq/8mquCAG+SgiSrIQQ6aKAc5aKIKcpCDJspBDpqoghzkoIlykIMmqiAHOWiiHOSgiSrIQQ66QQ5y0EQV5CAH3eDefJAaXMEw5G3+AAAAAElFTkSuQmCC);
+  background-repeat: repeat;
+  background-position: top left;
+  margin: 0;
+  height: 100%; }
+
+:global(#root),
+#all {
+  height: 100%;
+  min-height: 100%;
+  overflow: visible; }
+
+.header {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4); }
+
+.indexJumbo {
+  margin-left: 6rem; }
+  @media only screen and (min-width: 836px) and (max-width: 1019px) {
+    .indexJumbo {
+      margin-left: 0; } }
+  @media only screen and (min-width: 1020px) {
+    .indexJumbo {
+      margin-left: 0; } }
+
+.main {
+  box-sizing: border-box;
+  padding-top: 14rem;
+  padding-bottom: 14rem;
+  min-height: calc(100% - 152rem);
+  background-color: white; }
+  @media only screen and (min-width: 568px) and (max-width: 835px) {
+    .main {
+      min-height: calc(100% - 105rem); } }
+  @media only screen and (min-width: 836px) and (max-width: 1019px) {
+    .main {
+      padding-top: 18rem;
+      min-height: calc(100% - 116rem); } }
+  @media only screen and (min-width: 1020px) {
+    .main {
+      padding-top: 18rem;
+      min-height: calc(100% - 96rem); } }
+  .main main {
+    padding-top: 6rem; }
+    @media only screen and (min-width: 1020px) {
+      .main main {
+        padding-top: 7rem; } }
+  .main img {
+    margin-top: 6rem;
+    margin-bottom: 3rem; }
+    @media only screen and (min-width: 1020px) {
+      .main img {
+        margin-top: 8rem;
+        margin-bottom: 5rem; } }
+  .main :global(.content) p:first-child img:first-child {
+    margin-top: -3rem;
+    margin-bottom: 3rem; }
+
+.comments {
+  background-color: #eeeeee; }
+  .comments > div {
+    padding-top: 14rem;
+    padding-bottom: 16rem; }
+    @media only screen and (min-width: 1020px) {
+      .comments > div {
+        padding-top: 16rem;
+        padding-bottom: 20rem; } }
+  .comments #disqus_thread {
+    font-family: "Roboto Slab", serif;
+    font-weight: 400;
+    letter-spacing: -0.003rem;
+    font-size: 16px;
+    line-height: 7rem;
+    padding-top: 2.06rem;
+    padding-bottom: 4.94rem;
+    color: #333333; }
+    @media only screen and (min-width: 1020px) {
+      .comments #disqus_thread {
+        font-size: 20px; } }
+    @media only screen and (min-width: 1020px) {
+      .comments #disqus_thread {
+        line-height: 9rem;
+        padding-top: 2.7rem;
+        padding-bottom: 6.3rem; } }
+
+.footer {
+  background-color: #303030; }
+
+.bottom {
+  background-color: rgba(0, 0, 0, 0.2); }
+  .bottom .logo {
+    display: flex;
+    justify-content: center;
+    padding-top: 12rem;
+    padding-bottom: 9rem; }
+    .bottom .logo svg {
+      margin-left: 2rem;
+      height: 10rem; }
+    @media only screen and (min-width: 568px) and (max-width: 835px) {
+      .bottom .logo {
+        justify-content: flex-end;
+        padding: 10rem 4rem 8rem 4rem; } }
+    @media only screen and (min-width: 836px) and (max-width: 1019px) {
+      .bottom .logo {
+        justify-content: flex-end;
+        padding: 10rem 4rem 8rem 4rem; } }
+    @media only screen and (min-width: 1020px) {
+      .bottom .logo {
+        justify-content: flex-end;
+        padding: 10rem 4rem 8rem 4rem; } }
+    @media only screen and (min-width: 836px) and (max-width: 1019px) {
+      .bottom .logo svg {
+        height: 14rem; } }
+    @media only screen and (min-width: 836px) and (max-width: 1019px) {
+      .bottom .logo svg {
+        height: 17rem; } }
+    @media only screen and (min-width: 1020px) {
+      .bottom .logo svg {
+        height: 17rem; } }
+
+.sideMenu {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  transition: background-color 300ms ease-out;
+  height: 100%;
+  width: 100%;
+  display: flex; }
+  .sideMenu.visible {
+    background-color: rgba(7, 0, 55, 0.6); }
+  .sideMenu.closed {
+    left: -100%; }
+  @media only screen and (min-width: 836px) and (max-width: 1019px) {
+    .sideMenu {
+      display: none; } }
+  @media only screen and (min-width: 1020px) {
+    .sideMenu {
+      display: none; } }

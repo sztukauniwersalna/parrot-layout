@@ -1,0 +1,72 @@
+html {
+  font-size: 4px; }
+
+.crumbs {
+  display: flex; }
+  .crumbs ul, :not(ul) .crumbs ul, :not(ol) .crumbs ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    padding: 3rem 0;
+    flex-direction: column; }
+    .crumbs ul li, :not(ul) .crumbs ul li, :not(ol) .crumbs ul li {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      max-width: 100%; }
+      .crumbs ul li::before, :not(ul) .crumbs ul li::before, :not(ol) .crumbs ul li::before {
+        content: '';
+        margin: 0;
+        padding: 0;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        text-align: left;
+        vertical-align: inherit;
+        width: auto;
+        height: auto;
+        position: static;
+        opacity: 1; }
+    @media only screen and (min-width: 836px) and (max-width: 1019px) {
+      .crumbs ul, :not(ul) .crumbs ul, :not(ol) .crumbs ul {
+        padding: 1rem 0; } }
+    @media only screen and (min-width: 1020px) {
+      .crumbs ul, :not(ul) .crumbs ul, :not(ol) .crumbs ul {
+        padding: 2rem 0; } }
+    @media only screen and (min-width: 836px) and (max-width: 1019px) {
+      .crumbs ul, :not(ul) .crumbs ul, :not(ol) .crumbs ul {
+        flex-direction: row; } }
+    @media only screen and (min-width: 1020px) {
+      .crumbs ul, :not(ul) .crumbs ul, :not(ol) .crumbs ul {
+        flex-direction: row; } }
+  .crumbs li {
+    font-family: "Roboto Slab", serif;
+    font-weight: 300;
+    letter-spacing: -0.003rem;
+    font-size: 16px;
+    line-height: 7rem;
+    padding-top: 2.06rem;
+    padding-bottom: 4.94rem; }
+    .crumbs li:not(:first-child)::before {
+      content: '>';
+      padding: 0 2rem; }
+  .crumbs a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+    .crumbs a:link, .crumbs a:visited {
+      text-decoration: none; }
+    .crumbs a:hover, .crumbs a:active {
+      text-decoration: underline; }
+
+.responsive li:not(:first-child), .responsive li:not(:first-child)::before {
+  display: none; }
+  @media only screen and (min-width: 836px) and (max-width: 1019px) {
+    .responsive li:not(:first-child), .responsive li:not(:first-child)::before {
+      display: inline-block; } }
+  @media only screen and (min-width: 1020px) {
+    .responsive li:not(:first-child), .responsive li:not(:first-child)::before {
+      display: inline-block; } }

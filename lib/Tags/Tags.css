@@ -1,0 +1,36 @@
+ul.tags {
+  max-height: 20rem;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+  ul.tags, :not(ul) ul.tags, :not(ol) ul.tags {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin: -5rem 0 5rem -3rem; }
+    ul.tags li, :not(ul) ul.tags li, :not(ol) ul.tags li {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      max-width: 100%; }
+      ul.tags li::before, :not(ul) ul.tags li::before, :not(ol) ul.tags li::before {
+        content: '';
+        margin: 0;
+        padding: 0;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+        text-align: left;
+        vertical-align: inherit;
+        width: auto;
+        height: auto;
+        position: static;
+        opacity: 1; }
+    @media only screen and (min-width: 836px) and (max-width: 1019px) {
+      ul.tags, :not(ul) ul.tags, :not(ol) ul.tags {
+        margin: -7rem 0 7rem -3rem; } }
+    @media only screen and (min-width: 1020px) {
+      ul.tags, :not(ul) ul.tags, :not(ol) ul.tags {
+        margin: -9rem 0 9rem -3rem; } }
