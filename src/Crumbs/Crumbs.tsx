@@ -6,7 +6,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 const s = require('./Crumbs.scss');
 
-interface Props {
+export interface Props {
   website : Website;
   page : Page;
   responsive ?: boolean;

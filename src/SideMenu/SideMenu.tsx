@@ -25,7 +25,7 @@ export interface Props {
   children ?: ReactElement<ItemProps>[];
   currentUrl : string;
 }
-interface State {
+export interface State {
   visible : boolean;
 }
 

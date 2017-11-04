@@ -22,7 +22,7 @@ export interface Props {
   website : Website;
   page : Page;
 }
-interface State {
+export interface State {
   sideMenuClassName : string;
 }
 

@@ -6,7 +6,7 @@ import { Page, Tag, Website } from 'paramorph/models';
 
 const s = require('./Jumbotron.scss');
 
-type Align = 'center' | 'bottom';
+export type Align = 'center' | 'bottom';
 
 export interface Props {
   src ?: string;
