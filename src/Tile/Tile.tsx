@@ -5,9 +5,9 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 import { Page, Website } from 'paramorph/models';
 
-import Tags from 'parrot-layout/Tags';
-import Button from 'parrot-layout/Button';
-import { Branch as TocBranch } from 'includes/TableOfContents';
+import Tags from '../Tags';
+import Button from '../Button';
+import { Branch as TocBranch } from '../TableOfContents';
 
 const s = require('./Tile.scss');
 

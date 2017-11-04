@@ -6,17 +6,17 @@ import ReactDisqusComments from 'react-disqus-comments';
 
 import { Page, Category, Tag, Website, MenuEntry } from 'paramorph/models';
 
-import TopBar from 'parrot-layout/TopBar';
-import Crumbs from 'parrot-layout/Crumbs';
-import Tags from 'parrot-layout/Tags';
-import Footer from 'parrot-layout/Footer';
-import Logo from 'parrot-layout/Logo';
-import Icon from 'parrot-layout/Icon';
-import SideMenu, { Item } from 'parrot-layout/SideMenu';
-import Jumbotron from 'parrot-layout/Jumbotron';
+import TopBar from '../TopBar';
+import Crumbs from '../Crumbs';
+import Tags from '../Tags';
+import Footer from '../Footer';
+import Logo from '../Logo';
+import Icon from '../Icon';
+import SideMenu, { Item } from '../SideMenu';
+import Jumbotron from '../Jumbotron';
 
-const s = require('parrot-layout/ParrotLayout/ParrotLayout.scss');
-const image = require('parrot-layout/ParrotLayout/cover.jpg');
+const s = require('../ParrotLayout/ParrotLayout.scss');
+const image = require('../ParrotLayout/cover.jpg');
 
 export interface Props {
   website : Website;
