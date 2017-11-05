@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ReactElement } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
-const s = require('./Logo.scss');
+const s = require('./Logo.css');
 
 export type Variant = 'small' | 'inline' | 'full';
 

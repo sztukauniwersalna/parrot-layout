@@ -6,7 +6,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import Button from '../Button';
 import Icon from '../Icon';
 
-const s = require('./SideMenu.scss');
+const s = require('./SideMenu.css');
 
 export interface ItemProps {
   icon ?: string;

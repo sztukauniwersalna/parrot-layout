@@ -7,7 +7,7 @@ import { Page, Tag, Website } from 'paramorph/models';
 
 import Icon from '../Icon';
 
-const s = require('./Recipe.scss');
+const s = require('./Recipe.css');
 
 export interface IngredientProps {
   title : string;

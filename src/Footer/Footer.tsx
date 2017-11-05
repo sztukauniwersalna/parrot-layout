@@ -7,7 +7,7 @@ import { Page, MenuEntry, Website } from 'paramorph/models';
 import Button from '../Button';
 import Icon from '../Icon';
 
-const s = require('./Footer.scss');
+const s = require('./Footer.css');
 
 export interface Props {
   website : Website;
