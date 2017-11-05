@@ -1,6 +1,6 @@
 {
   "name": "parrot-layout",
-  "version": "1.2.0",
+  "version": "1.2.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "copy-config": "mkdir -p lib/ && cp package.json lib/",
     "copy": "npm run copy-assets && npm run copy-config",
     "build": "npm run compile && npm run copy",
-    "clean-build": "npm run clean && npm run build"
+    "clean-build": "npm run clean && npm run build",
+    "deploy": "npm run clean-build && npm publish lib"
   },
   "repository": {
     "type": "git",
