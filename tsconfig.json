@@ -33,7 +33,8 @@
   "include": [
     "./modules.d.ts",
     "./src/**/*.tsx",
-    "./src/**/*.ts"
+    "./src/**/*.ts",
+    "./test/**/*.ts"
   ],
   "exclude": [
   ]
