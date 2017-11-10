@@ -15,16 +15,24 @@ module.exports = {
   },
 
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, './build'),
-    publicPath: path.resolve(__dirname, './test'),
+    publicPath: path.resolve(__dirname, '/build/'),
     libraryTarget: 'umd',
   },
 
   target: 'web',
 
   resolve: {
-    extensions: ['.ts', '.tsx', '.sass'],
+    extensions: [
+      '.js', '.ts', '.tsx',
+      '.scss',
+      '.jpg', '.png', '.gif', '.svg',
+      '.eot', '.woff2', '.woff', '.ttf',
+    ],
+    alias: {
+      'parrot-layout': path.resolve(__dirname, './src'),
+    },
   },
 
   externals: {
@@ -58,8 +66,15 @@ module.exports = {
       require.resolve('react-router-dom'),
     ],
     rules: [
-      { test: /\.tsx?$/, use: [ 'babel-loader', 'ts-loader' ] },
-      { enforce: 'pre', test: /\.js$/, use: 'source-map-loader' },
+      {
+        test: /\.tsx?$/,
+        use: [ 'babel-loader', 'ts-loader' ],
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        use: 'source-map-loader',
+      },
       {
         test: /\.scss?$/,
         use: [
@@ -70,7 +85,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|svg|eot|woff2|woff|ttf)$/,
         use: [
           {
             loader: 'url-loader',

@@ -26,12 +26,7 @@ module.exports = {
     'hot-bootstrap': HOT_ENTRY,
   }),
 
-  output: Object.assign(config.output, {
-    chunkFilename: 'bundle.js',
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, './build'),
-  }),
-
+  output: config.output,
   devtool: config.devtool,
   resolve: config.resolve,
   resolveLoader: config.resolveLoader,
