@@ -1,6 +1,6 @@
 {
   "name": "parrot-layout",
-  "version": "1.3.0",
+  "version": "1.3.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "compile-ts": "tsc --declaration true",
     "compile-sass": "node-sass -r -o ./lib ./src",
     "compile": "npm run compile-sass && npm run compile-ts",
-    "copy-assets": "mkdir -p lib/ && cd src && find -name '*.jpg' -exec cp --parent {} ../lib/ \\;",
+    "copy-assets": "mkdir -p lib/ && cd src && find -name '*.jpg' -exec cp --parent {} ../lib/ \\; && find fonts -exec cp --parent {} ../lib/ \\;",
     "copy-config": "mkdir -p lib/ && cp package.json lib/",
     "copy": "npm run copy-assets && npm run copy-config",
     "build": "npm run compile && npm run copy",
