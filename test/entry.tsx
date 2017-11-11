@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 import { Page, Layout, MenuEntry, Website } from 'paramorph/models';
-import IsomorphicStyleContext from 'paramorph/components/IsomorphicStyleContext';
+import IsomorphicStyleContext from './IsomorphicStyleContext';
 
 import ParrotLayout from '../src/ParrotLayout';
 
