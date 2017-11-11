@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
-const s = require('./Button.css');
+const s = require('./style');
 
 export type Variant = 'flat' | 'raised' | 'action';
 export type Color = 'green' | 'purple' | 'gray';

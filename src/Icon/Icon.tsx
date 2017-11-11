@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ReactNode } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
-const s = require('./Icon.css');
+const s = require('./style');
 
 export interface Props {
   name ?: string;

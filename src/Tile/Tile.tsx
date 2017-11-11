@@ -9,7 +9,7 @@ import Tags from '../Tags';
 import Button from '../Button';
 import { Branch as TocBranch } from '../TableOfContents';
 
-const s = require('./Tile.css');
+const s = require('./style');
 
 export interface Props {
   website : Website;

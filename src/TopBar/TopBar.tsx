@@ -10,7 +10,7 @@ import Logo from '../Logo';
 
 import '../polyfill/swipe-events';
 
-const s = require('./TopBar.css');
+const s = require('./style');
 
 export interface Props {
   website : Website;

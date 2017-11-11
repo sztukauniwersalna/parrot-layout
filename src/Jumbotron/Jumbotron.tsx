@@ -4,7 +4,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 import { Page, Tag, Website } from 'paramorph/models';
 
-const s = require('./Jumbotron.css');
+const s = require('./style');
 
 export type Align = 'center' | 'bottom';
 

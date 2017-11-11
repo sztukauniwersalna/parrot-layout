@@ -15,8 +15,8 @@ import Icon from '../Icon';
 import SideMenu, { Item } from '../SideMenu';
 import Jumbotron from '../Jumbotron';
 
-const s = require('../ParrotLayout/ParrotLayout.css');
-const image = require('../ParrotLayout/cover.jpg');
+const s = require('./style');
+const image = require('./cover.jpg');
 
 export interface Props {
   website : Website;

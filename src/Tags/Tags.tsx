@@ -5,7 +5,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { Page, Tag, Website } from 'paramorph/models';
 import Button from '../Button';
 
-const s = require('./Tags.css');
+const s = require('./style');
 
 export interface Props {
   website : Website,

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf lib #",
-    "compile-ts": "tsc",
+    "compile-ts": "tsc --declaration true",
     "compile-sass": "node-sass -r -o ./lib ./src",
     "compile": "npm run compile-sass && npm run compile-ts",
     "copy-assets": "mkdir -p lib/ && cd src && find -name '*.jpg' -exec cp --parent {} ../lib/ \\;",
@@ -13,7 +13,9 @@
     "copy": "npm run copy-assets && npm run copy-config",
     "build": "npm run compile && npm run copy",
     "clean-build": "npm run clean && npm run build",
-    "deploy": "npm run clean-build && npm publish lib"
+    "deploy": "npm run clean-build && npm publish lib",
+    "webpack": "webpack --progress --colors --config ./webpack.config.js",
+    "dev": "webpack-dev-server --progress --colors --inline --content-base ./test --config ./hot.config.js"
   },
   "repository": {
     "type": "git",
@@ -33,18 +35,41 @@
   },
   "homepage": "https://github.com/sztukauniwersalna/parrot-layout#readme",
   "devDependencies": {
-    "@types/react": "^16.0.20",
-    "@types/react-router-dom": "^4.2.0",
-    "@types/webpack": "^3.0.14",
+    "@types/prop-types": "^15.5.2",
+    "@types/react": "^16.0.22",
+    "@types/react-dom": "^16.0.3",
+    "@types/react-router-dom": "^4.2.1",
+    "@types/webpack": "^3.8.1",
     "@types/webpack-env": "^1.13.2",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "cssnano": "^3.10.0",
+    "file-loader": "^1.1.5",
     "isomorphic-style-loader": "^4.0.0",
+    "jsdom": "^11.3.0",
+    "loader": "^2.1.1",
     "node-sass": "^4.6.0",
-    "react": "^16.0.0",
+    "postcss-loader": "^2.0.8",
+    "postcss-scss": "^1.0.2",
+    "react": "^16.1.0",
     "react-disqus-comments": "^1.1.1",
+    "react-dom": "^16.1.0",
+    "react-hot-loader": "^3.1.2",
     "react-router-dom": "^4.2.2",
-    "typescript": "^2.6.1"
+    "sass-loader": "^6.0.6",
+    "source-map-loader": "^0.2.3",
+    "ts-loader": "^3.1.1",
+    "typescript": "^2.6.1",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
-    "paramorph": "^1.0.2"
+    "material-design-icons": "^3.0.1",
+    "paramorph": "^1.4.5"
   }
 }

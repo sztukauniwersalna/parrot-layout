@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Page, Website } from 'paramorph/models';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
-const s = require('./Crumbs.css');
+const s = require('./style');
 
 export interface Props {
   website : Website;
