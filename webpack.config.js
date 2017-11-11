@@ -95,6 +95,13 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           use: [
             {
+              loader: 'emit-file-loader',
+              options: {
+                name: '[path][name].js',
+                context: './src',
+              },
+            },
+            {
               loader: 'css-loader',
               options: {
                 importLoaders: 2,
