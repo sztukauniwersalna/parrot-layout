@@ -99,6 +99,7 @@ module.exports = {
               options: {
                 name: '[path][name].js',
                 context: './src',
+                transform: (exports) => exports.locals,
               },
             },
             {
@@ -109,8 +110,19 @@ module.exports = {
                 localIdentName: '[local]-[hash:base64:5]',
               },
             },
-            { loader: 'postcss-loader' },
-            { loader: 'sass-loader' },
+            'resolve-url-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+              },
+            },
           ],
         }),
       },
