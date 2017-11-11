@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 import { Page, MenuEntry, Website } from 'paramorph/models';
 import Button from '../Button';
@@ -46,5 +45,5 @@ export class TopBar extends Component<Props, {}> {
   }
 }
 
-export default withStyles(s)(TopBar);
+export default TopBar;
 

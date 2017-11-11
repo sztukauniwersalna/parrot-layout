@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ReactNode, ReactElement } from 'react';
 import { Link } from 'react-router-dom';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 import { Page, Tag, Website } from 'paramorph/models';
 
@@ -83,5 +82,5 @@ export function Recipe({ title, photo, altText, time, level, mealFor, children }
   );
 }
 
-export default withStyles(s)(Recipe);
+export default Recipe;
 

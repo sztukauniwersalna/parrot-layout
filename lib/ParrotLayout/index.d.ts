@@ -18,5 +18,4 @@ export declare class ParrotLayout extends Component<Props, State> {
     private disableMenu();
     private setSideMenuClassName(sideMenuClassName);
 }
-declare const _default: typeof ParrotLayout;
-export default _default;
+export default ParrotLayout;

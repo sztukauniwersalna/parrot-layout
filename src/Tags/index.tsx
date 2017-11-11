@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 import { Page, Tag, Website } from 'paramorph/models';
 import Button from '../Button';
@@ -28,5 +27,5 @@ export function Tags({ website, page } : Props) {
   );
 }
 
-export default withStyles(s)(Tags);
+export default Tags;
 

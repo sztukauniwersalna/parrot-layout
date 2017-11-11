@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Component, ReactNode, ReactElement, Children, cloneElement } from 'react';
 import { Link } from 'react-router-dom';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 import Button from '../Button';
 import Icon from '../Icon';
@@ -122,5 +121,5 @@ export class SideMenu extends Component<Props, State> {
   }
 }
 
-export default withStyles(s)(SideMenu);
+export default SideMenu;
 

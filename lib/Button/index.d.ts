@@ -12,5 +12,4 @@ export interface Props {
     children: ReactNode;
 }
 export declare function Button({url, variant, color, onClick, children}: Props): JSX.Element;
-declare const _default: typeof Button;
-export default _default;
+export default Button;

@@ -10,5 +10,4 @@ export interface Props {
 export declare class TopBar extends Component<Props, {}> {
     render(): JSX.Element;
 }
-declare const _default: typeof TopBar;
-export default _default;
+export default TopBar;

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ReactElement } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 const s = require('./style');
 
@@ -25,6 +24,8 @@ export function Logo({ variant = 'inline' } : Props) {
     </svg>
   );
 }
+
+export default Logo;
 
 function renderLogo(variant : Variant) {
   switch (variant) {
@@ -150,6 +151,4 @@ function getDimensions(variant : Variant) {
     case 'full': return [ 1572, 230.83 ];
   }
 }
-
-export default withStyles(s)(Logo);
 

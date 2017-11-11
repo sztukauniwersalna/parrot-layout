@@ -8,5 +8,4 @@ export interface Props {
 export declare class Footer extends Component<Props, {}> {
     render(): JSX.Element;
 }
-declare const _default: typeof Footer;
-export default _default;
+export default Footer;

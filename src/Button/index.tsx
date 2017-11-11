@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 const s = require('./style');
 
@@ -34,6 +33,8 @@ export function Button({ url, variant = 'flat', color = 'gray', onClick, childre
   }
   return renderButton(classNames, onClick, children);
 }
+
+export default Button;
 
 function renderExternalLink(
   classNames : string[],
@@ -78,6 +79,4 @@ function renderButton(
     </span>
   );
 }
-
-export default withStyles(s)(Button);
 

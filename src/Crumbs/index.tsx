@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Page, Website } from 'paramorph/models';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 const s = require('./style');
 
@@ -27,5 +26,5 @@ export function Crumbs({ website, page, responsive = false } : Props) {
   );
 }
 
-export default withStyles(s)(Crumbs);
+export default Crumbs;
 

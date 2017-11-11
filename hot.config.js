@@ -33,6 +33,11 @@ module.exports = {
       'parrot-layout': path.resolve(__dirname, './src'),
     },
   },
+  resolveLoader: {
+    alias: {
+      'wrap-with-styles-loader': path.resolve(__dirname, './loaders/wrap-with-styles.js'),
+    },
+  },
 
   externals: {
     'react': {
@@ -74,6 +79,7 @@ module.exports = {
               plugins: [ 'react-hot-loader/babel' ],
             },
           },
+          'wrap-with-styles-loader',
           'ts-loader',
         ],
       },
@@ -85,7 +91,7 @@ module.exports = {
       {
         test: /\.scss?$/,
         use: [
-          { loader: 'isomorphic-style-loader' },
+          'isomorphic-style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -94,8 +100,19 @@ module.exports = {
               localIdentName: '[local]-[hash:base64:5]',
             },
           },
-          { loader: 'postcss-loader' },
-          { loader: 'sass-loader' },
+          'resolve-url-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
         ],
       },
       {

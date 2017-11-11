@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 import { Page, Website } from 'paramorph/models';
 
@@ -35,5 +34,5 @@ export function Tile({ website, page } : Props) {
   );
 }
 
-export default withStyles(s)(Tile);
+export default Tile;
 

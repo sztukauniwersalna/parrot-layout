@@ -19,5 +19,4 @@ export interface Props {
     children: ReactElement<IngredientProps | MethodProps>[];
 }
 export declare function Recipe({title, photo, altText, time, level, mealFor, children}: Props): JSX.Element;
-declare const _default: typeof Recipe;
-export default _default;
+export default Recipe;

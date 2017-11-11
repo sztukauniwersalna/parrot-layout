@@ -5,5 +5,4 @@ export interface Props {
     page: Page;
 }
 export declare function Tile({website, page}: Props): JSX.Element;
-declare const _default: typeof Tile;
-export default _default;
+export default Tile;

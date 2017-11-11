@@ -8,5 +8,4 @@ export interface Props {
     align?: Align;
 }
 export declare function Jumbotron({children, src, fullscreen, align}: Props): JSX.Element;
-declare const _default: typeof Jumbotron;
-export default _default;
+export default Jumbotron;

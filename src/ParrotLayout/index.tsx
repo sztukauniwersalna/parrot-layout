@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Component, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import ReactDisqusComments from 'react-disqus-comments';
 
 import { Page, Category, Tag, Website, MenuEntry } from 'paramorph/models';
@@ -109,6 +108,8 @@ export class ParrotLayout extends Component<Props, State> {
   }
 }
 
+export default ParrotLayout;
+
 function jumbotronFor(website : Website, page : Page) {
     if (page.url === '/') {
     return (
@@ -197,6 +198,4 @@ function maybeRenderComments(page: Page) {
     </div>
   );
 }
-
-export default withStyles(s)(ParrotLayout);
 

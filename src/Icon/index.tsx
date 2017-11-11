@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 const s = require('./style');
 
@@ -19,6 +18,8 @@ export function Icon({ name } : Props) {
     default: return renderMaterialIcon(name);
   }
 }
+
+export default Icon;
 
 function renderMaterialIcon(name : string) {
   return (
@@ -57,6 +58,4 @@ function renderInstagramIcon() {
     </svg>
   );
 }
-
-export default withStyles(s)(Icon);
 

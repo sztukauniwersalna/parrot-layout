@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
 
 import { Page, Tag, Website } from 'paramorph/models';
 
@@ -28,9 +27,9 @@ export function Jumbotron({ children, src, fullscreen = false, align = 'center' 
   );
 }
 
+export default Jumbotron;
+
 const renderImage = (src : string) => (
   <div className={ s.image } style={ { backgroundImage: `url('${src}')` } } />
 );
-
-export default withStyles(s)(Jumbotron);
 

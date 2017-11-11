@@ -25,5 +25,4 @@ export declare class SideMenu extends Component<Props, State> {
     private renderItem(item);
     private onTransitionEnd();
 }
-declare const _default: typeof SideMenu;
-export default _default;
+export default SideMenu;

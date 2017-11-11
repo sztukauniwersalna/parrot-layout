@@ -6,5 +6,4 @@ export interface Props {
     responsive?: boolean;
 }
 export declare function Crumbs({website, page, responsive}: Props): JSX.Element;
-declare const _default: typeof Crumbs;
-export default _default;
+export default Crumbs;
