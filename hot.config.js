@@ -1,49 +1,120 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const config = require('./webpack.config');
-
-const HOT_ENTRY = [
-  'react-hot-loader/patch',
-  'webpack-dev-server/client?http://localhost:8080',
-  'webpack/hot/only-dev-server',
-];
-
-const HOT_BABEL = {
-  loader: 'babel-loader',
-  options: {
-    plugins: [ 'react-hot-loader/babel' ],
-  },
-};
-
-const HOT_PLUGINS = [
-  new webpack.NamedModulesPlugin(),
-  new webpack.HotModuleReplacementPlugin(),
-];
-
 module.exports = {
-  entry: Object.assign({}, config.entry, {
-    'hot-bootstrap': HOT_ENTRY,
-  }),
+	entry: {
+    'hot-bootstrap': [
+      'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/only-dev-server',
+    ],
+    'entry': [
+      './test/entry',
+    ],
+  },
 
-  output: config.output,
-  devtool: config.devtool,
-  resolve: config.resolve,
-  resolveLoader: config.resolveLoader,
-  externals: config.externals,
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, './build'),
+    publicPath: path.resolve(__dirname, '/build/'),
+    libraryTarget: 'umd',
+  },
+
+  target: 'web',
+
+  resolve: {
+    extensions: [
+      '.js', '.ts', '.tsx',
+      '.scss',
+      '.jpg', '.png', '.gif', '.svg',
+      '.eot', '.woff2', '.woff', '.ttf',
+    ],
+    alias: {
+      'parrot-layout': path.resolve(__dirname, './src'),
+    },
+  },
+
+  externals: {
+    'react': {
+      root: 'React',
+      commonjs: 'react',
+      commonjs2: 'react',
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+    },
+    'react-dom/server': {
+      root: 'ReactDOMServer',
+      commonjs: 'react-dom/server',
+      commonjs2: 'react-dom/server',
+    },
+    'react-router-dom': {
+      root: 'ReactRouterDOM',
+      commonjs: 'react-router-dom',
+      commonjs2: 'react-router-dom',
+    },
+  },
 
   module: {
-    noParse: config.module.noParse,
-    rules: config.module.rules.map(rule => {
-      if (rule.use instanceof Array && rule.use[0] === 'babel-loader') {
-        rule.use[0] = HOT_BABEL;
-      } else if (rule.use === 'babel-loader') {
-        rule.use = HOT_BABEL;
-      }
-      return rule;
-    }),
+    noParse: [
+      require.resolve('react'),
+      require.resolve('react-dom'),
+      require.resolve('react-dom/server'),
+      require.resolve('react-router-dom'),
+    ],
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: [ 'react-hot-loader/babel' ],
+            },
+          },
+          'ts-loader',
+        ],
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        use: 'source-map-loader',
+      },
+      {
+        test: /\.scss?$/,
+        use: [
+          { loader: 'isomorphic-style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              modules: true,
+              localIdentName: '[local]-[hash:base64:5]',
+            },
+          },
+          { loader: 'postcss-loader' },
+          { loader: 'sass-loader' },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif|svg|eot|woff2|woff|ttf)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 40 * 1024,
+            },
+          },
+        ],
+      },
+    ],
   },
 
-  plugins: HOT_PLUGINS,
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 };
 

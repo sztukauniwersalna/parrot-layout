@@ -1,4 +1,7 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const path = require('path');
+const fs = require('fs');
 
 const { JSDOM } = require('jsdom');
 
@@ -7,17 +10,23 @@ const ReactDOM = require('react-dom');
 const ReactDOMServer = require('react-dom/server');
 const ReactRouterDOM = require('react-router-dom');
 
+const sourceFolder = path.resolve('./src/');
+const entries = fs.readdirSync(sourceFolder)
+  .filter(entry => fs.existsSync(path.join(sourceFolder, entry, 'index.tsx')))
+  .reduce(
+    (result, entry) => {
+      result[entry] = [ path.join(sourceFolder, entry) ];
+      return result;
+    },
+    {},
+  );
+
 module.exports = {
-	entry: {
-    entry: [
-      './test/entry',
-    ],
-  },
+	entry: entries,
 
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, './build'),
-    publicPath: path.resolve(__dirname, '/build/'),
+    filename: '[name]/index.js',
+    path: path.resolve(__dirname, './lib'),
     libraryTarget: 'umd',
   },
 
@@ -68,7 +77,10 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [ 'babel-loader', 'ts-loader' ],
+        use: [
+          'babel-loader',
+          'ts-loader',
+        ],
       },
       {
         enforce: 'pre',
@@ -77,12 +89,20 @@ module.exports = {
       },
       {
         test: /\.scss?$/,
-        use: [
-          { loader: 'isomorphic-style-loader' },
-          { loader: 'css-loader', options: { importLoaders: true, modules: true } },
-          { loader: 'postcss-loader' },
-          { loader: 'sass-loader' },
-        ],
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
+                modules: true,
+                localIdentName: '[local]-[hash:base64:5]',
+              },
+            },
+            { loader: 'postcss-loader' },
+            { loader: 'sass-loader' },
+          ],
+        }),
       },
       {
         test: /\.(png|jpg|gif|svg|eot|woff2|woff|ttf)$/,
@@ -97,5 +117,9 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [
+    new ExtractTextPlugin('style.bundle.scss'),
+  ],
 };
 

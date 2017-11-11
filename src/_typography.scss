@@ -2,10 +2,6 @@
 @import './_mixins';
 @import './_breaks';
 
-html {
-  font-size: $sizing-unit;
-}
-
 @function bigger-font-size($font-size) {
   @return floor($font-size * 10 / 8 / 2) * 2;
 }

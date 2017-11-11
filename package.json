@@ -1,20 +1,15 @@
 {
   "name": "parrot-layout",
-  "version": "1.3.4",
+  "version": "1.5.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf lib #",
-    "compile-ts": "tsc --declaration true",
-    "compile-sass": "node-sass -r -o ./lib ./src",
-    "compile": "npm run compile-sass && npm run compile-ts",
-    "copy-assets": "mkdir -p lib/ && cd src && find -name '*.jpg' -exec cp --parent {} ../lib/ \\; && find fonts -exec cp --parent {} ../lib/ \\;",
+    "webpack": "webpack --progress --colors --config ./webpack.config.js",
     "copy-config": "mkdir -p lib/ && cp package.json lib/",
-    "copy": "npm run copy-assets && npm run copy-config",
-    "build": "npm run compile && npm run copy",
+    "build": "npm run webpack && npm run copy-config",
     "clean-build": "npm run clean && npm run build",
     "deploy": "npm run clean-build && npm publish lib",
-    "webpack": "webpack --progress --colors --config ./webpack.config.js",
     "dev": "webpack-dev-server --progress --colors --inline --content-base ./test --config ./hot.config.js"
   },
   "repository": {
@@ -48,6 +43,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.7",
     "cssnano": "^3.10.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
     "isomorphic-style-loader": "^4.0.0",
     "jsdom": "^11.3.0",
@@ -69,6 +65,7 @@
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
+    "extract-loader": "^1.0.1",
     "material-design-icons": "^3.0.1",
     "paramorph": "^1.4.5"
   }
