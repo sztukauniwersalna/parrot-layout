@@ -37,6 +37,7 @@ module.exports = {
   resolveLoader: {
     alias: {
       'emit-file-loader': path.resolve(__dirname, './loaders/emit-file.js'),
+      'relative-path-loader': path.resolve(__dirname, './loaders/relative-path.js'),
     },
   },
 
@@ -130,6 +131,14 @@ module.exports = {
         test: /\.(png|jpg|gif|svg|eot|woff2|woff|ttf)$/,
         use: [
           {
+            loader: 'emit-file-loader',
+            options: {
+              name: '[path][name].js',
+              context: './src',
+            },
+          },
+          'relative-path-loader',
+          {
             loader: 'url-loader',
             options: {
               limit: 40 * 1024,
@@ -141,7 +150,7 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('style.bundle.scss'),
+    new ExtractTextPlugin('style.bundle.css'),
   ],
 };
 

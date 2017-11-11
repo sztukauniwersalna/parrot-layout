@@ -15,7 +15,7 @@ import SideMenu, { Item } from '../SideMenu';
 import Jumbotron from '../Jumbotron';
 
 const s = require('./style');
-const image = require('./cover.jpg');
+const image = require('./cover');
 
 export interface Props {
   website : Website;
