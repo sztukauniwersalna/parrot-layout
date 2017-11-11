@@ -1,7 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const path = require('path');
-const fs = require('fs');
 
 const { JSDOM } = require('jsdom');
 
@@ -10,27 +9,18 @@ const ReactDOM = require('react-dom');
 const ReactDOMServer = require('react-dom/server');
 const ReactRouterDOM = require('react-router-dom');
 
-const sourceFolder = path.resolve('./src/');
-const entries = fs.readdirSync(sourceFolder)
-  .filter(entry => fs.existsSync(path.join(sourceFolder, entry, 'index.tsx')))
-  .reduce(
-    (result, entry) => {
-      result[entry] = [ path.join(sourceFolder, entry) ];
-      return result;
-    },
-    {},
-  );
-
 module.exports = {
-	entry: entries,
-
-  output: {
-    filename: '[name]/index.js',
-    path: path.resolve(__dirname, './lib'),
-    libraryTarget: 'umd',
+	entry: {
+    'index': './src/index.ts',
   },
 
-  target: 'web',
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, './lib'),
+    libraryTarget: 'commonjs2',
+  },
+
+  target: 'node',
 
   resolve: {
     extensions: [
@@ -41,6 +31,12 @@ module.exports = {
     ],
     alias: {
       'parrot-layout': path.resolve(__dirname, './src'),
+    },
+  },
+
+  resolveLoader: {
+    alias: {
+      'emit-file-loader': path.resolve(__dirname, './loaders/emit-file.js'),
     },
   },
 
@@ -78,6 +74,13 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: [
+          {
+            loader: 'emit-file-loader',
+            options: {
+              name: '[path][name].js',
+              context: './src',
+            },
+          },
           'babel-loader',
           'ts-loader',
         ],
