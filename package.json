@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf lib #",
-    "webpack": "webpack --progress --colors --config ./webpack.config.js",
+    "compile": "webpack --progress --colors --config ./webpack.config.js",
+    "copy-d-ts": "mkdir -p lib/ && cp lib/index.d.ts lib/bundle.d.ts",
     "copy-config": "mkdir -p lib/ && cp package.json lib/",
-    "build": "npm run webpack && npm run copy-config",
+    "compile-test": "webpack --progress --colors --config ./test.config.js",
+    "serve": "http-server ./build",
+    "build": "npm run compile && npm run copy-d-ts && npm run copy-config",
     "clean-build": "npm run clean && npm run build",
+    "test": "npm run clean-build && npm run compile-test && npm run serve",
     "deploy": "npm run clean-build && npm publish lib",
-    "dev": "webpack-dev-server --progress --colors --inline --content-base ./test --config ./hot.config.js"
+    "dev": "webpack-dev-server --progress --colors --inline --config ./hot.config.js"
   },
   "repository": {
     "type": "git",
@@ -41,16 +45,20 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "copy-webpack-plugin": "^4.2.1",
     "css-loader": "^0.28.7",
     "cssnano": "^3.10.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
+    "html-webpack-plugin": "^2.30.1",
+    "http-server": "^0.10.0",
     "isomorphic-style-loader": "^4.0.0",
     "jsdom": "^11.3.0",
     "material-design-icons": "^3.0.1",
     "node-sass": "^4.6.0",
     "postcss-loader": "^2.0.8",
     "postcss-scss": "^1.0.2",
+    "raw-loader": "^0.5.1",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-hot-loader": "^3.1.2",
@@ -62,6 +70,7 @@
     "typescript": "^2.6.1",
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
+    "webpack-copy-plugin": "0.0.4",
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {

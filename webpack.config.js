@@ -2,32 +2,22 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const path = require('path');
 
-const { JSDOM } = require('jsdom');
-
-const React = require('react');
-const ReactDOM = require('react-dom');
-const ReactDOMServer = require('react-dom/server');
-const ReactRouterDOM = require('react-router-dom');
-
 module.exports = {
 	entry: {
     'index': './src/index.ts',
   },
 
   output: {
-    filename: '[name].bundle.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, './lib'),
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'commonjs',
   },
 
   target: 'node',
 
   resolve: {
     extensions: [
-      '.js', '.ts', '.tsx',
-      '.scss',
-      '.jpg', '.png', '.gif', '.svg',
-      '.eot', '.woff2', '.woff', '.ttf',
+      '.js', '.ts', '.tsx', '.scss',
     ],
   },
 
@@ -110,7 +100,7 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('style.bundle.css'),
+    new ExtractTextPlugin('bundle.css'),
   ],
 };
 

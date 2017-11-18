@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const HtmlPlugin = require('html-webpack-plugin');
+
 module.exports = {
 	entry: {
     'hot-bootstrap': [
@@ -16,7 +18,7 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, './build'),
-    publicPath: path.resolve(__dirname, '/build/'),
+    publicPath: path.resolve(__dirname, '/'),
     libraryTarget: 'umd',
   },
 
@@ -24,10 +26,7 @@ module.exports = {
 
   resolve: {
     extensions: [
-      '.js', '.ts', '.tsx',
-      '.scss',
-      '.jpg', '.png', '.gif', '.svg',
-      '.eot', '.woff2', '.woff', '.ttf',
+      '.js', '.ts', '.tsx', '.scss',
     ],
   },
   resolveLoader: {
@@ -107,6 +106,11 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new HtmlPlugin({
+      template: 'test/index.html',
+      filename: 'index.html',
+      inject: true,
+    }),
   ],
 };
 
