@@ -75,13 +75,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: [
-          {
-            loader: 'emit-file-loader',
-            options: {
-              name: '[path][name].js',
-              context: './src',
-            },
-          },
+          'emit-file-loader?name=[path][name].js&context=./src',
           'babel-loader',
           'ts-loader',
         ],
@@ -103,47 +97,20 @@ module.exports = {
                 transform: (exports) => exports.locals,
               },
             },
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 2,
-                modules: true,
-                localIdentName: '[local]-[hash:base64:5]',
-              },
-            },
-            'resolve-url-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: true,
-              },
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true,
-              },
-            },
+            'css-loader?modules&importLoaders=&localIdentName=[local]-[hash:base64:5]',
+            'emit-file-loader?name=[path][name].css&context=./src',
+            'resolve-url-loader?attempts=1',
+            'postcss-loader?sourceMap',
+            'sass-loader?sourceMap',
           ],
         }),
       },
       {
         test: /\.(png|jpg|gif|svg|eot|woff2|woff|ttf)$/,
         use: [
-          {
-            loader: 'emit-file-loader',
-            options: {
-              name: '[path][name].js',
-              context: './src',
-            },
-          },
+          'emit-file-loader?name=[path][name].js&context=./src',
           'relative-path-loader',
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 40 * 1024,
-            },
-          },
+          'url-loader?limit='+ (40 * 1024),
         ],
       },
     ],
