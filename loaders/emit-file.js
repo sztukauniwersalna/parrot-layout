@@ -6,9 +6,9 @@ function loader(content) {
   if (!this.emitFile) throw new Error('File Loader\n\nemitFile is required from module system');
 
   const options = loaderUtils.getOptions(this) || {};
-  const context = options.context || this.options.context;
+  const context = options.context || './src';
 
-  const url = loaderUtils.interpolateName(this, options.name, {
+  const url = loaderUtils.interpolateName(this, options.name || '[path][name].js', {
     context,
     content,
     regExp: options.regExp

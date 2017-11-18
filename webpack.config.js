@@ -72,7 +72,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: [
-          'emit-file-loader?name=[path][name].js&context=./src',
+          'emit-file-loader',
           'babel-loader',
           'ts-loader',
         ],
@@ -89,8 +89,6 @@ module.exports = {
             {
               loader: 'emit-file-loader',
               options: {
-                name: '[path][name].js',
-                context: './src',
                 transform: (exports) => exports.locals,
               },
             },
@@ -104,8 +102,7 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|svg|eot|woff2|woff|ttf)$/,
         use: [
-          'emit-file-loader?name=[path][name].js&context=./src',
-          'relative-path-loader',
+          'emit-file-loader',
           'url-loader?limit='+ (40 * 1024),
         ],
       },
