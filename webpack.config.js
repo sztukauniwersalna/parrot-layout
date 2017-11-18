@@ -95,7 +95,6 @@ module.exports = {
               },
             },
             'css-loader?modules&localIdentName=[local]-[hash:base64:5]',
-            'emit-file-loader?name=[path][name].css&context=./src',
             'resolve-url-loader?attempts=1',
             'postcss-loader?sourceMap',
             'sass-loader?sourceMap',
