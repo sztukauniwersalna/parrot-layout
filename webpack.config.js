@@ -29,9 +29,6 @@ module.exports = {
       '.jpg', '.png', '.gif', '.svg',
       '.eot', '.woff2', '.woff', '.ttf',
     ],
-    alias: {
-      'parrot-layout': path.resolve(__dirname, './src'),
-    },
   },
 
   resolveLoader: {
@@ -97,7 +94,7 @@ module.exports = {
                 transform: (exports) => exports.locals,
               },
             },
-            'css-loader?modules&importLoaders=&localIdentName=[local]-[hash:base64:5]',
+            'css-loader?modules&localIdentName=[local]-[hash:base64:5]',
             'emit-file-loader?name=[path][name].css&context=./src',
             'resolve-url-loader?attempts=1',
             'postcss-loader?sourceMap',

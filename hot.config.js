@@ -29,9 +29,6 @@ module.exports = {
       '.jpg', '.png', '.gif', '.svg',
       '.eot', '.woff2', '.woff', '.ttf',
     ],
-    alias: {
-      'parrot-layout': path.resolve(__dirname, './src'),
-    },
   },
   resolveLoader: {
     alias: {
@@ -92,38 +89,16 @@ module.exports = {
         test: /\.scss?$/,
         use: [
           'isomorphic-style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              modules: true,
-              localIdentName: '[local]-[hash:base64:5]',
-            },
-          },
+          'css-loader?modules&name=[local]-[hash:base64:5]',
           'resolve-url-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
+          'postcss-loader?sourceMap',
+          'sass-loader?sourceMap',
         ],
       },
       {
         test: /\.(png|jpg|gif|svg|eot|woff2|woff|ttf)$/,
         use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 40 * 1024,
-            },
-          },
+          'file-loader',
         ],
       },
     ],

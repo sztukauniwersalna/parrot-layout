@@ -2,6 +2,9 @@
 const Module = require('module');
 const path = require('path');
 
+const modules = path.resolve('./node_modules');
+const sources = path.resolve('./src');
+
 function loader(content) {
   const module = new Module(this.resource, this);
   module.paths = Module._nodeModulePaths(this.context);
@@ -13,9 +16,16 @@ function loader(content) {
     return `module.exports = '${emitted}';\n`;
   }
 
-  const source = path.relative(path.resolve('./src'), this.resource);
-  const relative = path.relative(path.dirname(source), emitted);
-  return `module.exports = '${relative}';\n`;
+  if (this.resource.startsWith(sources)) {
+    const source = path.relative(sources, this.resource);
+    const relative = path.relative(path.dirname(source), emitted);
+    return `module.exports = '${relative}';\n`;
+  }
+  if (this.resource.startsWith(modules)) {
+    return `module.exports = 'parrot-layout/${emitted}';\n`;
+  }
+
+  throw new Error(`could not relativize path: ${this.resource}`);
 }
 
 module.exports = loader;
