@@ -112,52 +112,52 @@ export default ParrotLayout;
 function jumbotronFor(website : Website, page : Page) {
     if (page.url === '/') {
     return (
-      <Jumbotron fullscreen align='center'>
-        <div className={ s.indexJumbo }>
+      <div className={ s.indexJumbo }>
+        <Jumbotron fullscreen align='center'>
           <h2>uniwer•sal•ny; -na</h2>
           <ol>
             <li>«obejmujący całość, dotyczący wszystkiego lub wszystkich»</li>
             <li>«mający wszechstronne zastosowanie»</li>
             <li>«mający różne umiejętności»</li>
           </ol>
-        </div>
-      </Jumbotron>
+        </Jumbotron>
+      </div>
     );
   }
 
   if (website.menuContains(page)) {
     return (
-      <Jumbotron fullscreen align='bottom'>
-        <div className={ s.menuEntryJumbo }>
+      <div className={ s.menuEntryJumbo }>
+        <Jumbotron fullscreen align='bottom'>
           <h2>
             <Icon name={ website.getMenuEntry(page).icon } />
             <Link to={ page.url }>{ page.title }</Link>
           </h2>
           <Crumbs responsive website={ website } page={ page } />
-        </div>
-      </Jumbotron>
+        </Jumbotron>
+      </div>
     );
   }
 
   if (page instanceof Category) {
     return (
-      <Jumbotron fullscreen align='bottom'>
-        <div className={ s.categoryJumbo }>
+      <div className={ s.categoryJumbo }>
+        <Jumbotron fullscreen align='bottom'>
           <h2><Link to={ page.url }>{ page.title }</Link></h2>
           <Crumbs responsive website={ website } page={ page } />
-        </div>
-      </Jumbotron>
+        </Jumbotron>
+      </div>
     );
   }
 
   if (page instanceof Tag) {
     return (
-      <Jumbotron fullscreen align='bottom'>
-        <div className={ s.tagJumbo }>
+      <div className={ s.tagJumbo }>
+        <Jumbotron fullscreen align='bottom'>
           <h2><Link to={ page.url}>{ (page as Tag).originalTitle }</Link></h2>
           <Crumbs responsive website={ website } page={ page } />
-        </div>
-      </Jumbotron>
+        </Jumbotron>
+      </div>
     );
   }
 

@@ -88,7 +88,7 @@ module.exports = {
         test: /\.scss?$/,
         use: [
           'isomorphic-style-loader',
-          'css-loader?modules&name=[local]-[hash:base64:5]',
+          'css-loader?modules&localIdentName=[local]-[hash:base64:5]',
           'resolve-url-loader',
           'postcss-loader?sourceMap',
           'sass-loader?sourceMap',
