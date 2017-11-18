@@ -15,7 +15,6 @@ import SideMenu, { Item } from '../SideMenu';
 import Jumbotron from '../Jumbotron';
 
 const s = require('./style');
-const image = require('emit-file-loader!relative-path-loader!url-loader?limit=50000!./cover');
 
 export interface Props {
   website : Website;
@@ -113,7 +112,7 @@ export default ParrotLayout;
 function jumbotronFor(website : Website, page : Page) {
     if (page.url === '/') {
     return (
-      <Jumbotron fullscreen align='center' src={ image }>
+      <Jumbotron fullscreen align='center'>
         <div className={ s.indexJumbo }>
           <h2>uniwer•sal•ny; -na</h2>
           <ol>

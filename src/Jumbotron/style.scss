@@ -58,6 +58,26 @@
       justify-content: space-between;
     }
   }
+
+  :global(.image) {
+    background-size: cover;
+    height: 100%;
+
+    @include break(700) {
+      width: 54rem;
+    }
+    @include break(900) {
+      width: 66rem;
+    }
+
+    transition: width 200ms ease-out;
+
+    display: none;
+
+    @include break(700, 900) {
+      display: flex;
+    }
+  }
 }
 
 .text {
@@ -102,26 +122,6 @@
       max-width: initial;
       justify-content: flex-end;
     }
-  }
-}
-
-.image {
-  background-size: cover;
-  height: 100%;
-
-  @include break(700) {
-    width: 54rem;
-  }
-  @include break(900) {
-    width: 66rem;
-  }
-
-  transition: width 200ms ease-out;
-
-  display: none;
-
-  @include break(700, 900) {
-    display: flex;
   }
 }
 

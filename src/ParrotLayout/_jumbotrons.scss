@@ -24,6 +24,12 @@
   }
 }
 
+.indexJumbo {
+  :global(.image) {
+    background-image: url('./cover.jpg');
+  }
+}
+
 .tagJumbo {
   padding-left: 10rem;
 
