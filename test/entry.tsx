@@ -7,10 +7,8 @@ import Router from './Router';
 
 window.addEventListener('load', () => {
   render(
-    (
-      <IsomorphicStyleContext><Router /></IsomorphicStyleContext>
-    ),
-    document.getElementById("root"),
+    React.createElement(IsomorphicStyleContext, { children: React.createElement(Router) }),
+    document.getElementById('root'),
   );
 });
 
