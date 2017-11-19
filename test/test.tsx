@@ -1,83 +1,11 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
-import { Page, Layout, MenuEntry, Website } from 'paramorph/models';
+import Router from './Router';
 
-import { ParrotLayout } from '../lib/bundle';
 require('../lib/bundle.css');
 
-const mainBody = () => (
-  <div>
-    <h1><Link to='/'>Parrot Layout</Link></h1>
-    <p>
-      Lorem ipsum dolor sit amet.
-    </p>
-  </div>
-);
-
-const sitemapBody = () => (
-  <div>
-    <ul>
-      <li><Link to='/'>Parrot Layout</Link></li>
-      <li><Link to='/sitemap'>Sitemap</Link></li>
-    </ul>
-  </div>
-);
-
-const website = new Website();
-
-const layout = new Layout('parrot', ParrotLayout);
-website.addLayout(layout);
-
-const mainPage = new Page(
-  'Parrot',
-  'Layout',
-  '/',
-  layout,
-  mainBody,
-  true,
-  new Date(),
-  [],
-  [],
-  true,
-);
-website.addPage(mainPage);
-
-const sitemapPage = new Page(
-  'Sitemap',
-  'Sitemap',
-  '/sitemap',
-  layout,
-  sitemapBody,
-  true,
-  new Date(),
-  [],
-  [],
-  true,
-);
-website.addPage(sitemapPage);
-
-website.menu = [
-  new MenuEntry('Main Page', 'Home', '/'),
-  new MenuEntry('Sitemap', 'Sitemap', '/sitemap'),
-];
-
 window.addEventListener('load', () => {
-  render(
-    (
-      <BrowserRouter>
-        <Switch>
-          <Route path='/sitemap' component={ component(sitemapPage) } />
-          <Route path='/' component={ component(mainPage) } />
-        </Switch>
-      </BrowserRouter>
-    ),
-    document.getElementById("root"),
-  );
+  render(React.createElement(Router), document.getElementById('root'));
 });
-
-function component(page : Page) {
-  return () => React.createElement(ParrotLayout, { website, page });
-}
 

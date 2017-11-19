@@ -19,8 +19,11 @@ module.exports = {
 
   resolve: {
     extensions: [
-      '.js',
+      '.ts', '.tsx', '.js',
     ],
+    alias: {
+      'parrot-layout': path.resolve(__dirname, './test/bundle'),
+    },
   },
 
   externals: {
@@ -56,14 +59,12 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: {
-          loader: 'ts-loader',
-          options: {
-            compilerOptions: {
-              declaration: false,
-            },
-          },
-        },
+        use: 'ts-loader',
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        use: 'source-map-loader',
       },
       {
         test: /\.css?$/,

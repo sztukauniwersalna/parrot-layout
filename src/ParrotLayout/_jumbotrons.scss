@@ -28,6 +28,12 @@
   :global(.image) {
     background-image: url('./cover.jpg');
   }
+
+  padding-left: 6rem;
+
+  @include break(700, 900) {
+    padding-left: 0;
+  }
 }
 
 .tagJumbo {

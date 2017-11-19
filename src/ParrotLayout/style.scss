@@ -50,14 +50,6 @@ body {
   box-shadow: 0 0 3px rgba(black, .4);
 }
 
-.indexJumbo {
-  margin-left: 6rem;
-
-  @include break(700, 900) {
-    margin-left: 0;
-  }
-}
-
 .main {
   box-sizing: border-box;
 

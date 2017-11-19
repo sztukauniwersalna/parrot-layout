@@ -7,7 +7,7 @@ export { default as Icon } from './Icon';
 export { default as Jumbotron } from './Jumbotron';
 export { default as Logo } from './Logo';
 export { default as ParrotLayout } from './ParrotLayout';
-export { default as Recipe } from './Recipe';
+export { default as Recipe, Ingredient, Method } from './Recipe';
 export { default as SideMenu } from './SideMenu';
 export { default as TableOfContents } from './TableOfContents';
 export { default as Tags } from './Tags';

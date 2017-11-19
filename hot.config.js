@@ -28,6 +28,9 @@ module.exports = {
     extensions: [
       '.js', '.ts', '.tsx', '.scss',
     ],
+    alias: {
+      'parrot-layout': path.resolve(__dirname, './lib/index.js'),
+    },
   },
   resolveLoader: {
     alias: {

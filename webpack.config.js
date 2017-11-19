@@ -34,6 +34,11 @@ module.exports = {
       commonjs: 'react',
       commonjs2: 'react',
     },
+    'prop-types': {
+      root: 'React.PropTypes',
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+    },
     'react-dom': {
       root: 'ReactDOM',
       commonjs: 'react-dom',
