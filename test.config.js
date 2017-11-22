@@ -32,6 +32,11 @@ module.exports = {
       commonjs: 'react',
       commonjs2: 'react',
     },
+    'prop-types': {
+      root: 'React.PropTypes',
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+    },
     'react-dom': {
       root: 'ReactDOM',
       commonjs: 'react-dom',
@@ -52,6 +57,7 @@ module.exports = {
   module: {
     noParse: [
       require.resolve('react'),
+      require.resolve('prop-types'),
       require.resolve('react-dom'),
       require.resolve('react-dom/server'),
       require.resolve('react-router-dom'),

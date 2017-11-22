@@ -29,7 +29,7 @@ module.exports = {
       '.js', '.ts', '.tsx', '.scss',
     ],
     alias: {
-      'parrot-layout': path.resolve(__dirname, './test/lib.ts'),
+      'parrot-layout': path.resolve(__dirname, './src/index.ts'),
     },
   },
   resolveLoader: {
@@ -43,6 +43,11 @@ module.exports = {
       root: 'React',
       commonjs: 'react',
       commonjs2: 'react',
+    },
+    'prop-types': {
+      root: 'React.PropTypes',
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
     },
     'react-dom': {
       root: 'ReactDOM',
@@ -64,6 +69,7 @@ module.exports = {
   module: {
     noParse: [
       require.resolve('react'),
+      require.resolve('prop-types'),
       require.resolve('react-dom'),
       require.resolve('react-dom/server'),
       require.resolve('react-router-dom'),

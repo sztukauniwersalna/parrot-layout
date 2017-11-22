@@ -59,6 +59,7 @@ module.exports = {
   module: {
     noParse: [
       require.resolve('react'),
+      require.resolve('prop-types'),
       require.resolve('react-dom'),
       require.resolve('react-dom/server'),
       require.resolve('react-router-dom'),
