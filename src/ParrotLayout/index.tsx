@@ -13,8 +13,10 @@ import Logo from '../Logo';
 import Icon from '../Icon';
 import SideMenu, { Item } from '../SideMenu';
 import Jumbotron from '../Jumbotron';
+import gtag from './gtag';
 
 const s = require('./style');
+gtag('js', new Date());
 
 export interface Props {
   website : Website;
@@ -23,6 +25,8 @@ export interface Props {
 export interface State {
   sideMenuClassName : string;
 }
+
+const GA_TRACKING_ID = 'UA-110945340-1';
 
 export class ParrotLayout extends Component<Props, State> {
   constructor(props : Props) {
@@ -42,6 +46,7 @@ export class ParrotLayout extends Component<Props, State> {
 
     window.scrollTo(0, 0);
     document.title = `${this.props.page.title} | SztukaUniwersalna.PL`;
+    gtag('config', GA_TRACKING_ID, { 'page-path': this.props.page.url });
   }
   componentWillUnmount() {
     document.body.removeEventListener('swipe-left', this.hideMenu);
@@ -90,6 +95,14 @@ export class ParrotLayout extends Component<Props, State> {
         </div>
       </div>
     );
+  }
+
+  componentWillReceiveProps(newProps : Props) {
+    if (newProps.page === this.props.page) {
+      return;
+    }
+
+    gtag('config', GA_TRACKING_ID, { 'page-path': newProps.page.url });
   }
 
   private showMenu() {

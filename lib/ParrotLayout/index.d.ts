@@ -13,6 +13,7 @@ export declare class ParrotLayout extends Component<Props, State> {
     componentDidMount(): void;
     componentWillUnmount(): void;
     render(): JSX.Element;
+    componentWillReceiveProps(newProps: Props): void;
     private showMenu();
     private hideMenu();
     private disableMenu();
