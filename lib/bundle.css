@@ -1595,8 +1595,9 @@ input,
 li,
 olela-narrative,
 p,
-textarea {
-  display: block;
+td,
+textarea,
+th {
   margin: 0;
   color: #333;
   font-family: Roboto Slab,serif;
@@ -1616,7 +1617,9 @@ textarea {
   li,
   olela-narrative,
   p,
-  textarea {
+  td,
+  textarea,
+  th {
     font-size: 20px;
     line-height: 9rem;
     padding-top: 2.7rem;
@@ -1631,7 +1634,9 @@ textarea {
 .contrast li,
 .contrast olela-narrative,
 .contrast p,
-.contrast textarea {
+.contrast td,
+.contrast textarea,
+.contrast th {
   color: #fff;
 }
 
@@ -1642,7 +1647,9 @@ textarea {
 .non-responsive li,
 .non-responsive olela-narrative,
 .non-responsive p,
-.non-responsive textarea {
+.non-responsive td,
+.non-responsive textarea,
+.non-responsive th {
   font-family: Roboto Slab,serif;
   font-weight: 300;
   letter-spacing: -.003rem;
@@ -1659,8 +1666,21 @@ textarea {
 .strong li,
 .strong olela-narrative,
 .strong p,
-.strong textarea {
+.strong td,
+.strong textarea,
+.strong th {
   font-weight: 500;
+}
+
+dd,
+dt,
+img,
+input,
+li,
+olela-narrative,
+p,
+textarea {
+  display: block;
 }
 
 blockquote {
@@ -2364,6 +2384,7 @@ body {
 }
 
 .main-2EmuK {
+  overflow: hidden;
   box-sizing: border-box;
   padding-top: 14rem;
   padding-bottom: 14rem;
