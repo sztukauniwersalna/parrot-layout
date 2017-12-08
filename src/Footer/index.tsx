@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Page, MenuEntry, Website } from 'paramorph/models';
 import Button from '../Button';
 import Icon from '../Icon';
+import SocialButtons from '../SocialButtons';
 
 const s = require('./style');
 
@@ -21,26 +22,9 @@ export class Footer extends Component<Props, {}> {
 
     return (
       <footer className={ s.footer }>
-        <ul className={ s.socialButtons }>
-          <li key='facebook'>
-            <Button
-              variant='action'
-              color='green'
-              url='https://www.facebook.com/sztukauniwersalna/'
-            >
-              <Icon name='facebook' />
-            </Button>
-          </li>
-          <li key='instagram'>
-            <Button
-              variant='action'
-              color='green'
-              url='https://www.instagram.com/sztuka_uniwersalna/'
-            >
-              <Icon name='instagram' />
-            </Button>
-          </li>
-        </ul>
+        <div className={ s.socialButtons }>
+          <SocialButtons />
+        </div>
         <ul className={ s.categories }>
         { website.menu.map((entry : MenuEntry) => (
           <li key={ entry.url }><Button url={ entry.url }>{ entry.title }</Button></li>

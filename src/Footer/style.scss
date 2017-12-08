@@ -28,15 +28,6 @@
   @include break(500, 700, 900) {
     left: 4rem;
   }
-
-  @include invisible-list {
-    li {
-      margin-right: 5rem;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
-  }
 }
 
 .categories {

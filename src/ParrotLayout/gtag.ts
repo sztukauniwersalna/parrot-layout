@@ -1,5 +1,4 @@
-const dataLayer = [] as any[];
-(self as any).dataLayer = dataLayer;
+const dataLayer = (self as any).dataLayer = ((self as any).dataLayer || []) as any[];
 
 export function gtag(action : string, ...params : any[]) {
   dataLayer.push(arguments);

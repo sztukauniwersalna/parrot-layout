@@ -1,0 +1,15 @@
+@import '../_breaks';
+@import '../_mixins';
+
+.socialButtons {
+  @include invisible-list {
+    li {
+      margin-right: 5rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+

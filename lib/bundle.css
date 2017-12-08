@@ -539,6 +539,53 @@ ul.tags-2jOEG li:before {
   ul.tags-2jOEG {
     margin: -9rem 0 9rem -3rem;
   }
+}.socialButtons-gYFCo,
+:not(ol) .socialButtons-gYFCo,
+:not(ul) .socialButtons-gYFCo {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.socialButtons-gYFCo li,
+:not(ol) .socialButtons-gYFCo li,
+:not(ul) .socialButtons-gYFCo li {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  max-width: 100%;
+}
+
+.socialButtons-gYFCo li:before,
+:not(ol) .socialButtons-gYFCo li:before,
+:not(ul) .socialButtons-gYFCo li:before {
+  content: "";
+  margin: 0!important;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-align: left;
+  vertical-align: inherit;
+  width: auto;
+  height: auto;
+  position: static;
+  opacity: 1;
+}
+
+.socialButtons-gYFCo li,
+:not(ol) .socialButtons-gYFCo li,
+:not(ul) .socialButtons-gYFCo li {
+  margin-right: 5rem;
+}
+
+.socialButtons-gYFCo:last-child,
+:not(ol) .socialButtons-gYFCo:last-child,
+:not(ul) .socialButtons-gYFCo:last-child {
+  margin-right: 0;
 }.footer-29RTW {
   box-sizing: border-box;
   width: 100%;
@@ -606,55 +653,6 @@ ul.tags-2jOEG li:before {
   .socialButtons-39DDQ {
     left: 4rem;
   }
-}
-
-.socialButtons-39DDQ,
-:not(ol) .socialButtons-39DDQ,
-:not(ul) .socialButtons-39DDQ {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 100%;
-}
-
-.socialButtons-39DDQ li,
-:not(ol) .socialButtons-39DDQ li,
-:not(ul) .socialButtons-39DDQ li {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  max-width: 100%;
-}
-
-.socialButtons-39DDQ li:before,
-:not(ol) .socialButtons-39DDQ li:before,
-:not(ul) .socialButtons-39DDQ li:before {
-  content: "";
-  margin: 0!important;
-  padding: 0;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  text-align: left;
-  vertical-align: inherit;
-  width: auto;
-  height: auto;
-  position: static;
-  opacity: 1;
-}
-
-.socialButtons-39DDQ li,
-:not(ol) .socialButtons-39DDQ li,
-:not(ul) .socialButtons-39DDQ li {
-  margin-right: 5rem;
-}
-
-.socialButtons-39DDQ:last-child,
-:not(ol) .socialButtons-39DDQ:last-child,
-:not(ul) .socialButtons-39DDQ:last-child {
-  margin-right: 0;
 }
 
 .categories-2YxG5,
