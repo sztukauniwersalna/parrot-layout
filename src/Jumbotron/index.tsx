@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ReactNode } from 'react';
 
 import { Page, Tag, Website } from 'paramorph/models';
+import SocialButtons from '../SocialButtons';
 
 const s = require('./style');
 
@@ -18,9 +19,16 @@ export function Jumbotron({ children, fullscreen = false, align = 'center' } : P
     <div className={ `${s.container} ${fullscreen ? s.fullscreen : ''} ${s[align]}` }>
       <div className={ `${s.jumbo} contrast compact non-responsive strong` }>
         <div className={ `${s.text} ${align === 'center' ? 'centered' : ''}` }>
-          { children }
+          <div className='text'>
+            { children }
+          </div>
         </div>
         <div className='image' />
+      </div>
+      <div className={ s.footer }>
+        <div className={ s.social }>
+          <SocialButtons />
+        </div>
       </div>
     </div>
   );

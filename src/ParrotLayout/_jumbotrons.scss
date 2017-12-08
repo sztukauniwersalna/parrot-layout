@@ -10,7 +10,6 @@
   margin: -3rem 16rem 0 -16rem;
 
   font-size: 46rem;
-
   opacity: .1;
 
   @include break(500) {
@@ -29,7 +28,7 @@
     background-image: url('./cover.jpg');
   }
 
-  > div {
+  :global(.text) {
     padding-left: 6rem;
 
     @include break(700, 900) {
@@ -39,7 +38,7 @@
 }
 
 .tagJumbo {
-  > div {
+  :global(.text) {
     padding-left: 10rem;
 
     @include break(700, 900) {
@@ -58,7 +57,7 @@
 }
 
 .menuEntryJumbo {
-  > div {
+  :global(.text) {
     padding-left: 7rem;
 
     @include break(700, 900) {

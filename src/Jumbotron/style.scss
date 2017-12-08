@@ -8,6 +8,7 @@
 
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   align-items: stretch;
   justify-content: stretch;
 
@@ -45,6 +46,7 @@
 .jumbo {
   @extend %full-width;
 
+  flex-grow: 1;
   display: flex;
 
   align-items: stretch;
@@ -123,5 +125,23 @@
       justify-content: flex-end;
     }
   }
+}
+
+.footer {
+  @include color(background-color, 'background-pink-dark');
+
+  width: 100%;
+  overflow: visible;
+
+  height: 14rem;
+
+  @include break(700, 900) {
+    display: none;
+  }
+}
+
+.social {
+  @extend %full-width;
+  margin: -7rem 0 0 1rem;
 }
 
