@@ -135,8 +135,14 @@
 
   height: 14rem;
 
-  @include break(700, 900) {
-    display: none;
+  display: none;
+
+  .fullscreen & {
+    display: block;
+
+    @include break(700, 900) {
+      display: none;
+    }
   }
 }
 

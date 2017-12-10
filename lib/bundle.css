@@ -1196,16 +1196,21 @@ ul.tags-2jOEG li:before {
   width: 100%;
   overflow: visible;
   height: 14rem;
+  display: none;
+}
+
+.fullscreen-1BUqu .footer-agm7I {
+  display: block;
 }
 
 @media only screen and (min-width:836px) and (max-width:1019px) {
-  .footer-agm7I {
+  .fullscreen-1BUqu .footer-agm7I {
     display: none;
   }
 }
 
 @media only screen and (min-width:1020px) {
-  .footer-agm7I {
+  .fullscreen-1BUqu .footer-agm7I {
     display: none;
   }
 }
