@@ -25,12 +25,24 @@ export function Tile({ website, page } : Props) {
         <Tags website={ website } page={ page } />
       </div>
 
+      { maybeRenderImage(page) }
       <Body website={ website } page={ page } respectLimit={ true } />
 
       <div className={ s.more }>
         <Button url={ page.url } variant='raised' color='purple'>Read More</Button>
       </div>
     </article>
+  );
+}
+
+function maybeRenderImage(page : Page) {
+  if (page.image === null) {
+    return null;
+  }
+  return (
+    <Link to={ page.url }>
+      <img src={ page.image } alt={ `${page.title}` } />
+    </Link>
   );
 }
 

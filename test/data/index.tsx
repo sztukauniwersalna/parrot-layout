@@ -12,7 +12,7 @@ import ContentLimiter from 'paramorph/components/ContentLimiter';
 
 import { ParrotLayout } from 'parrot-layout';
 
-export const website = new Website();
+export const website = new Website('Parrot', 'http://localhost:8080', 'Europe/Warsaw', 'pl_PL');
 
 const layout = new Layout('parrot', ParrotLayout);
 website.addLayout(layout);
@@ -31,15 +31,27 @@ website.menu = [
 
 export default website;
 
-function createPage(title : string, url : string, Body : React.ComponentType<any>, feed ?: boolean) {
+interface Props {
+  website : Website;
+  page : Page;
+}
+
+function createPage(
+  title : string,
+  url : string,
+  body : (props ?: Props) => JSX.Element,
+  feed ?: boolean,
+  image ?: string,
+) {
   const page : Page = new Page(
     title,
     'description',
     url,
     layout,
     (props : any) => (
-      <ContentLimiter limit={ 5 } { ...props }><Body { ...props } /></ContentLimiter>
+      <ContentLimiter limit={ 5 } { ...props }>{ body(props) }</ContentLimiter>
     ),
+    image || null,
     true,
     new Date(),
     [],
