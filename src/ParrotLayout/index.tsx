@@ -46,7 +46,7 @@ export class ParrotLayout extends Component<Props, State> {
     document.body.addEventListener('swipe-right', this.showMenu);
 
     window.scrollTo(0, 0);
-    document.title = `${this.props.page.title} | SztukaUniwersalna.PL`;
+    document.title = `${this.props.page.title} | ${this.props.website.title}`;
     gtag('config', GA_TRACKING_ID, { 'page-path': this.props.page.url });
   }
   componentWillUnmount() {
