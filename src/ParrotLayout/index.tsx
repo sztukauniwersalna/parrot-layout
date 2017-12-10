@@ -16,7 +16,6 @@ import Jumbotron from '../Jumbotron';
 import gtag from './gtag';
 
 const s = require('./style');
-gtag('js', new Date());
 
 export interface Props {
   website : Website;
@@ -27,6 +26,8 @@ export interface State {
 }
 
 const GA_TRACKING_ID = 'UA-110945340-1';
+gtag('js', new Date());
+gtag('config', GA_TRACKING_ID, { 'send_page_view': false });
 
 export class ParrotLayout extends Component<Props, State> {
   constructor(props : Props) {
