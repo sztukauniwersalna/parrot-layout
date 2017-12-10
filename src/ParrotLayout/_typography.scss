@@ -41,7 +41,7 @@ $header-sizes: map-get-strict(map-get-strict($fonts, 'headers'), 'sizes');
   }
 }
 
-p, li, dt, dd, input, textarea, olela-narrative, img, td, th {
+p, li, dt, dd, input, textarea, olela-narrative, td, th {
   margin: 0;
 
   @include color(color, text);
@@ -64,6 +64,9 @@ p, li, dt, dd, input, textarea, olela-narrative, img, td, th {
 
 p, li, dt, dd, input, textarea, olela-narrative, img {
   display: block;
+}
+img {
+  color: transparent;
 }
 
 blockquote {

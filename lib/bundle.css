@@ -1595,7 +1595,6 @@ h6 {
 
 dd,
 dt,
-img,
 input,
 li,
 olela-narrative,
@@ -1617,7 +1616,6 @@ th {
 @media only screen and (min-width:1020px) {
   dd,
   dt,
-  img,
   input,
   li,
   olela-narrative,
@@ -1634,7 +1632,6 @@ th {
 
 .contrast dd,
 .contrast dt,
-.contrast img,
 .contrast input,
 .contrast li,
 .contrast olela-narrative,
@@ -1647,7 +1644,6 @@ th {
 
 .non-responsive dd,
 .non-responsive dt,
-.non-responsive img,
 .non-responsive input,
 .non-responsive li,
 .non-responsive olela-narrative,
@@ -1666,7 +1662,6 @@ th {
 
 .strong dd,
 .strong dt,
-.strong img,
 .strong input,
 .strong li,
 .strong olela-narrative,
@@ -1686,6 +1681,10 @@ olela-narrative,
 p,
 textarea {
   display: block;
+}
+
+img {
+  color: transparent;
 }
 
 blockquote {
