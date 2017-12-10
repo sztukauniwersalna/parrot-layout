@@ -18,7 +18,11 @@ export function Crumbs({ website, page, responsive = false } : Props) {
     .map((crumbs : Page[], key : number) => (
       <ul key={ key }>
       { crumbs.map((page : Page) => (
-        <li key={ page.url }><Link to={ page.url }>{ page.title }</Link></li>
+        <li key={ page.url }>
+          <Link to={ page.url }>
+            { page.url === '/' ? website.title : page.title }
+          </Link>
+        </li>
       )) }
       </ul>
     )) }
