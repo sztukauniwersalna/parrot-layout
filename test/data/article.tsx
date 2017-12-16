@@ -12,19 +12,21 @@ export function ArticlePage() {
         przemiany yin i yang. Jak pisze neokonfucjanista Zhang Zai:
       </p>
       <blockquote>
-        Kiedy qi gęstnieje, staje się widoczna, wtedy pojawiają się kształty pojedynczych rzeczy.
-        Gdy rozprasza się, przestaje być widoczna, jej kształty znikają. Czy kiedy jest zagęszczona
-        można powiedzieć coś innego niż to, że jest przemijająca? A czy kiedy jest rozproszona
-        można pochopnie stwierdzić, że wtedy nie istnieje?
+        <p>
+          Kiedy qi gęstnieje, staje się widoczna, wtedy pojawiają się kształty pojedynczych rzeczy.
+          Gdy rozprasza się, przestaje być widoczna, jej kształty znikają. Czy kiedy jest zagęszczona
+          można powiedzieć coś innego niż to, że jest przemijająca? A czy kiedy jest rozproszona
+          można pochopnie stwierdzić, że wtedy nie istnieje?
+        </p>
       </blockquote>
       <p>
         Jednak w filozofii chińskiej natura qi była przedmiotem nieustających dociekań i debat.
       </p>
       <h2>Zobacz też</h2>
       <ul>
-        <a href='https://pl.wikipedia.org/wiki/Prana'>Prana</a>
-        <a href='Mana (religia polinezyjska)'>Mana (religia polinezyjska)</a>
-        <a href='Qigong'>Qigong</a>
+        <li><a href='https://pl.wikipedia.org/wiki/Prana'>Prana</a></li>
+        <li><a href='Mana (religia polinezyjska)'>Mana (religia polinezyjska)</a></li>
+        <li><a href='Qigong'>Qigong</a></li>
       </ul>
       <img
         alt='Yin Yang Symbol'

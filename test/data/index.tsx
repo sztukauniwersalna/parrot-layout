@@ -12,7 +12,7 @@ import ContentLimiter from 'paramorph/components/ContentLimiter';
 
 import { ParrotLayout } from 'parrot-layout';
 
-export const website = new Website('Parrot', 'http://localhost:8080', 'Europe/Warsaw', 'pl_PL');
+export const website = new Website('Parrot', '', 'http://sztukauniwersalna.pl', 'Europe/Warsaw', 'pl_PL');
 
 const layout = new Layout('parrot', ParrotLayout);
 website.addLayout(layout);
