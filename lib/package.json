@@ -1,6 +1,6 @@
 {
   "name": "parrot-layout",
-  "version": "1.8.3",
+  "version": "1.9.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -78,6 +78,6 @@
     "react-disqus-comments": "^1.1.1"
   },
   "peerDependencies": {
-    "paramorph": "^1.8.9"
+    "paramorph": "^1.9.5"
   }
 }
