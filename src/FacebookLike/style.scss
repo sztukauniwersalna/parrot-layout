@@ -62,8 +62,6 @@ $placeholder-base64: ''
     overflow: hidden;
 
     @extend %scale;
-
-    opacity: 0;
   }
 
   &::before {
@@ -81,17 +79,6 @@ $placeholder-base64: ''
     height: 100%;
 
     @extend %scale;
-
-    opacity: 1;
-  }
-
-  &.ready {
-    iframe {
-      opacity: 1;
-    }
-    &::before {
-      opacity: 0;
-    }
   }
 }
 
