@@ -9,31 +9,9 @@ export interface Props {
   url : string;
 }
 
-export interface State {
-  ready : boolean;
-}
-
-export class FacebookLike extends React.Component<Props, State> {
-  private iframe : HTMLIFrameElement;
-
-  constructor(props : Props) {
-    super(props);
-
-    this.state = {
-      ready: false,
-    };
-
-    this.setReady = this.setReady.bind(this);
-  }
-
+export class FacebookLike extends React.Component<Props, {}> {
   render() {
     const { url } = this.props;
-    const { ready } = this.state;
-
-    const classNames = [ s.like ];
-    if (ready) {
-      classNames.push(s.ready);
-    }
 
     const params = {
       href: url,
@@ -46,26 +24,14 @@ export class FacebookLike extends React.Component<Props, State> {
     };
 
     return (
-      <div className={ classNames.join(' ') }>
+      <div className={ s.like }>
         <iframe
           src={ `${FB_PLUGINS_SERVICE}?${urlParamsToString(params)}` }
           scrolling='no'
           allowTransparency={ true }
-          ref={ e => this.iframe = e as HTMLIFrameElement }
         />
       </div>
     );
-  }
-
-  componentDidMount() {
-    this.iframe.addEventListener('load', this.setReady);
-  }
-  componentWillUnmount() {
-    this.iframe.removeEventListener('load', this.setReady);
-  }
-
-  private setReady() {
-    this.setState(prev => ({ ready: true }));
   }
 }
 
