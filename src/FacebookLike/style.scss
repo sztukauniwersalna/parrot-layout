@@ -2,7 +2,15 @@
 
 .like {
   height: 7rem;
-  margin: 10rem 0;
+  margin: 9rem 0;
+
+
+  :global(.privacyBadgerReplacementButton) {
+    margin: 0 !important;
+  }
+  :global(.privacyBadgerOriginalButton) {
+    height: 100% !important;
+  }
 
   iframe {
     display: block;
@@ -11,7 +19,7 @@
     border: 0;
     overflow: hidden;
 
-    transform-origin: 0 0;
+    transform-origin: 0 100%;
     transform: scale(1.2, 1.2);
 
     @include break(700, 900) {

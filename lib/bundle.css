@@ -537,7 +537,7 @@ ul.tags-2jOEG li:before {
   :not(ol) ul.tags-2jOEG,
   :not(ul) ul.tags-2jOEG,
   ul.tags-2jOEG {
-    margin: -9rem 0 9rem -3rem;
+    margin: -8rem 0 8rem -3rem;
   }
 }.socialButtons-gYFCo,
 :not(ol) .socialButtons-gYFCo,
@@ -1219,7 +1219,15 @@ ul.tags-2jOEG li:before {
   margin: -7rem 0 0 1rem;
 }.like-3LtG_ {
   height: 7rem;
-  margin: 10rem 0;
+  margin: 9rem 0;
+}
+
+.like-3LtG_ .privacyBadgerReplacementButton {
+  margin: 0!important;
+}
+
+.like-3LtG_ .privacyBadgerOriginalButton {
+  height: 100%!important;
 }
 
 .like-3LtG_ iframe {
@@ -1227,7 +1235,7 @@ ul.tags-2jOEG li:before {
   height: 100%;
   border: 0;
   overflow: hidden;
-  transform-origin: 0 0;
+  transform-origin: 0 100%;
   transform: scale(1.2);
 }
 
@@ -2464,10 +2472,6 @@ body {
 .main-2EmuK .content p:first-child img:first-child {
   margin-top: -3rem;
   margin-bottom: 3rem;
-}
-
-.topLike-3sy2M {
-  margin-top: -10rem;
 }
 
 .bottomLike-1iw1L {
