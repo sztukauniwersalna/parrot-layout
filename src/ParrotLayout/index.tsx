@@ -14,7 +14,6 @@ import Icon from '../Icon';
 import SideMenu, { Item } from '../SideMenu';
 import Jumbotron from '../Jumbotron';
 
-import FacebookSdk from '../FacebookSdk';
 import FacebookLike from '../FacebookLike';
 import gtag from './gtag';
 
@@ -63,44 +62,44 @@ export class ParrotLayout extends Component<Props, State> {
     const Body = page.body;
 
     return (
-      <FacebookSdk url={ page.url }>
-        <div id={ s.all }>
-          <div className={ s.header }>
-            <TopBar website={ website } page={ page } onMenuClick={ this.showMenu } />
-          </div>
-          <div className={ s.main }>
-            { jumbotronFor(website, page) }
-            <main>
-              { maybeRenderTitle(website, page) }
+      <div id={ s.all }>
+        <div className={ s.header }>
+          <TopBar website={ website } page={ page } onMenuClick={ this.showMenu } />
+        </div>
+        <div className={ s.main }>
+          { jumbotronFor(website, page) }
+          <main>
+            { maybeRenderTitle(website, page) }
 
-              <Body website={ website } page={ page } />
+            <Body website={ website } page={ page } />
+            <div className={ s.bottomLike }>
               <FacebookLike url={ `${website.baseUrl}${page.url}` } />
-            </main>
-          </div>
-          { maybeRenderComments(page) }
-          <div className={ `${s.footer} contrast` }>
-            <Footer website={ website } page={ page } />
+            </div>
+          </main>
+        </div>
+        { maybeRenderComments(page) }
+        <div className={ `${s.footer} contrast` }>
+          <Footer website={ website } page={ page } />
 
-            <div className={ s.bottom }>
-              <div className={ s.logo }>
-                <Logo variant='full' />
-              </div>
+          <div className={ s.bottom }>
+            <div className={ s.logo }>
+              <Logo variant='full' />
             </div>
           </div>
-          <div className={ `${s.sideMenu} ${this.state.sideMenuClassName}` } onClick={ this.hideMenu } >
-            <SideMenu
-              visible={ this.state.sideMenuClassName === s.visible }
-              onCloseRequested={ () => this.hideMenu() }
-              onClosed={ () => this.disableMenu() }
-              currentUrl={ page.url }
-            >
-            { website.menu.map(entry => (
-              <Item key={ entry.url } url={ entry.url } title={ entry.title } icon={ entry.icon } />
-            )) }
-            </SideMenu>
-          </div>
         </div>
-      </FacebookSdk>
+        <div className={ `${s.sideMenu} ${this.state.sideMenuClassName}` } onClick={ this.hideMenu } >
+          <SideMenu
+            visible={ this.state.sideMenuClassName === s.visible }
+            onCloseRequested={ () => this.hideMenu() }
+            onClosed={ () => this.disableMenu() }
+            currentUrl={ page.url }
+          >
+          { website.menu.map(entry => (
+            <Item key={ entry.url } url={ entry.url } title={ entry.title } icon={ entry.icon } />
+          )) }
+          </SideMenu>
+        </div>
+      </div>
     );
   }
 
@@ -194,10 +193,12 @@ function maybeRenderTitle(website : Website, page : Page) {
   }
 
   return (
-    <div>
+    <div className={ s.title }>
       <h1><Link to={ page.url }>{ page.title }</Link></h1>
       <Tags website={ website } page={ page } />
-      <FacebookLike url={ `${website.baseUrl}${page.url}` } />
+      <div className={ s.topLike }>
+        <FacebookLike url={ `${website.baseUrl}${page.url}` } />
+      </div>
     </div>
   );
 }

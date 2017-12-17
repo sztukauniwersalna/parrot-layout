@@ -1217,6 +1217,30 @@ ul.tags-2jOEG li:before {
 
 .social-11izd {
   margin: -7rem 0 0 1rem;
+}.like-3LtG_ {
+  height: 7rem;
+  margin: 10rem 0;
+}
+
+.like-3LtG_ iframe {
+  display: block;
+  height: 100%;
+  border: 0;
+  overflow: hidden;
+  transform-origin: 0 0;
+  transform: scale(1.2);
+}
+
+@media only screen and (min-width:836px) and (max-width:1019px) {
+  .like-3LtG_ iframe {
+    transform: none;
+  }
+}
+
+@media only screen and (min-width:1020px) {
+  .like-3LtG_ iframe {
+    transform: none;
+  }
 }@charset "UTF-8";
 
 html {
@@ -2357,11 +2381,6 @@ hr:after {
   }
 }
 
-.fb-like {
-  height: 28px;
-  margin-bottom: 4rem;
-}
-
 body {
   background-color: #e2e2e2;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4QcZCzkbBkkNNQAAAHFJREFUaN7t1bENACAIBEBwJPefwZnsYQLIfWesPnlyGT23vN/k/xPLo+D05Labq/8mquCAG+SgiSrIQQ6aKAc5aKIKcpCDJspBDpqoghzkoIlykIMmqiAHOWiiHOSgiSrIQQ66QQ5y0EQV5CAH3eDefJAaXMEw5G3+AAAAAElFTkSuQmCC);
@@ -2445,6 +2464,14 @@ body {
 .main-2EmuK .content p:first-child img:first-child {
   margin-top: -3rem;
   margin-bottom: 3rem;
+}
+
+.topLike-3sy2M {
+  margin-top: -10rem;
+}
+
+.bottomLike-1iw1L {
+  margin-bottom: -10rem;
 }
 
 .comments-U6lN7 {

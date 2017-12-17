@@ -1,0 +1,22 @@
+@import '../_breaks';
+
+.like {
+  height: 7rem;
+  margin: 10rem 0;
+
+  iframe {
+    display: block;
+    height: 100%;
+
+    border: 0;
+    overflow: hidden;
+
+    transform-origin: 0 0;
+    transform: scale(1.2, 1.2);
+
+    @include break(700, 900) {
+      transform: none;
+    }
+  }
+}
+

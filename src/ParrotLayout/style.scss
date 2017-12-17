@@ -13,7 +13,6 @@ html {
 @import './_fonts';
 @import './_typography';
 @import './_jumbotrons';
-@import './_social';
 
 $bgBase64: 'data:image/png;base64,'
   + 'iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAABmJLR0QA/wD/AP+gvaeTAAAACXBI'
@@ -103,6 +102,13 @@ body {
       }
     }
   }
+}
+
+.topLike {
+  margin-top: -10rem;
+}
+.bottomLike {
+  margin-bottom: -10rem;
 }
 
 .comments {
