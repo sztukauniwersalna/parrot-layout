@@ -1342,7 +1342,7 @@ html {
   margin-left: calc(50% - 50vw);
 }
 
-.bottom-qaW5p .logo-2wc3f,
+.bottom-qaW5p .content-3-Spa,
 .comments-U6lN7>div,
 .main-2EmuK main {
   box-sizing: border-box;
@@ -1353,7 +1353,7 @@ html {
 }
 
 @media only screen and (min-width:836px) and (max-width:1019px) {
-  .bottom-qaW5p .logo-2wc3f,
+  .bottom-qaW5p .content-3-Spa,
   .comments-U6lN7>div,
   .main-2EmuK main {
     width: 764px;
@@ -1362,7 +1362,7 @@ html {
 }
 
 @media only screen and (min-width:1020px) {
-  .bottom-qaW5p .logo-2wc3f,
+  .bottom-qaW5p .content-3-Spa,
   .comments-U6lN7>div,
   .main-2EmuK main {
     width: 932px;
@@ -2541,39 +2541,162 @@ body {
 
 .bottom-qaW5p {
   background-color: rgba(0,0,0,.2);
+  overflow: hidden;
+}
+
+.bottom-qaW5p .content-3-Spa {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  padding-top: 12rem;
+}
+
+@media only screen and (min-width:568px) and (max-width:835px) {
+  .bottom-qaW5p .content-3-Spa {
+    padding-top: 10rem;
+    padding-bottom: 8rem;
+  }
+}
+
+@media only screen and (min-width:836px) and (max-width:1019px) {
+  .bottom-qaW5p .content-3-Spa {
+    padding-top: 10rem;
+    padding-bottom: 8rem;
+  }
+}
+
+@media only screen and (min-width:1020px) {
+  .bottom-qaW5p .content-3-Spa {
+    padding-top: 10rem;
+    padding-bottom: 8rem;
+  }
+}
+
+.bottom-qaW5p .zblogowani-Zrc7Z {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 8rem 0;
+}
+
+@media only screen and (min-width:568px) and (max-width:835px) {
+  .bottom-qaW5p .zblogowani-Zrc7Z {
+    width: 50%;
+    justify-content: flex-start;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width:836px) and (max-width:1019px) {
+  .bottom-qaW5p .zblogowani-Zrc7Z {
+    width: 50%;
+    justify-content: flex-start;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width:1020px) {
+  .bottom-qaW5p .zblogowani-Zrc7Z {
+    width: 50%;
+    justify-content: flex-start;
+    margin: 0;
+  }
+}
+
+.bottom-qaW5p .zblogowani-Zrc7Z a {
+  display: block;
+  padding: 2rem 0;
+}
+
+@media only screen and (min-width:332px) and (max-width:567px) {
+  .bottom-qaW5p .zblogowani-Zrc7Z a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: hsla(0,0%,89%,.3);
+  }
+}
+
+@media only screen and (min-width:568px) and (max-width:835px) {
+  .bottom-qaW5p .zblogowani-Zrc7Z a {
+    padding: 0 0 0 2rem;
+  }
+}
+
+@media only screen and (min-width:836px) and (max-width:1019px) {
+  .bottom-qaW5p .zblogowani-Zrc7Z a {
+    padding: 2rem 0 0;
+  }
+}
+
+@media only screen and (min-width:1020px) {
+  .bottom-qaW5p .zblogowani-Zrc7Z a {
+    padding: 0;
+    transform: scale(1.435);
+    transform-origin: 0 16%;
+  }
+}
+
+.bottom-qaW5p .zblogowani-Zrc7Z img {
+  display: block;
+  filter: brightness(.8) contrast(1.6);
+}
+
+@media only screen and (min-width:568px) and (max-width:835px) {
+  .bottom-qaW5p .zblogowani-Zrc7Z img {
+    outline: 1rem solid;
+    outline-color: hsla(0,0%,100%,.6);
+  }
+}
+
+@media only screen and (min-width:836px) and (max-width:1019px) {
+  .bottom-qaW5p .zblogowani-Zrc7Z img {
+    outline: 1rem solid;
+    outline-color: hsla(0,0%,100%,.6);
+  }
+}
+
+@media only screen and (min-width:1020px) {
+  .bottom-qaW5p .zblogowani-Zrc7Z img {
+    outline: 0.76923rem solid;
+    outline-color: hsla(0,0%,100%,.6);
+  }
 }
 
 .bottom-qaW5p .logo-2wc3f {
+  box-sizing: border-box;
+  width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 12rem;
-  padding-bottom: 9rem;
-}
-
-.bottom-qaW5p .logo-2wc3f svg {
-  margin-left: 2rem;
-  height: 10rem;
 }
 
 @media only screen and (min-width:568px) and (max-width:835px) {
   .bottom-qaW5p .logo-2wc3f {
+    width: 50%;
+    padding-right: 4rem;
     justify-content: flex-end;
-    padding: 10rem 4rem 8rem;
   }
 }
 
 @media only screen and (min-width:836px) and (max-width:1019px) {
   .bottom-qaW5p .logo-2wc3f {
+    width: 50%;
+    padding-right: 4rem;
     justify-content: flex-end;
-    padding: 10rem 4rem 8rem;
   }
 }
 
 @media only screen and (min-width:1020px) {
   .bottom-qaW5p .logo-2wc3f {
+    width: 50%;
+    padding-right: 4rem;
     justify-content: flex-end;
-    padding: 10rem 4rem 8rem;
   }
+}
+
+.bottom-qaW5p .logo-2wc3f svg {
+  margin-left: 2rem;
+  height: 10rem;
 }
 
 @media only screen and (min-width:836px) and (max-width:1019px) {

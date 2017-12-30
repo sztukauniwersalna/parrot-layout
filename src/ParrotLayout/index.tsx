@@ -82,8 +82,15 @@ export class ParrotLayout extends Component<Props, State> {
           <Footer website={ website } page={ page } />
 
           <div className={ s.bottom }>
-            <div className={ s.logo }>
-              <Logo variant='full' />
+            <div className={ s.content }>
+              <div className={ s.zblogowani }>
+                <a href='https://zblogowani.pl/' title='Sprawdź serwis zBLOGowani.pl!'>
+                  <img src='//zblogowani.pl/code/160x50/silver/341338/btn.png' alt='zBLOGowani.pl' />
+                </a>
+              </div>
+              <div className={ s.logo }>
+                <Logo variant='full' />
+              </div>
             </div>
           </div>
         </div>

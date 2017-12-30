@@ -102,7 +102,6 @@ body {
       }
     }
   }
-
 }
 
 .topLike {
@@ -139,34 +138,97 @@ body {
 
 .bottom {
   @include color(background-color, 'dark', .2);
+  overflow: hidden;
 
-  .logo {
-    display: flex;
-    justify-content: center;
-
+  .content {
     @extend %full-width;
 
+    display: flex;
+    flex-wrap: wrap-reverse;
     padding-top: 12rem;
-    padding-bottom: 9rem;
-    svg {
-      margin-left: 2rem;
-      height: 10rem;
-    }
 
     @include break(500, 700, 900) {
-      justify-content: flex-end;
-      padding: 10rem 4rem 8rem 4rem;
+      padding-top: 10rem;
+      padding-bottom: 8rem;
+    }
+  }
+
+  .zblogowani {
+    box-sizing: border-box;
+    display: flex;
+
+    width: 100%;
+    justify-content: center;
+    margin: 8rem 0;
+
+    @include break(500, 700, 900) {
+      width: 50%;
+      justify-content: flex-start;
+      margin: 0;
     }
 
-    @include break(700) {
-      svg {
-        height: 14rem;
+    a {
+      display: block;
+
+      @include break(300) {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        @include color(background-color, 'background-page', .3);
+      }
+
+      padding: 2rem 0 2rem 0;
+
+      @include break(500) {
+        padding: 0 0 0 2rem;
+      }
+      @include break(700) {
+        padding: 2rem 0 0 0;
+      }
+      @include break(900) {
+        padding: 0;
+        transform: scale(1.435);
+        transform-origin: 0 16%;
       }
     }
 
-    @include break(700, 900) {
-      svg {
-        height: 17rem;
+    img {
+      display: block;
+      filter: brightness(.8) contrast(1.6);
+
+      @include break(500, 700) {
+        outline: solid 1rem;
+        @include color(outline-color, text-contrast, .6);
+      }
+      @include break(900) {
+        outline: solid calc(#{1rem} / #{1.3});
+        @include color(outline-color, text-contrast, .6);
+      }
+    }
+  }
+
+  .logo {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+
+    justify-content: center;
+
+    @include break(500, 700, 900) {
+      width: 50%;
+      padding-right: 4rem;
+      justify-content: flex-end;
+    }
+
+    svg {
+      margin-left: 2rem;
+      height: 10rem;
+
+      @include break(700) {
+          height: 14rem;
+      }
+      @include break(700, 900) {
+          height: 17rem;
       }
     }
   }
