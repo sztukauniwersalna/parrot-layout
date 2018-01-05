@@ -1,12 +1,13 @@
 {
   "name": "parrot-layout",
-  "version": "1.9.11",
+  "version": "1.9.12",
   "description": "",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf lib #",
     "compile": "webpack --progress --colors --config ./webpack.config.js",
     "copy-d-ts": "mkdir -p lib/ && cp lib/index.d.ts lib/bundle.d.ts",
+    "copy-assets": "mkdir -p lib/ && cp favicon.ico lib/",
     "copy-config": "mkdir -p lib/ && cp package.json lib/",
     "compile-test": "webpack --progress --colors --config ./test.config.js",
     "serve": "http-server ./build",
