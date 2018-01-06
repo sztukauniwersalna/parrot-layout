@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { RootProps } from 'paramorph/components/Root';
-import DeferredScript from 'paramorph/components/DeferredScript';
-import DeferredLink from 'paramorph/components/DeferredLink';
+import DeferredScripts from 'paramorph/components/DeferredScripts';
+import DeferredStyles from 'paramorph/components/DeferredStyles';
 
 declare var global : GaTrackingId;
 
@@ -11,11 +11,14 @@ interface GaTrackingId extends NodeJS.Global {
 }
 
 export function Root({ website, page, localBundles, externalBundles } : RootProps) {
+  const gtagConfigScript = getGtagConfigBundle(localBundles.js);
+  const deferredScripts = externalBundles.js.concat(removeGtagConfigBundle(localBundles.js));
+  const deferredStyles = externalBundles.css;
+
   return (
     <html>
       <head>
         <title>{ page.title } | { website.title }</title>
-        <meta name='path' content={ page.url }/>
         <meta name='keywords' content={ page.tags.join(', ') } />
         <meta name='description' content={ page.description } />
         <meta name='viewport' content='width=device-width; initial-scale=1.0'/>
@@ -24,7 +27,7 @@ export function Root({ website, page, localBundles, externalBundles } : RootProp
           type='text/javascript'
           src={ `https://www.googletagmanager.com/gtag/js?id=${global.GA_TRACKING_ID}` }
         />
-        <script type='text/javascript' src={ getGtagConfigBundle(localBundles.js) } />
+        <script type='text/javascript' src={ gtagConfigScript } />
         { localBundles.css.map(url => (
           <link type='text/css' rel='stylesheet' href={ url } key={ url } />
         )) }
@@ -43,15 +46,8 @@ export function Root({ website, page, localBundles, externalBundles } : RootProp
         <div id='root'>
           %%%BODY%%%
         </div>
-        { externalBundles.js.map(url => (
-          <DeferredScript src={ url } key={ url } />
-        )) }
-        { removeGtagConfigBundle(localBundles.js).map(url => (
-          <DeferredScript src={ url } key={ url } />
-        )) }
-        { externalBundles.css.map(url => (
-          <DeferredLink href={ url } rel='stylesheet' key={ url } />
-        )) }
+        <DeferredScripts srcs={ deferredScripts } />
+        <DeferredStyles hrefs={ deferredStyles } />
       </body>
     </html>
   );
