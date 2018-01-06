@@ -15,7 +15,6 @@ import SideMenu, { Item } from '../SideMenu';
 import Jumbotron from '../Jumbotron';
 
 import FacebookLike from '../FacebookLike';
-import gtag from './gtag';
 
 const s = require('./style');
 
@@ -26,10 +25,6 @@ export interface Props {
 export interface State {
   sideMenuClassName : string;
 }
-
-const GA_TRACKING_ID = 'UA-110945340-1';
-gtag('js', new Date());
-gtag('config', GA_TRACKING_ID, { 'send_page_view': false });
 
 export class ParrotLayout extends Component<Props, State> {
   constructor(props : Props) {
@@ -49,7 +44,6 @@ export class ParrotLayout extends Component<Props, State> {
 
     window.scrollTo(0, 0);
     document.title = `${this.props.page.title} | ${this.props.website.title}`;
-    gtag('config', GA_TRACKING_ID, { 'page-path': this.props.page.url });
   }
   componentWillUnmount() {
     document.body.removeEventListener('swipe-left', this.hideMenu);
@@ -85,7 +79,10 @@ export class ParrotLayout extends Component<Props, State> {
             <div className={ s.content }>
               <div className={ s.zblogowani }>
                 <a href='https://zblogowani.pl/' title='Sprawdź serwis zBLOGowani.pl!'>
-                  <img src='//zblogowani.pl/code/160x50/silver/341338/btn.png' alt='zBLOGowani.pl' />
+                  <img
+                    src='//zblogowani.pl/code/160x50/silver/341338/btn.png'
+                    alt='zBLOGowani.pl'
+                  />
                 </a>
               </div>
               <div className={ s.logo }>
@@ -94,7 +91,10 @@ export class ParrotLayout extends Component<Props, State> {
             </div>
           </div>
         </div>
-        <div className={ `${s.sideMenu} ${this.state.sideMenuClassName}` } onClick={ this.hideMenu } >
+        <div
+          className={ `${s.sideMenu} ${this.state.sideMenuClassName}` }
+          onClick={ this.hideMenu }
+        >
           <SideMenu
             visible={ this.state.sideMenuClassName === s.visible }
             onCloseRequested={ () => this.hideMenu() }
@@ -102,20 +102,17 @@ export class ParrotLayout extends Component<Props, State> {
             currentUrl={ page.url }
           >
           { website.menu.map(entry => (
-            <Item key={ entry.url } url={ entry.url } title={ entry.title } icon={ entry.icon } />
+            <Item
+              key={ entry.url }
+              url={ entry.url }
+              title={ entry.title }
+              icon={ entry.icon }
+            />
           )) }
           </SideMenu>
         </div>
       </div>
     );
-  }
-
-  componentWillReceiveProps(newProps : Props) {
-    if (newProps.page === this.props.page) {
-      return;
-    }
-
-    gtag('config', GA_TRACKING_ID, { 'page-path': newProps.page.url });
   }
 
   private showMenu() {
