@@ -28,7 +28,6 @@ export class FacebookLike extends React.Component<Props, {}> {
         <iframe
           src={ `${FB_PLUGINS_SERVICE}?${urlParamsToString(params)}` }
           scrolling='no'
-          allowTransparency={ true }
         />
       </div>
     );
