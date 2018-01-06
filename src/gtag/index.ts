@@ -1,4 +1,4 @@
-declare var self : DataLayer;
+declare var window : DataLayer;
 declare var global : GaTrackingId;
 
 interface DataLayer extends Window {
@@ -8,7 +8,7 @@ interface GaTrackingId extends NodeJS.Global {
   GA_TRACKING_ID : string;
 }
 
-const dataLayer = self.dataLayer = (self.dataLayer || []) as any[];
+const dataLayer = window.dataLayer = (window.dataLayer || []) as any[];
 
 export function gtag(action : string, ...params : any[]) {
   dataLayer.push(arguments);
