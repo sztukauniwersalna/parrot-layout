@@ -1,6 +1,6 @@
 {
   "name": "parrot-layout",
-  "version": "1.10.13",
+  "version": "1.10.14",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,9 +9,10 @@
     "copy-d-ts": "mkdir -p lib/ && cp lib/index.d.ts lib/bundle.d.ts",
     "copy-assets": "mkdir -p lib/ && cp favicon.ico lib/",
     "copy-config": "mkdir -p lib/ && cp package.json lib/",
+    "copy": "npm run copy-d-ts && npm run copy-config && npm run copy-assets",
     "compile-test": "webpack --progress --colors --config ./test.config.js",
     "serve": "http-server ./build",
-    "build": "npm run compile && npm run copy-d-ts && npm run copy-config",
+    "build": "npm run compile && npm run copy",
     "clean-build": "npm run clean && npm run build",
     "test": "npm run clean-build && npm run compile-test && npm run serve",
     "deploy": "npm run clean-build && npm publish lib",
