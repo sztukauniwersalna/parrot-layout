@@ -4,11 +4,7 @@ import { RootProps } from 'paramorph/components/Root';
 import DeferredScripts from 'paramorph/components/DeferredScripts';
 import DeferredStyles from 'paramorph/components/DeferredStyles';
 
-declare var global : GaTrackingId;
-
-interface GaTrackingId extends NodeJS.Global {
-  GA_TRACKING_ID : string;
-}
+declare var GA_TRACKING_ID : string;
 
 export function Root({ website, page, localBundles, externalBundles } : RootProps) {
   const gtagConfigScript = getGtagConfigBundle(localBundles.js);
@@ -25,7 +21,7 @@ export function Root({ website, page, localBundles, externalBundles } : RootProp
         <script
           async
           type='text/javascript'
-          src={ `https://www.googletagmanager.com/gtag/js?id=${global.GA_TRACKING_ID}` }
+          src={ `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}` }
         />
         <script type='text/javascript' src={ gtagConfigScript } />
         { localBundles.css.map(url => (

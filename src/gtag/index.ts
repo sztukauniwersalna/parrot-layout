@@ -1,12 +1,9 @@
-declare var window : DataLayer;
-declare var global : GaTrackingId;
 
 interface DataLayer extends Window {
   dataLayer : any[];
 }
-interface GaTrackingId extends NodeJS.Global {
-  GA_TRACKING_ID : string;
-}
+
+declare var window : DataLayer;
 
 const dataLayer = window.dataLayer = (window.dataLayer || []) as any[];
 
@@ -16,8 +13,10 @@ export function gtag(action : string, ...params : any[]) {
 
 export default gtag;
 
+declare var GA_TRACKING_ID : string;
+
 gtag('js', new Date());
-gtag('config', global.GA_TRACKING_ID);
+gtag('config', GA_TRACKING_ID);
 
 window.addEventListener('load', sendPageviewOnLocationChange);
 
@@ -30,7 +29,7 @@ function sendPageviewOnLocationChange() {
     }
 
     page_path = location.pathname;
-    gtag('config', global.GA_TRACKING_ID, { page_path });
+    gtag('config', GA_TRACKING_ID, { page_path });
   }, 300);
 }
 
