@@ -12,12 +12,19 @@ import ContentLimiter from 'paramorph/components/ContentLimiter';
 
 import { ParrotLayout } from 'parrot-layout';
 
-export const website = new Website('Parrot', '', 'http://sztukauniwersalna.pl', 'Europe/Warsaw', 'pl_PL');
+export const website = new Website(
+  'Parrot',
+  'http://sztukauniwersalna.pl',
+  'Europe/Warsaw',
+  'pl_PL',
+);
 
 const layout = new Layout('parrot', ParrotLayout);
 website.addLayout(layout);
 
-website.addPage(createPage('Feed', '/', FeedPage, false));
+export const feed = createPage('Feed', '/', FeedPage, false);
+
+website.addPage(feed);
 website.addPage(createPage('Article', '/article', ArticlePage));
 website.addPage(createPage('Typography Test', '/typography-test', TypographyPage));
 website.addPage(createPage('Images Test', '/images-test', ImagesPage));

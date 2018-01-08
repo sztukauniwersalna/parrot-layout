@@ -4,7 +4,9 @@ import { RootProps } from 'paramorph/components/Root';
 import DeferredScripts from 'paramorph/components/DeferredScripts';
 import DeferredStyles from 'paramorph/components/DeferredStyles';
 
-declare var GA_TRACKING_ID : string;
+declare var GA_TRACKING_ID : string | undefined;
+
+const GTAG_API_URL = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
 
 export function Root({ website, page, localBundles, externalBundles } : RootProps) {
   const gtagConfigScript = getGtagConfigBundle(localBundles.js);
@@ -17,16 +19,18 @@ export function Root({ website, page, localBundles, externalBundles } : RootProp
         <title>{ page.title } | { website.title }</title>
         <meta name='keywords' content={ page.tags.join(', ') } />
         <meta name='description' content={ page.description } />
-        <meta name='viewport' content='width=device-width; initial-scale=1.0'/>
-        <script
-          async
-          type='text/javascript'
-          src={ `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}` }
-        />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+        <script async type='text/javascript' src={ GTAG_API_URL } />
         <script type='text/javascript' src={ gtagConfigScript } />
-        { localBundles.css.map(url => (
-          <link type='text/css' rel='stylesheet' href={ url } key={ url } />
-        )) }
+        <style type='text/css' dangerouslySetInnerHTML={
+          { __html: 'body { opacity: 0; transition: opacity 300ms ease-in; } '
+              +'body.ready { opacity: 1; }' }
+        } />
+        <script type='text/javascript' dangerouslySetInnerHTML={
+          { __html: 'window.addEventListener(\'load\', function() { '
+            +'document.body.setAttribute(\'class\', \'ready\'); '
+            +'});' }
+        } />
         <meta property='og:url' content={ `${website.baseUrl}${page.url}` } />
         <meta property='og:title' content={ page.title } />
         {
@@ -37,6 +41,9 @@ export function Root({ website, page, localBundles, externalBundles } : RootProp
         <meta property='og:description' content={ page.description } />
         <meta property='og:locale' content={ website.locale } />
         <meta property='og:type' content={ page.url === '/' ? 'website' : 'article' } />
+        { localBundles.css.map(url => (
+          <link type='text/css' rel='stylesheet' href={ url } key={ url } />
+        )) }
       </head>
       <body>
         <div id='root'>

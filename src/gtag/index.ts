@@ -15,10 +15,12 @@ export default gtag;
 
 declare var GA_TRACKING_ID : string;
 
-gtag('js', new Date());
-gtag('config', GA_TRACKING_ID);
+if (GA_TRACKING_ID) {
+  gtag('js', new Date());
+  gtag('config', GA_TRACKING_ID);
 
-window.addEventListener('load', sendPageviewOnLocationChange);
+  window.addEventListener('load', sendPageviewOnLocationChange);
+}
 
 function sendPageviewOnLocationChange() {
   let page_path = location.pathname;

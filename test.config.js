@@ -5,6 +5,8 @@ const externalReact = require('webpack-external-react');
 
 const path = require('path');
 
+const GA_TRACKING_ID = '';
+
 module.exports = {
 	entry: {
     'test': './test/test.tsx',
@@ -64,6 +66,9 @@ module.exports = {
       ]
       .map(ext => ({ context: './lib', from: `*.${ext}` }))
     ),
+    new webpack.DefinePlugin({
+      GA_TRACKING_ID: JSON.stringify(GA_TRACKING_ID),
+    }),
     new HtmlPlugin({
       template: 'test/index.html',
       filename: 'index.html',

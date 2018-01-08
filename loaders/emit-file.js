@@ -48,7 +48,7 @@ function loader(content) {
     module._compile(content, this.resource);
 
     const transformed = options.transform(module.exports);
-    this.emitFile(outputPath, `module.exports = ${JSON.stringify(transformed, null, '  ')};`);
+    this.emitFile(outputPath, transformed);
   } else {
     this.emitFile(outputPath, content);
   }
