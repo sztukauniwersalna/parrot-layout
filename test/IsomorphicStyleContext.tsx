@@ -3,7 +3,7 @@ import { Component, ReactNode, Children } from 'react';
 import * as PropTypes from 'prop-types';
 
 export interface Props {
-  children: ReactNode;
+  children ?: ReactNode;
 }
 
 export class IsomorphicStyleContext extends Component<Props, {}> {
@@ -13,7 +13,7 @@ export class IsomorphicStyleContext extends Component<Props, {}> {
 
   getChildContext() {
     return {
-      insertCss: (...styles : { _insertCss: () => () => void}[] ) => {
+      insertCss: (...styles : { _insertCss: () => () => void }[] ) => {
         const removeCss = styles.map(x => x._insertCss());
         return () => { removeCss.forEach(f => f()); };
       },

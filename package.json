@@ -1,11 +1,11 @@
 {
   "name": "parrot-layout",
-  "version": "1.11.1",
+  "version": "1.11.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf lib #",
-    "compile": "webpack --progress --colors --config ./webpack.config.js",
+    "compile": "webpack --progress --color --config ./webpack.config.js",
     "copy-d-ts": "mkdir -p lib/ && cp lib/index.d.ts lib/bundle.d.ts",
     "copy-assets": "mkdir -p lib/ && cp favicon.ico lib/",
     "copy-config": "mkdir -p lib/ && cp package.json lib/",
@@ -80,6 +80,7 @@
   },
   "dependencies": {
     "react-disqus-comments": "^1.1.1",
+    "react-html-webpack-plugin": "^1.0.0",
     "react-render-plugin": "0.0.5"
   },
   "peerDependencies": {

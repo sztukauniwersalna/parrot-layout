@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const externalReact = require('webpack-external-react');
 
-const HtmlPlugin = require('html-webpack-plugin');
+const externalReact = require('webpack-external-react');
+const ReactHtmlPlugin = require('react-html-webpack-plugin');
 
 module.exports = {
 	entry: {
@@ -10,6 +10,9 @@ module.exports = {
       'react-hot-loader/patch',
       'webpack-dev-server/client?http://localhost:8080',
       'webpack/hot/only-dev-server',
+    ],
+    'gtagConfig': [
+      './src/gtag',
     ],
     'entry': [
       './test/entry',
@@ -84,10 +87,46 @@ module.exports = {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlPlugin({
-      template: 'test/index.html',
-      filename: 'index.html',
-      inject: true,
+    new ReactHtmlPlugin({
+      component: './src/Root/index.tsx',
+      output: 'index.html',
+      props: {
+        website: {
+          title: 'ParrotLayout',
+          baseUrl: 'http://localhost:8080',
+          locale: 'pl_PL',
+        },
+        page: {
+          title: 'Feed',
+          tags: [],
+          description: '',
+          url: '/',
+          image: null,
+        },
+        localBundles: {
+          js: [
+            'hot-bootstrap.bundle.js',
+            'entry.bundle.js',
+            'gtagConfig.bundle.js',
+          ],
+          css: [],
+        },
+        externalBundles: {
+          js: [
+            'https://unpkg.com/react@15/dist/react.js',
+            'https://unpkg.com/prop-types@15.6.0/prop-types.min.js',
+            'https://unpkg.com/react-dom@15/dist/react-dom.js',
+            'https://unpkg.com/react-router-dom@4.1.2/umd/react-router-dom.js',
+          ],
+          css: [],
+        },
+      },
+      globals: {
+        window: {},
+      },
+    }),
+    new webpack.DefinePlugin({
+      GA_TRACKING_ID: JSON.stringify(''),
     }),
   ],
 };

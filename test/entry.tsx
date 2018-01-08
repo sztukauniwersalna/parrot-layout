@@ -5,10 +5,18 @@ import IsomorphicStyleContext from './IsomorphicStyleContext';
 
 import Router from './Router';
 
-window.addEventListener('load', () => {
-  render(
-    React.createElement(IsomorphicStyleContext, { children: React.createElement(Router) }),
-    document.getElementById('root'),
-  );
-});
+function initialize() {
+  const container = document.getElementById('root') as HTMLDivElement;
+  container.innerHTML = '';
+
+  const router = React.createElement(Router);
+  const styleContext = React.createElement(IsomorphicStyleContext, {}, router);
+  render(styleContext, container);
+}
+
+if (document.readyState === 'complete') {
+  initialize();
+} else {
+  window.addEventListener('load', initialize);
+}
 

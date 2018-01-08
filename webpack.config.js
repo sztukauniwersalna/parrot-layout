@@ -6,11 +6,11 @@ const path = require('path');
 
 module.exports = {
 	entry: {
-    'index': './src/index.ts',
+    'bundle': './src/index',
   },
 
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, './lib'),
     libraryTarget: 'commonjs',
   },
