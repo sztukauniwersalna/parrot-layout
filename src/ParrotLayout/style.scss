@@ -22,7 +22,7 @@ $bgBase64: 'data:image/png;base64,'
 
 body {
   @include color(background-color, background-page);
-  background-image: url(#{$bgBase64});
+//  background-image: url(#{$bgBase64});
 
   background-repeat: repeat;
   background-position: top left;
