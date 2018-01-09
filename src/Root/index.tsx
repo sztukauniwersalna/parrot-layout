@@ -26,8 +26,8 @@ export function Root({ website, page, localBundles, externalBundles } : RootProp
           { __html: 'body { opacity: 0; transition: opacity 300ms ease-in; } '
               +'body.ready { opacity: 1; }' }
         } />
-        <script type='text/javascript' dangerouslySetInnerHTML={
-          { __html: 'window.addEventListener(\'load\', function() { '
+        <script async type='text/javascript' dangerouslySetInnerHTML={
+          { __html: 'document.addEventListener(\'DOMContentLoaded\', function() { '
             +'document.body.setAttribute(\'class\', \'ready\'); '
             +'});' }
         } />
