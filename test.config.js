@@ -1,19 +1,29 @@
-const HtmlPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ReactHtmlPlugin = require('react-html-webpack-plugin');
 const externalReact = require('webpack-external-react');
 
 const path = require('path');
 
 const GA_TRACKING_ID = '';
+const VERSION = Date.now();
 
 module.exports = {
 	entry: {
-    'test': './test/test.tsx',
+    'gtagConfig': [
+      './lib/gtag',
+    ],
+    'gtagConfig': [
+      './test/styles',
+    ],
+    'entry': [
+      './test/entry',
+    ],
   },
 
   output: {
-    filename: '[name]-[hash].bundle.js',
+    filename: `[name]-${VERSION}.bundle.js`,
     path: path.resolve(__dirname, './build'),
     libraryTarget: 'umd',
   },
@@ -44,7 +54,7 @@ module.exports = {
         use: 'source-map-loader',
       },
       {
-        test: /\.css?$/,
+        test: /\.css$/,
         use: ExtractTextPlugin.extract({
           use: 'raw-loader',
         })
@@ -53,7 +63,7 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('style-[hash].bundle.css'),
+    new ExtractTextPlugin(`style-${VERSION}.bundle.css`),
     new CopyPlugin(
       [
         'jpg',
@@ -66,13 +76,44 @@ module.exports = {
       ]
       .map(ext => ({ context: './lib', from: `*.${ext}` }))
     ),
+    new ReactHtmlPlugin({
+      component: './src/Root/index.tsx',
+      output: 'index.html',
+      props: {
+        website: {
+          title: 'ParrotLayout',
+          baseUrl: 'http://localhost:8080',
+          locale: 'pl_PL',
+        },
+        page: {
+          title: 'Feed',
+          tags: [],
+          description: '',
+          url: '/',
+          image: null,
+        },
+        localBundles: {
+          js: [
+            `entry-${VERSION}.bundle.js`,
+            `gtagConfig-${VERSION}.bundle.js`,
+          ],
+          css: [
+            `style-${VERSION}.bundle.css`,
+          ],
+        },
+        externalBundles: {
+          js: [
+            'https://unpkg.com/react@15/dist/react.js',
+            'https://unpkg.com/prop-types@15.6.0/prop-types.min.js',
+            'https://unpkg.com/react-dom@15/dist/react-dom.js',
+            'https://unpkg.com/react-router-dom@4.1.2/umd/react-router-dom.js',
+          ],
+          css: [],
+        },
+      },
+    }),
     new webpack.DefinePlugin({
       GA_TRACKING_ID: JSON.stringify(GA_TRACKING_ID),
-    }),
-    new HtmlPlugin({
-      template: 'test/index.html',
-      filename: 'index.html',
-      inject: true,
     }),
   ],
 };

@@ -7,11 +7,9 @@ import Router from './Router';
 
 function initialize() {
   const container = document.getElementById('root') as HTMLDivElement;
-  container.innerHTML = '';
-
   const router = React.createElement(Router);
-  const styleContext = React.createElement(IsomorphicStyleContext, {}, router);
-  render(styleContext, container);
+  const context = React.createElement(IsomorphicStyleContext, {}, router);
+  render(context, container);
 }
 
 if (document.readyState === 'complete') {
