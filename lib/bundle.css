@@ -2978,4 +2978,30 @@ body {
   .details-307aJ {
     padding-bottom: 13rem;
   }
+}.container-1L8oV {
+  background: #303030;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  position: relative;
+}
+
+.container-1L8oV img,
+.container-1L8oV noscript {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.thumbnail-2w5y1 {
+  filter: blur(20px);
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.ready-2Fic5>.thumbnail-2w5y1,
+.transition-M3Bnj>.thumbnail-2w5y1,
+a .static-36xmc>.thumbnail-2w5y1 {
+  opacity: 0;
 }

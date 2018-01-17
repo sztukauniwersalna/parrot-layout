@@ -13,5 +13,6 @@ export { default as TableOfContents } from './TableOfContents';
 export { default as Tags } from './Tags';
 export { default as Tile } from './Tile';
 export { default as TopBar } from './TopBar';
+export { default as Image } from './Image';
 export { default as Root } from './Root';
-export { default as ftag } from './gtag';
+export { default as gtag } from './gtag';
