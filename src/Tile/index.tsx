@@ -37,7 +37,7 @@ export function Tile({ website, page } : Props) {
 }
 
 function maybeRenderImage(page : Page) {
-  if (page.image === null) {
+  if (!page.image) {
     return null;
   }
   return (

@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
 
 import FeedPage from './feed';
 import ArticlePage from './article';
@@ -6,6 +9,8 @@ import TypographyPage from './typography';
 import ImagesPage from './images';
 import RecipePage from './recipe';
 import SitemapPage from './sitemap';
+
+import IsomorphicStyleContext from '../IsomorphicStyleContext';
 
 import { Website, Layout, Page, MenuEntry } from 'paramorph/models';
 import Content from 'paramorph/components/Content';
@@ -65,6 +70,24 @@ function createPage(
     [],
     feed === undefined ? true : feed,
   );
+  if (page.image === null) {
+    Object.defineProperty(page, 'image', {
+      get: () => imageFromContent(page),
+      set: () => { throw new Error('Page.image is readonly'); }
+    });
+  }
   return page;
+}
+
+function imageFromContent(page : Page) {
+  const element = createElement(page.body, { website, page, respectLimit: false })
+  const router = createElement(StaticRouter, { location: page.url, context: {}}, element);
+  const context = createElement(IsomorphicStyleContext, {}, router);
+  const markup = renderToStaticMarkup(context);
+  const found = /<img[^>]* src="([^"]*)"[^>]*>/.exec(markup);
+  if (!found) {
+    return null;
+  }
+  return found[1];
 }
 
