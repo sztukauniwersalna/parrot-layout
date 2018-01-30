@@ -8,7 +8,7 @@ import RecipePage from './recipe';
 import SitemapPage from './sitemap';
 
 import { Website, Layout, Page, MenuEntry } from 'paramorph/models';
-import ContentLimiter from 'paramorph/components/ContentLimiter';
+import Content from 'paramorph/components/Content';
 
 import { ParrotLayout } from 'parrot-layout';
 
@@ -56,7 +56,7 @@ function createPage(
     url,
     layout,
     (props : any) => (
-      <ContentLimiter limit={ 5 } { ...props }>{ body(props) }</ContentLimiter>
+      <Content limit={ 5 } { ...props }>{ body(props) }</Content>
     ),
     image || null,
     true,

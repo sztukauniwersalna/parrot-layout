@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Component, ReactNode } from 'react';
+import { Component, ReactNode, ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import ReactDisqusComments from 'react-disqus-comments';
 
@@ -11,6 +11,7 @@ import Tags from '../Tags';
 import Footer from '../Footer';
 import Logo from '../Logo';
 import Icon from '../Icon';
+import Image from '../Image';
 import SideMenu, { Item } from '../SideMenu';
 import Jumbotron from '../Jumbotron';
 
@@ -65,7 +66,7 @@ export class ParrotLayout extends Component<Props, State> {
           <main>
             { maybeRenderTitle(website, page) }
 
-            <Body website={ website } page={ page } />
+            <Body website={ website } page={ page } mapper={ imgToImage } />
             <div className={ s.bottomLike }>
               <FacebookLike url={ `${website.baseUrl}${page.url}` } />
             </div>
@@ -221,6 +222,20 @@ function maybeRenderComments(page: Page) {
         url={ `http://sztukauniwersalna.pl${page.url}` }
       />
     </div>
+  );
+}
+
+function imgToImage(node : ReactElement<any>) : ReactElement<any> {
+  if (node.type !== 'img') {
+    return node;
+  }
+  return (
+    <Image
+      src={ node.props.src }
+      alt={ node.props.alt }
+      thumbnail='todo'
+      ratio={ 2 }
+    />
   );
 }
 

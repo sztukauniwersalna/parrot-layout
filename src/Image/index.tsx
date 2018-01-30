@@ -28,8 +28,13 @@ export class Image extends React.Component<Props, State> {
     const { ratio, src, alt, thumbnail } = this.props;
     const { step } = this.state;
 
+    const height = 100 / ratio;
+
     return (
-      <div className={ `${s.container} ${s[step]}` } style={ { height: `${1 / ratio}vw` } }>
+      <div
+        className={ `image ${s.container} ${s[step]}` }
+        style={ { height: `${height}vw` } }
+      >
         <img
           className={ s.image }
           src={ step !== 'static' ? src : '' }
@@ -37,7 +42,11 @@ export class Image extends React.Component<Props, State> {
           onLoad={ () => this.setStep('transition') }
           onTransitionEnd={ () => this.setStep('ready') }
         />
-        <img className={ s.thumbnail } src={ thumbnail } alt='thumbnail' />
+        <img
+          className={ s.thumbnail }
+          src={ thumbnail }
+          alt='thumbnail'
+        />
         <noscript>
           <img src={ src } alt={ alt } />
         </noscript>

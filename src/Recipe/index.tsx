@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Page, Tag, Website } from 'paramorph/models';
 
 import Icon from '../Icon';
+import Image from '../Image';
 
 const s = require('./style');
 
@@ -61,7 +62,12 @@ export function Recipe({ title, photo, altText, time, level, mealFor, children }
         </ul>
       </div>
 
-      <img src={ photo } alt={ altText } />
+      <Image
+        src={ photo }
+        alt={ altText }
+        thumbnail='todo'
+        ratio={ 2 }
+      />
 
       <div className={ s.details }>
         <div className={ s.ingredients }>

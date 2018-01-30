@@ -6,6 +6,7 @@ import { Page, Website } from 'paramorph/models';
 
 import Tags from '../Tags';
 import Button from '../Button';
+import Image from '../Image';
 import { Branch as TocBranch } from '../TableOfContents';
 
 const s = require('./style');
@@ -41,7 +42,12 @@ function maybeRenderImage(page : Page) {
   }
   return (
     <Link to={ page.url }>
-      <img src={ page.image } alt={ `${page.title}` } />
+      <Image
+        src={ page.image }
+        alt={ `${page.title}` }
+        thumbnail='todo'
+        ratio={ 2 }
+      />
     </Link>
   );
 }
