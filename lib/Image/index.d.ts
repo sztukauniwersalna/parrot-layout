@@ -11,9 +11,12 @@ export interface State {
     step: LoadingStep;
 }
 export declare class Image extends React.Component<Props, State> {
+    private container;
     constructor(props: Props);
     render(): JSX.Element;
     componentDidMount(): void;
+    componentWillUnmount(): void;
+    private maybeStartLoading();
     private setStep(step);
 }
 export default Image;

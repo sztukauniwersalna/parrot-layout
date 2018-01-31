@@ -80,7 +80,8 @@
     "webpack-external-react": "^1.0.2"
   },
   "dependencies": {
-    "react-disqus-comments": "^1.1.1"
+    "react-disqus-comments": "^1.1.1",
+    "sharp": "^0.19.0"
   },
   "peerDependencies": {
     "paramorph": "^1.12.1"

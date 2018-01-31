@@ -4,6 +4,8 @@ const webpack = require('webpack');
 const externalReact = require('webpack-external-react');
 const ReactHtmlPlugin = require('react-html-webpack-plugin');
 
+const ThumbnailsPlugin = require('./plugins/thumbnails');
+
 module.exports = {
 	entry: {
     'hot-bootstrap': [
@@ -33,6 +35,7 @@ module.exports = {
       '.js', '.ts', '.tsx', '.scss',
     ],
     alias: {
+      'paramorph/data': path.resolve(__dirname, './test/data/index.tsx'),
       'parrot-layout': path.resolve(__dirname, './src/index.ts'),
     },
   },
@@ -85,6 +88,7 @@ module.exports = {
   },
 
   plugins: [
+    new ThumbnailsPlugin({ output: 'thumbs.js' }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new ReactHtmlPlugin({
@@ -106,6 +110,7 @@ module.exports = {
         localBundles: {
           js: [
             'hot-bootstrap.bundle.js',
+            'thumbs.js',
             'entry.bundle.js',
             'gtagConfig.bundle.js',
           ],
