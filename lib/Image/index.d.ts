@@ -1,9 +1,7 @@
 /// <reference types="react" />
 import * as React from 'react';
 export interface Props {
-    ratio: number;
     src: string;
-    thumbnail: string;
     alt: string;
 }
 export declare type LoadingStep = 'static' | 'loading' | 'transition' | 'ready';

@@ -3,9 +3,7 @@ import * as React from 'react';
 const s = require('./style');
 
 export interface Props {
-  ratio : number;
   src : string;
-  thumbnail : string;
   alt : string;
 }
 
@@ -14,6 +12,19 @@ export type LoadingStep = 'static' | 'loading' | 'transition' | 'ready';
 export interface State {
   step : LoadingStep;
 }
+
+interface Thumbnails extends Window {
+  thumbs : HashTable<Thumb>;
+}
+interface Thumb {
+  ratio : number;
+  data : string;
+}
+interface HashTable<T> {
+  [key : string] : T;
+}
+
+declare var window : Thumbnails;
 
 export class Image extends React.Component<Props, State> {
   private container : HTMLDivElement;
@@ -29,15 +40,15 @@ export class Image extends React.Component<Props, State> {
   }
 
   render() {
-    const { ratio, src, alt, thumbnail } = this.props;
+    const { src, alt } = this.props;
     const { step } = this.state;
 
-    const height = 100 / ratio;
+    const thumb = window.thumbs[src] || { ratio: 0, data: '' };
 
     return (
       <div
         className={ `image ${s.container} ${s[step]}` }
-        style={ { height: `${height}vw` } }
+        style={ { height: `${100 / thumb.ratio}vw` } }
         ref={ e => this.container = e as HTMLDivElement }
       >
         <img
@@ -49,7 +60,7 @@ export class Image extends React.Component<Props, State> {
         />
         <img
           className={ s.thumbnail }
-          src={ thumbnail }
+          src={ `data:image/png;base64,${encodeURIComponent(thumb.data)}` }
           alt='thumbnail'
         />
         <noscript>

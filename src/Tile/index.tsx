@@ -42,12 +42,7 @@ function maybeRenderImage(page : Page) {
   }
   return (
     <Link to={ page.url }>
-      <Image
-        src={ page.image }
-        alt={ `${page.title}` }
-        thumbnail='todo'
-        ratio={ 2 }
-      />
+      <Image src={ page.image } alt={ `${page.title}` } />
     </Link>
   );
 }

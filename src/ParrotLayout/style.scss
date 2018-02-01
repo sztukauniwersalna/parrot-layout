@@ -82,7 +82,7 @@ body {
     }
   }
 
-  .image {
+  :global(.image) {
     @extend %vw100;
 
     margin-top: 6rem;
@@ -96,7 +96,7 @@ body {
 
   :global(.content) {
     p:first-child {
-      .image:first-child {
+      :global(.image):first-child {
         margin-top: -3rem;
         margin-bottom: 3rem;
       }

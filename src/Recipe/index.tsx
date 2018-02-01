@@ -62,12 +62,7 @@ export function Recipe({ title, photo, altText, time, level, mealFor, children }
         </ul>
       </div>
 
-      <Image
-        src={ photo }
-        alt={ altText }
-        thumbnail='todo'
-        ratio={ 2 }
-      />
+      <Image src={ photo } alt={ altText } />
 
       <div className={ s.details }>
         <div className={ s.ingredients }>

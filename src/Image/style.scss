@@ -8,6 +8,7 @@
   margin-left: calc(#{50%} - #{50vw});
 
   position: relative;
+  overflow: hidden;
 
   noscript,
   img {
@@ -20,15 +21,16 @@
 }
 
 .thumbnail {
-  filter: blur(20px);
+  filter: blur(60px);
+  opacity: 0;
 
-  opacity: 1;
-  transition: opacity 1s ease-in-out;a
+  .loading > & {
+    opacity: 1;
+  }
 
-  .static > &,
   .transition > &,
   .ready > & {
-    opacity: 0;
+    transition: opacity 300ms ease-in 200ms;
   }
 }
 

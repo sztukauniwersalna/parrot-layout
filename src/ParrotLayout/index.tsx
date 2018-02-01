@@ -230,12 +230,7 @@ function imgToImage(node : ReactElement<any>) : ReactElement<any> {
     return node;
   }
   return (
-    <Image
-      src={ node.props.src }
-      alt={ node.props.alt }
-      thumbnail='todo'
-      ratio={ 2 }
-    />
+    <Image src={ node.props.src } alt={ node.props.alt } />
   );
 }
 
