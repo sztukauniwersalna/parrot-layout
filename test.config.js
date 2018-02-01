@@ -6,6 +6,8 @@ const externalReact = require('webpack-external-react');
 
 const path = require('path');
 
+const ThumbnailsPlugin = require('./plugins/thumbnails');
+
 const GA_TRACKING_ID = '';
 const VERSION = Date.now();
 
@@ -35,6 +37,7 @@ module.exports = {
       '.ts', '.tsx', '.js',
     ],
     alias: {
+      'paramorph/data': path.resolve(__dirname, './test/data/index.tsx'),
       'parrot-layout': path.resolve(__dirname, './test/bundle'),
     },
   },
@@ -63,6 +66,7 @@ module.exports = {
   },
 
   plugins: [
+    new ThumbnailsPlugin({ output: `thumbs-${VERSION}.js` }),
     new ExtractTextPlugin(`style-${VERSION}.bundle.css`),
     new CopyPlugin(
       [
@@ -94,6 +98,7 @@ module.exports = {
         },
         localBundles: {
           js: [
+            `thumbs-${VERSION}.js`,
             `entry-${VERSION}.bundle.js`,
             `gtagConfig-${VERSION}.bundle.js`,
           ],
