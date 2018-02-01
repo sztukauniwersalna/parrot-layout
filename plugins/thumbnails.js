@@ -186,6 +186,7 @@ function createGlobals() {
   window.thumbs = {};
   const { document } = window;
   const self = window;
-  return { self, window, document };
+  const location = window.location = { href: '', path: '' };
+  return { self, window, document, location };
 }
 
