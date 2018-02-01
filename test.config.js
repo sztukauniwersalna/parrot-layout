@@ -16,7 +16,7 @@ module.exports = {
     'gtagConfig': [
       './lib/gtag',
     ],
-    'gtagConfig': [
+    'styles': [
       './test/styles',
     ],
     'entry': [

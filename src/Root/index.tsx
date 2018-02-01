@@ -22,15 +22,7 @@ export function Root({ website, page, localBundles, externalBundles } : RootProp
         <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
         <script async type='text/javascript' src={ GTAG_API_URL } />
         <script type='text/javascript' src={ gtagConfigScript } />
-        <style type='text/css' dangerouslySetInnerHTML={
-          { __html: 'body { opacity: 0; transition: opacity 300ms ease-in; } '
-              +'body.ready { opacity: 1; }' }
-        } />
-        <script async type='text/javascript' dangerouslySetInnerHTML={
-          { __html: 'document.addEventListener(\'DOMContentLoaded\', function() { '
-            +'document.body.setAttribute(\'class\', \'ready\'); '
-            +'});' }
-        } />
+        <FoucRemovalTrick/>
         <meta property='og:url' content={ `${website.baseUrl}${page.url}` } />
         <meta property='og:title' content={ page.title } />
         {
@@ -75,3 +67,16 @@ function removeGtagConfigBundle(bundles : string[]) {
   return bundles.slice(0, index).concat(bundles.slice(index + 1));
 }
 
+function FoucRemovalTrick() {
+  return (
+    <script type='text/javascript' dangerouslySetInnerHTML={
+      { __html: 'document.addEventListener(\'DOMContentLoaded\', function() { '
+          +'document.body.setAttribute(\'class\', \'ready\'); '
+          +'});'
+          +'document.write(\'<style type="text/css">'
+          +'body { opacity: 0; transition: opacity 300ms ease-in; }'
+          +'body.ready { opacity: 1; }'
+          +'</style>\');' }
+    } />
+  );
+}
