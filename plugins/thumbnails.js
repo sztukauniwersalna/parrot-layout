@@ -112,59 +112,103 @@ function extractImageUrls(website, page) {
 }
 
 function fetchImagesAndCreateThumbnails(urls) {
-  return new Promise((resolve, reject) => {
-    const thumbnails = {};
+  const downloader = new Downloader(10);
+  const thumbnails = {};
 
-    function getThumbnail(url, cb) {
-      const thumb = {};
+  const promises = urls.map(
+    url => downloader.download(url)
+      .then(data => {
+        const thumb = {};
+        const pipeline = sharp(data);
 
-      const pipeline = sharp();
-      const promise = Promise.all([
-        pipeline.clone()
-          .metadata()
-          .then(meta => thumb.ratio = meta.width / meta.height),
-        pipeline.clone()
-          .resize(16, undefined, { kernel: sharp.kernel.lanczos3 })
-          .png({ force: true })
-          .toBuffer()
-          .then(data => thumb.data = data.toString('base64'))
-      ]);
+        return Promise.all([
+          pipeline.clone()
+            .metadata()
+            .then(meta => thumb.ratio = meta.width / meta.height),
+          pipeline.clone()
+            .resize(16, undefined, { kernel: sharp.kernel.lanczos3 })
+            .png({ force: true })
+            .toBuffer()
+            .then(data => thumb.data = data.toString('base64'))
+        ])
+        .then(() => thumbnails[url] = thumb)
+        ;
+      })
+  );
 
-      request.head(url, function(err, res, body) {
-        if (err) {
-          return reject(err);
+  return Promise.all(promises)
+    .then(() => thumbnails);
+}
+
+class Downloader {
+  constructor(poolSize) {
+    this.poolSize = poolSize;
+    this.downloading = 0;
+    this.queue = [];
+    this.error = false;
+  }
+  download(url) {
+    return new Promise((resolve, reject) => this._queue({ url, resolve, reject }));
+  }
+  _queue(query) {
+    if (this.error) {
+      return;
+    }
+    if (this.downloading === this.poolSize) {
+      this.queue.push(query);
+      return;
+    }
+
+    this.downloading += 1;
+    this._download(query);
+  }
+  _download(query) {
+    request.head(query.url, (err, res, body) => {
+      if (err) {
+        return query.reject(err);
+      }
+      const mimeType = res.headers['content-type'];
+      const length = res.headers['content-length'];
+      const sizeKb = length
+        ? `${Math.ceil(length / 1024)}kB`
+        : 'Unknown Size';
+
+      console.info(`Fetching ${mimeType} ${sizeKb}`);
+      console.info(query.url);
+
+      const buffers = [];
+
+      const onData = (data) => {
+        if (this.error) {
+          return;
         }
-        const mimeType = res.headers['content-type'];
-        const length = res.headers['content-length'];
-        const sizeKb = length
-          ? `${Math.ceil(length / 1024)}kB`
-          : 'Unknown Size';
+        buffers.push(data);
+      }
+      const onError = (err) => {
+        this.error = true;
+        query.reject(err);
+      };
+      const onEnd = () => {
+        query.resolve(Buffer.concat(buffers));
 
-        console.info(`Fetching ${mimeType} ${sizeKb}`);
-        console.info(url);
+        if (this.queue.length !== 0) {
+          const query = this.queue.shift();
+          setImmediate(() => this._download(query));
+        } else {
+          this.downloading -= 1;
+        }
+      };
 
-        request(url)
-          .on('error', reject)
-          .pipe(pipeline)
-        ;
-        promise
-          .then(() => {
-            thumbnails[url] = thumb;
-            cb();
-          })
-          .catch(reject)
-        ;
-      });
-    }
-
-    function getNextThumbnail() {
-      const url = urls.shift();
-      const onReady = urls.length !== 0 ? getNextThumbnail : () => resolve(thumbnails);
-      getThumbnail(url, onReady);
-    }
-
-    getNextThumbnail();
-  });
+      request(query.url)
+        .on('error', onError)
+        .on('response', stream => stream
+          .on('data', onData)
+          .on('error', onError)
+          .on('end', onEnd)
+        )
+      ;
+    });
+  }
 }
 
 class FakeStyleContext extends Component {
