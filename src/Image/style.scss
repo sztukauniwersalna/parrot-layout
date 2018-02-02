@@ -24,6 +24,7 @@
   filter: blur(60px);
   opacity: 0;
 
+  .static > &,
   .loading > & {
     opacity: 1;
   }

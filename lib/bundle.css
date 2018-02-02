@@ -888,7 +888,8 @@ ul.tags-2jOEG li:before {
   opacity: 0;
 }
 
-.loading-wuc2W>.thumbnail-2w5y1 {
+.loading-wuc2W>.thumbnail-2w5y1,
+.static-36xmc>.thumbnail-2w5y1 {
   opacity: 1;
 }
 
