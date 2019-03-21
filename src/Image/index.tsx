@@ -77,11 +77,17 @@ export class Image extends React.Component<Props, State> {
   }
 
   componentDidMount() {
+    if (!window.thumbs) {
+      return;
+    }
     window.addEventListener('scroll', this.maybeStartLoading);
     window.addEventListener('resize', this.maybeStartLoading);
     this.maybeStartLoading();
   }
   componentWillUnmount() {
+    if (!window.thumbs) {
+      return;
+    }
     window.removeEventListener('scroll', this.maybeStartLoading);
     window.removeEventListener('resize', this.maybeStartLoading);
   }
