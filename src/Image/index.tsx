@@ -14,7 +14,7 @@ export interface State {
 }
 
 interface Thumbnails extends Window {
-  thumbs : HashTable<Thumb>;
+  thumbs : HashTable<Thumb> | undefined;
 }
 interface Thumb {
   ratio : number;
@@ -43,7 +43,13 @@ export class Image extends React.Component<Props, State> {
     const { src, alt } = this.props;
     const { step } = this.state;
 
-    const thumb = window.thumbs[src] || { ratio: 0, data: '' };
+    if (!window.thumbs) {
+      return (
+        <img src={ src } alt={ alt } />
+      );
+    }
+
+    const thumb = window.thumbs[src];
 
     return (
       <div

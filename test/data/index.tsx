@@ -13,7 +13,7 @@ import SitemapPage from './sitemap';
 import IsomorphicStyleContext from '../IsomorphicStyleContext';
 
 import { Website, Layout, Page, MenuEntry } from 'paramorph/models';
-import Content from 'paramorph/components/Content';
+import Content from 'paramorph/components/ContentLimiter';
 
 import { ParrotLayout } from 'parrot-layout';
 

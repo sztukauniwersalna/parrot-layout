@@ -61,9 +61,10 @@
     }
   }
 
-  :global(.image) {
+  :global(div.image) {
     background-size: cover;
     height: 100%;
+    margin: 0;
 
     @include break(700) {
       width: 54rem;

@@ -1133,33 +1133,34 @@ ul.tags-2jOEG li:before {
   }
 }
 
-.jumbo-2fC8T .image {
+.jumbo-2fC8T div.image {
   background-size: cover;
   height: 100%;
+  margin: 0;
   transition: width .2s ease-out;
   display: none;
 }
 
 @media only screen and (min-width:836px) and (max-width:1019px) {
-  .jumbo-2fC8T .image {
+  .jumbo-2fC8T div.image {
     width: 54rem;
   }
 }
 
 @media only screen and (min-width:1020px) {
-  .jumbo-2fC8T .image {
+  .jumbo-2fC8T div.image {
     width: 66rem;
   }
 }
 
 @media only screen and (min-width:836px) and (max-width:1019px) {
-  .jumbo-2fC8T .image {
+  .jumbo-2fC8T div.image {
     display: flex;
   }
 }
 
 @media only screen and (min-width:1020px) {
-  .jumbo-2fC8T .image {
+  .jumbo-2fC8T div.image {
     display: flex;
   }
 }
