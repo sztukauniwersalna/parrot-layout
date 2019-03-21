@@ -45,7 +45,7 @@ export class Image extends React.Component<Props, State> {
 
     if (!window.thumbs) {
       return (
-        <img src={ src } alt={ alt } />
+        <img className='image' src={ src } alt={ alt } />
       );
     }
 
