@@ -82,7 +82,7 @@ body {
     }
   }
 
-  :global(.image) {
+  :global(.image), img {
     @extend %vw100;
 
     margin-top: 6rem;
