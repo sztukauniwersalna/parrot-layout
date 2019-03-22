@@ -49,7 +49,7 @@ export class Image extends React.Component<Props, State> {
       );
     }
 
-    const thumb = window.thumbs[src];
+    const thumb = window.thumbs[src] || { ratio: 0, data: '' };
 
     return (
       <div
