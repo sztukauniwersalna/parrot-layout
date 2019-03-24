@@ -1,5 +1,6 @@
+
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const externalReact = require('webpack-external-react');
 
 const path = require('path');
@@ -15,16 +16,23 @@ module.exports = {
     libraryTarget: 'commonjs',
   },
 
+  mode: 'production',
   target: 'node',
+  devtool: false,
 
   resolve: {
     extensions: [
       '.js', '.ts', '.tsx', '.scss',
     ],
+    alias: {
+      '@website': path.resolve(__dirname),
+    },
   },
 
   resolveLoader: {
     alias: {
+      'config-loader': 'paramorph/loader/config',
+      'markdown-loader': 'paramorph/loader/markdown',
       'emit-file-loader': path.resolve(__dirname, './loaders/emit-file.js'),
       'relative-path-loader': path.resolve(__dirname, './loaders/relative-path.js'),
     },
@@ -39,7 +47,6 @@ module.exports = {
         test: /\.tsx?$/,
         use: [
           'emit-file-loader',
-          'babel-loader',
           'ts-loader',
         ],
       },
@@ -50,20 +57,19 @@ module.exports = {
       },
       {
         test: /\.scss?$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'emit-file-loader',
-              options: {
-                transform: (exports) => exports.locals,
-              },
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'emit-file-loader',
+            options: {
+              transform: (exports) => exports.locals,
             },
-            'css-loader?modules&localIdentName=[local]-[hash:base64:5]',
-            'resolve-url-loader?attempts=1',
-            'postcss-loader?sourceMap',
-            'sass-loader?sourceMap',
-          ],
-        }),
+          },
+          'css-loader?modules&localIdentName=[local]-[hash:base64:5]',
+          'resolve-url-loader?attempts=1',
+          'postcss-loader?sourceMap',
+          'sass-loader?sourceMap',
+        ],
       },
       {
         test: /\.(png|jpg|gif|svg|eot|woff2|woff|ttf)$/,
@@ -76,7 +82,9 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('bundle.css'),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+    }),
   ],
 };
 
