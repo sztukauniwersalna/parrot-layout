@@ -1,5 +1,5 @@
+
 import * as React from 'react';
-import { ReactElement } from 'react';
 
 const s = require('./style');
 
@@ -35,7 +35,7 @@ function renderLogo(variant : Variant) {
   }
 }
 
-function renderSmallLogo() : ReactElement<any>[] {
+function renderSmallLogo() : React.ReactElement<any>[] {
   return [(
     <path
       className={ s.letterU }
@@ -59,7 +59,7 @@ function renderSmallLogo() : ReactElement<any>[] {
   )];
 }
 
-function renderInlineLogo() : ReactElement<any>[] {
+function renderInlineLogo() : React.ReactElement<any>[] {
   return [(
     <path
       className={ s.lettersZTUK }
@@ -112,7 +112,7 @@ function renderInlineLogo() : ReactElement<any>[] {
   )];
 }
 
-function renderFullLogo() : ReactElement<any>[] {
+function renderFullLogo() : React.ReactElement<any>[] {
   return renderInlineLogo().concat([(
     <path
       className={ s.signed }

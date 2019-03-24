@@ -1,13 +1,9 @@
 /// <reference types="react" />
-import { Component } from 'react';
-import { Page, Website } from 'paramorph/models';
-import '../polyfill/swipe-events';
+import { PureComponent } from 'paramorph';
 export interface Props {
-    website: Website;
-    page: Page;
     onMenuClick?: () => void;
 }
-export declare class TopBar extends Component<Props, {}> {
+export declare class TopBar extends PureComponent<Props, {}> {
     render(): JSX.Element;
 }
 export default TopBar;

@@ -1,25 +1,22 @@
-import * as React from 'react';
-import { Component } from 'react';
-import { Link } from 'react-router-dom';
 
-import { Page, MenuEntry, Website } from 'paramorph/models';
+import * as React from 'react';
+
+import { PureComponent, Link } from 'paramorph';
+
 import Button from '../Button';
 import Icon from '../Icon';
 import Logo from '../Logo';
 
-import '../polyfill/swipe-events';
-
 const s = require('./style');
 
 export interface Props {
-  website : Website;
-  page : Page;
   onMenuClick ?: () => void;
 }
 
-export class TopBar extends Component<Props, {}> {
+export class TopBar extends PureComponent<Props, {}> {
   render() {
-    const { website, page, onMenuClick } = this.props;
+    const { onMenuClick } = this.props;
+    const { paramorph } = this.context;
 
     return (
       <header className={ s.topBar }>
@@ -28,14 +25,16 @@ export class TopBar extends Component<Props, {}> {
             <Icon name='&#xE5D2;' />
           </Button>
         </div>
+
         <Link to='/'>
           <span className={ s.title }>Sztuka Uniwersalna</span>
           <div className={ s.smallLogo }><Logo variant='small' /></div>
           <div className={ s.inlineLogo }><Logo variant='inline' /></div>
         </Link>
+
         <nav className={ s.topMenu }>
           <ul>
-          { website.menu.map(entry => (
+          { paramorph.config.menu.map(entry => (
             <li key={ entry.url }><Button url={ entry.url }>{ entry.short }</Button></li>
           )) }
           </ul>

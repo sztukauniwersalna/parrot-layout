@@ -1,8 +1,6 @@
 /// <reference types="react" />
-import { Page, Website } from 'paramorph/models';
-export interface Props {
-    website: Website;
-    page: Page;
+import { PureComponent } from 'paramorph';
+export declare class Tags extends PureComponent<{}, {}> {
+    render(): JSX.Element | null;
 }
-export declare function Tags({website, page}: Props): JSX.Element | null;
 export default Tags;

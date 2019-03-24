@@ -1,9 +1,9 @@
 /// <reference types="react" />
-import { Page, Website } from 'paramorph/models';
+import { PureComponent } from 'paramorph';
 export interface Props {
-    website: Website;
-    page: Page;
     responsive?: boolean;
 }
-export declare function Crumbs({website, page, responsive}: Props): JSX.Element;
+export declare class Crumbs extends PureComponent<Props, {}> {
+    render(): JSX.Element;
+}
 export default Crumbs;

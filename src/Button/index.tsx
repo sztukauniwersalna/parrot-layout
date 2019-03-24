@@ -1,6 +1,7 @@
+
 import * as React from 'react';
-import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+
+import { Link } from 'paramorph';
 
 const s = require('./style');
 
@@ -13,7 +14,7 @@ export interface Props {
   onClick ?: ClickListener;
   variant ?: Variant;
   color ?: Color;
-  children : ReactNode;
+  children : React.ReactNode;
 }
 
 export function Button({ url, variant = 'flat', color = 'gray', onClick, children } : Props) {
@@ -40,7 +41,7 @@ function renderExternalLink(
   classNames : string[],
   url : string,
   onClick ?: ClickListener,
-  children ?: ReactNode
+  children ?: React.ReactNode
 ) {
   return (
     <span className={ classNames.join(' ') }>
@@ -55,7 +56,7 @@ function renderLink(
   classNames : string[],
   url : string,
   onClick ?: ClickListener,
-  children ?: ReactNode
+  children ?: React.ReactNode
 ) {
   return (
     <span className={ classNames.join(' ') }>
@@ -69,7 +70,7 @@ function renderLink(
 function renderButton(
   classNames : string[],
   onClick ?: ClickListener,
-  children ?: ReactNode
+  children ?: React.ReactNode
 ) {
   return (
     <span className={ classNames.join(' ') }>

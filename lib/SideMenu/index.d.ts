@@ -1,5 +1,4 @@
-/// <reference types="react" />
-import { Component, ReactElement } from 'react';
+import * as React from 'react';
 export interface ItemProps {
     icon?: string;
     title: string;
@@ -10,19 +9,19 @@ export interface Props {
     visible?: boolean;
     onCloseRequested: () => void;
     onClosed: () => void;
-    children?: ReactElement<ItemProps>[];
+    children?: React.ReactElement<ItemProps>[];
     currentUrl: string;
 }
 export interface State {
     visible: boolean;
 }
-export declare class SideMenu extends Component<Props, State> {
+export declare class SideMenu extends React.Component<Props, State> {
     private element;
     constructor(props: Props);
     componentWillReceiveProps(props: Props): void;
     render(): JSX.Element;
-    private renderItems();
-    private renderItem(item);
-    private onTransitionEnd();
+    private renderItems;
+    private renderItem;
+    private onTransitionEnd;
 }
 export default SideMenu;

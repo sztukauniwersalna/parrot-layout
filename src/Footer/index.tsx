@@ -1,24 +1,20 @@
-import * as React from 'react';
-import { Component } from 'react';
-import { Link } from 'react-router-dom';
 
-import { Page, MenuEntry, Website } from 'paramorph/models';
+import * as React from 'react';
+
+import { PureComponent, Link, Page } from 'paramorph';
+
 import Button from '../Button';
 import Icon from '../Icon';
 import SocialButtons from '../SocialButtons';
 
 const s = require('./style');
 
-export interface Props {
-  website : Website;
-  page : Page;
-}
-
-export class Footer extends Component<Props, {}> {
+export class Footer extends PureComponent<{}, {}> {
   render() {
-    const { website, page } = this.props;
-    const index = website.getPageOfUrl('/');
-    const sitemap = website.getPageOfUrl('/sitemap');
+    const { paramorph, page } = this.context;
+
+    const index = paramorph.pages['/'] as Page;
+    const sitemap = paramorph.pages['/sitemap'] as Page;
 
     return (
       <footer className={ s.footer }>
@@ -26,7 +22,7 @@ export class Footer extends Component<Props, {}> {
           <SocialButtons />
         </div>
         <ul className={ s.categories }>
-        { website.menu.map((entry : MenuEntry) => (
+        { paramorph.config.menu.map(entry => (
           <li key={ entry.url }><Button url={ entry.url }>{ entry.title }</Button></li>
         )) }
         </ul>

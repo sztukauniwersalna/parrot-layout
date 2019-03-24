@@ -1,8 +1,7 @@
-import * as React from 'react';
-import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 
-import { Page, Website } from 'paramorph/models';
+import * as React from 'react';
+
+import { Page, PureComponent, Link, ContextTypes } from 'paramorph';
 
 import Tags from '../Tags';
 import Button from '../Button';
@@ -12,28 +11,41 @@ import { Branch as TocBranch } from '../TableOfContents';
 const s = require('./style');
 
 export interface Props {
-  website : Website;
   page : Page;
+  Content : React.ComponentType<any>;
 }
 
-export function Tile({ website, page } : Props) {
-  const Body = page.body;
+export class Tile extends PureComponent<Props, {}> {
+  static readonly childContextTypes = ContextTypes;
 
-  return (
-    <article>
-      <h1><Link to={ page.url }>{ page.title }</Link></h1>
-      <div className={ s.tags }>
-        <Tags website={ website } page={ page } />
-      </div>
+  getChildContext() {
+    const { page } = this.props;
 
-      { maybeRenderImage(page) }
-      <Body website={ website } page={ page } respectLimit={ true } />
+    return {
+      ...this.context,
+      page,
+    }
+  }
 
-      <div className={ s.more }>
-        <Button url={ page.url } variant='raised' color='purple'>Read More</Button>
-      </div>
-    </article>
-  );
+  render() {
+    const { page, Content, ...props } = this.props;
+
+    return (
+      <article>
+        <h1><Link to={ page.url }>{ page.title }</Link></h1>
+        <div className={ s.tags }>
+          <Tags />
+        </div>
+
+        { maybeRenderImage(page) }
+        <Content { ...props } respectLimit={ true } />
+
+        <div className={ s.more }>
+          <Button url={ page.url } variant='raised' color='purple'>Read More</Button>
+        </div>
+      </article>
+    );
+  }
 }
 
 function maybeRenderImage(page : Page) {

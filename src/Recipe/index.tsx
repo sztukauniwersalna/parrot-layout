@@ -1,8 +1,5 @@
-import * as React from 'react';
-import { ReactNode, ReactElement } from 'react';
-import { Link } from 'react-router-dom';
 
-import { Page, Tag, Website } from 'paramorph/models';
+import * as React from 'react';
 
 import Icon from '../Icon';
 import Image from '../Image';
@@ -26,7 +23,7 @@ export function Ingredient({ title, quantity } : IngredientProps) {
 }
 
 export interface MethodProps {
-  children : ReactNode;
+  children : React.ReactNode;
 }
 
 export function Method({ children } : MethodProps) {
@@ -42,11 +39,11 @@ export interface Props {
   time : string;
   level : string;
   mealFor : string;
-  children : ReactElement<IngredientProps | MethodProps>[];
+  children : React.ReactElement<IngredientProps | MethodProps>[];
 }
 
 export function Recipe({ title, photo, altText, time, level, mealFor, children } : Props) {
-  const childs = ([] as ReactElement<IngredientProps | MethodProps>[]).concat(children);
+  const childs = ([] as React.ReactElement<IngredientProps | MethodProps>[]).concat(children);
 
   const ingredients = childs.filter(c => c.type === Ingredient);
   const methods = childs.filter(c => c.type === Method);

@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from 'react';
 export interface Props {
     src: string;
@@ -14,7 +13,7 @@ export declare class Image extends React.Component<Props, State> {
     render(): JSX.Element;
     componentDidMount(): void;
     componentWillUnmount(): void;
-    private maybeStartLoading();
-    private setStep(step);
+    private maybeStartLoading;
+    private setStep;
 }
 export default Image;

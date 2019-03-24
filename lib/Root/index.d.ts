@@ -1,4 +1,4 @@
 /// <reference types="react" />
-import { RootProps } from 'paramorph/components/Root';
-export declare function Root({website, page, localBundles, externalBundles}: RootProps): JSX.Element;
+import { RootProps } from 'paramorph/react/Root';
+export declare function Root({ paramorph, page, localBundles, externalBundles }: RootProps): JSX.Element;
 export default Root;

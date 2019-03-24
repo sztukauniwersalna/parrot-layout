@@ -1,6 +1,7 @@
+
 import * as React from 'react';
-import { Component, ReactNode, ReactElement, Children, cloneElement } from 'react';
-import { Link } from 'react-router-dom';
+
+import { Link } from 'paramorph';
 
 import Button from '../Button';
 import Icon from '../Icon';
@@ -21,14 +22,14 @@ export interface Props {
   visible ?: boolean;
   onCloseRequested : () => void;
   onClosed : () => void;
-  children ?: ReactElement<ItemProps>[];
+  children ?: React.ReactElement<ItemProps>[];
   currentUrl : string;
 }
 export interface State {
   visible : boolean;
 }
 
-export class SideMenu extends Component<Props, State> {
+export class SideMenu extends React.Component<Props, State> {
   private element : HTMLDivElement;
 
   constructor(props : Props) {
@@ -84,11 +85,11 @@ export class SideMenu extends Component<Props, State> {
       return null;
     }
 
-    return ([] as ReactElement<ItemProps>[]).concat(children as ReactElement<ItemProps>[])
+    return ([] as React.ReactElement<ItemProps>[]).concat(children as React.ReactElement<ItemProps>[])
       .map(item => this.renderItem(item));
   }
 
-  private renderItem(item : ReactElement<ItemProps>) {
+  private renderItem(item : React.ReactElement<ItemProps>) {
     const { currentUrl, onCloseRequested } = this.props;
 
     if (currentUrl === item.props.url) {

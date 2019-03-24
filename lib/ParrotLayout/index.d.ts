@@ -1,21 +1,23 @@
 /// <reference types="react" />
-import { Component } from 'react';
-import { Page, Website } from 'paramorph/models';
-export interface Props {
-    website: Website;
-    page: Page;
-}
+import { PureComponent } from 'paramorph';
+import '../polyfill/swipe-events';
 export interface State {
     sideMenuClassName: string;
 }
-export declare class ParrotLayout extends Component<Props, State> {
-    constructor(props: Props);
+export declare class ParrotLayout extends PureComponent<{}, State> {
+    constructor(props: {});
+    render(): JSX.Element;
     componentDidMount(): void;
     componentWillUnmount(): void;
-    render(): JSX.Element;
-    private showMenu();
-    private hideMenu();
-    private disableMenu();
-    private setSideMenuClassName(sideMenuClassName);
+    private renderJumbotron;
+    private maybeRenderTitle;
+    private maybeRenderComments;
+    private renderFooter;
+    private renderSideMenu;
+    private getMenuEntryForCurrentPage;
+    private showMenu;
+    private hideMenu;
+    private disableMenu;
+    private setSideMenuClassName;
 }
 export default ParrotLayout;

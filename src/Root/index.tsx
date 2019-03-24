@@ -1,14 +1,15 @@
+
 import * as React from 'react';
 
-import { RootProps } from 'paramorph/components/Root';
-import DeferredScripts from 'paramorph/components/DeferredScripts';
-import DeferredStyles from 'paramorph/components/DeferredStyles';
+import { RootProps } from 'paramorph/react/Root';
+import DeferredScripts from 'paramorph/react/DeferredScripts';
+import DeferredStyles from 'paramorph/react/DeferredStyles';
 
 declare var GA_TRACKING_ID : string | undefined;
 
 const GTAG_API_URL = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
 
-export function Root({ website, page, localBundles, externalBundles } : RootProps) {
+export function Root({ paramorph, page, localBundles, externalBundles } : RootProps) {
   const gtagConfigScript = getGtagConfigBundle(localBundles.js);
   const deferredScripts = externalBundles.js.concat(removeGtagConfigBundle(localBundles.js));
   const deferredStyles = externalBundles.css;
@@ -16,14 +17,16 @@ export function Root({ website, page, localBundles, externalBundles } : RootProp
   return (
     <html>
       <head>
-        <title>{ page.title } | { website.title }</title>
+        <title>{ page.title } | { paramorph.config.title }</title>
         <meta name='keywords' content={ page.tags.join(', ') } />
         <meta name='description' content={ page.description } />
         <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+
         <script async type='text/javascript' src={ GTAG_API_URL } />
         <script type='text/javascript' src={ gtagConfigScript } />
         <FoucRemovalTrick/>
-        <meta property='og:url' content={ `${website.baseUrl}${page.url}` } />
+
+        <meta property='og:url' content={ `${paramorph.config.baseUrl}${page.url}` } />
         <meta property='og:title' content={ page.title } />
         {
           page.image !== null
@@ -31,16 +34,19 @@ export function Root({ website, page, localBundles, externalBundles } : RootProp
           : null
         }
         <meta property='og:description' content={ page.description } />
-        <meta property='og:locale' content={ website.locale } />
+        <meta property='og:locale' content={ paramorph.config.locale } />
         <meta property='og:type' content={ page.url === '/' ? 'website' : 'article' } />
+
         { localBundles.css.map(url => (
           <link type='text/css' rel='stylesheet' href={ url } key={ url } />
         )) }
       </head>
+
       <body>
         <div id='root'>
           %%%BODY%%%
         </div>
+
         <DeferredScripts srcs={ deferredScripts } />
         <DeferredStyles hrefs={ deferredStyles } />
       </body>

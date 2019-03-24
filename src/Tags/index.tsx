@@ -1,30 +1,30 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
 
-import { Page, Tag, Website } from 'paramorph/models';
+import * as React from 'react';
+
+import { Page, Tag, Paramorph, PureComponent } from 'paramorph';
+
 import Button from '../Button';
 
 const s = require('./style');
 
-export interface Props {
-  website : Website,
-  page : Page,
-}
+export class Tags extends PureComponent<{}, {}> {
+  render() {
+    const { page, paramorph } = this.context;
 
-export function Tags({ website, page } : Props) {
-  if (page.tags.length == 0) {
-    return null;
+    if (page.tags.length === 0) {
+      return null;
+    }
+
+    return (
+      <ul className={ s.tags }>
+      { page.tags
+        .map(title => paramorph.tags[title] as Tag)
+        .map(({ title, url } : Tag) => (
+          <li key={ url }><Button url={ url }>{ title }</Button></li>
+        )) }
+      </ul>
+    );
   }
-
-  return (
-    <ul className={ s.tags }>
-    { page.tags
-      .map((title : string) => website.getTagOfTitle(title))
-      .map(({ title, url } : Tag) => (
-        <li key={ url }><Button url={ url }>{ title }</Button></li>
-      )) }
-    </ul>
-  );
 }
 
 export default Tags;
