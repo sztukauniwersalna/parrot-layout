@@ -1,12 +1,13 @@
+
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ReactHtmlPlugin = require('react-html-webpack-plugin');
 const externalReact = require('webpack-external-react');
 
 const path = require('path');
 
-const ThumbnailsPlugin = require('./plugins/thumbnails');
+// const ThumbnailsPlugin = require('./plugins/thumbnails');
 
 const GA_TRACKING_ID = '';
 const VERSION = Date.now();
@@ -20,7 +21,7 @@ module.exports = {
       './test/styles',
     ],
     'entry': [
-      './test/entry',
+      'paramorph/entry/client',
     ],
   },
 
@@ -30,6 +31,7 @@ module.exports = {
     libraryTarget: 'umd',
   },
 
+  mode: 'development',
   target: 'web',
 
   resolve: {
@@ -37,12 +39,12 @@ module.exports = {
       '.ts', '.tsx', '.js',
     ],
     alias: {
-      'paramorph/data': path.resolve(__dirname, './test/data/index.tsx'),
       'parrot-layout': path.resolve(__dirname, './test/bundle'),
+      '@website/_config.yml': path.resolve(__dirname, './test/data/config.ts'),
     },
   },
 
-  externals: externalReact.extranals,
+  externals: externalReact.externals,
 
   module: {
     noParse: externalReact.noParse,
@@ -58,16 +60,19 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          use: 'raw-loader',
-        })
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader?url=false',
+        ],
       },
     ],
   },
 
   plugins: [
-    new ThumbnailsPlugin({ output: `thumbs-${VERSION}.js` }),
-    new ExtractTextPlugin(`style-${VERSION}.bundle.css`),
+//    new ThumbnailsPlugin({ output: `thumbs-${VERSION}.js` }),
+    new MiniCssExtractPlugin({
+      filename: `style-${VERSION}.bundle.css`,
+    }),
     new CopyPlugin(
       [
         'jpg',
@@ -84,10 +89,12 @@ module.exports = {
       component: './src/Root/index.tsx',
       output: 'index.html',
       props: {
-        website: {
-          title: 'ParrotLayout',
-          baseUrl: 'http://localhost:8080',
-          locale: 'pl_PL',
+        paramorph: {
+          config: {
+            title: 'ParrotLayout',
+            baseUrl: 'http://localhost:8080',
+            locale: 'pl_PL',
+          },
         },
         page: {
           title: 'Feed',
@@ -98,7 +105,7 @@ module.exports = {
         },
         localBundles: {
           js: [
-            `thumbs-${VERSION}.js`,
+//            `thumbs-${VERSION}.js`,
             `entry-${VERSION}.bundle.js`,
             `gtagConfig-${VERSION}.bundle.js`,
           ],
@@ -108,13 +115,16 @@ module.exports = {
         },
         externalBundles: {
           js: [
-            'https://unpkg.com/react@15/dist/react.js',
-            'https://unpkg.com/prop-types@15.6.0/prop-types.min.js',
-            'https://unpkg.com/react-dom@15/dist/react-dom.js',
-            'https://unpkg.com/react-router-dom@4.1.2/umd/react-router-dom.js',
+            'https://unpkg.com/react@16.8.6/umd/react.development.js',
+            'https://unpkg.com/prop-types@15.7.2/prop-types.min.js',
+            'https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js',
+            'https://unpkg.com/react-dom@16.8.6/umd/react-dom-server.browser.development.js',
           ],
           css: [],
         },
+      },
+      globals: {
+        window: {},
       },
     }),
     new webpack.DefinePlugin({

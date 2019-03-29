@@ -66,7 +66,7 @@ module.exports = {
             },
           },
           'css-loader?modules&localIdentName=[local]-[hash:base64:5]',
-          'resolve-url-loader?attempts=1',
+          'resolve-url-loader',
           'postcss-loader?sourceMap',
           'sass-loader?sourceMap',
         ],
@@ -87,4 +87,8 @@ module.exports = {
     }),
   ],
 };
+
+process.on('unhandledRejection', (reason, p) => {
+  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+});
 

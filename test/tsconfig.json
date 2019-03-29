@@ -27,15 +27,15 @@
       "webpack",
       "webpack-env",
       "react",
-      "react-router-dom"
+      "react-router-dom",
     ]
   },
   "include": [
-    "./modules.d.ts",
     "./**/*.tsx",
     "./**/*.ts",
     "../src/**/*.tsx",
-    "../src/**/*.ts"
+    "../src/**/*.ts",
+    "../node_modules/paramorph/**/*.ts"
   ],
   "exclude": [
   ]

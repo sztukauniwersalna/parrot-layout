@@ -15,8 +15,7 @@
     "build": "npm run compile && npm run copy",
     "clean-build": "npm run clean && npm run build",
     "test": "npm run clean-build && npm run compile-test && npm run serve",
-    "deploy": "npm run clean-build && npm publish lib",
-    "dev": "webpack-dev-server --progress --colors --inline --config ./hot.config.js"
+    "deploy": "npm run clean-build && npm publish lib"
   },
   "repository": {
     "type": "git",
@@ -56,6 +55,7 @@
     "node-sass": "^4.11.0",
     "postcss-loader": "^3.0.0",
     "postcss-scss": "^2.0.0",
+    "raw-loader": "^2.0.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-hot-loader": "^4.8.0",
@@ -74,7 +74,6 @@
     "webpack-external-react": "^1.1.0"
   },
   "dependencies": {
-    "paramorph": "^2.0.0-beta.63",
     "react-disqus-comments": "^1.4.0",
     "sharp": "^0.22.0"
   },

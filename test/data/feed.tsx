@@ -1,25 +1,22 @@
+
 import * as React from 'react';
 
-import { Website, Page } from 'paramorph/models';
+import { PureComponent, Page } from 'paramorph';
 import { Feed } from 'parrot-layout';
 
-export interface Props {
-  website : Website;
-  page : Page;
-}
+export class FeedPage extends PureComponent<{}, {}> {
+  render() {
+    const { paramorph } = this.context;
 
-export function FeedPage({ website, page } : Props) {
-  return (
-    <Feed
-      website={ website }
-      page={ page }
-      feed={
-        Object.keys(website.pages)
-        .map(url => website.pages[url])
-        .sort((a, b) => a.date.getTime() - b.date.getTime())
-      }
-    />
-  );
+    return (
+      <Feed pages={
+        Object.keys(paramorph.pages)
+        .map(url => paramorph.pages[url] as Page)
+        .filter(page => page.output && page.feed)
+        .sort((a, b) => a.compareTo(b)) }
+      />
+    );
+  }
 }
 
 export default FeedPage;
