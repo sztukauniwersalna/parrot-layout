@@ -5,10 +5,12 @@ export interface State {
     sideMenuClassName: string;
 }
 export declare class ParrotLayout extends PureComponent<{}, State> {
+    private unregister;
     constructor(props: {});
     render(): JSX.Element;
     componentDidMount(): void;
     componentWillUnmount(): void;
+    private onLocationChange;
     private renderJumbotron;
     private maybeRenderTitle;
     private maybeRenderComments;

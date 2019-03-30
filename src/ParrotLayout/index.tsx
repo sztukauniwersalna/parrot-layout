@@ -24,6 +24,8 @@ export interface State {
 }
 
 export class ParrotLayout extends PureComponent<{}, State> {
+  private unregister : any;
+
   constructor(props : {}) {
     super(props);
 
@@ -31,6 +33,7 @@ export class ParrotLayout extends PureComponent<{}, State> {
       sideMenuClassName: s.closed,
     };
 
+    this.onLocationChange = this.onLocationChange.bind(this);
     this.hideMenu = this.hideMenu.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.disableMenu = this.disableMenu.bind(this);
@@ -67,17 +70,25 @@ export class ParrotLayout extends PureComponent<{}, State> {
   }
 
   componentDidMount() {
-    const { page, paramorph } = this.context;
+    const { page, paramorph, history } = this.context;
 
     document.body.addEventListener('swipe-left', this.hideMenu);
     document.body.addEventListener('swipe-right', this.showMenu);
-
-    window.scrollTo(0, 0);
-    document.title = `${page.title} | ${paramorph.config.title}`;
+    this.unregister = history.listen(this.onLocationChange);
   }
   componentWillUnmount() {
     document.body.removeEventListener('swipe-left', this.hideMenu);
     document.body.removeEventListener('swipe-right', this.showMenu);
+    this.unregister();
+  }
+
+  private onLocationChange() {
+    setImmediate(() => {
+      const { page, paramorph } = this.context;
+
+      document.title = `${page.title} | ${paramorph.config.title}`;
+      window.scrollTo(0, 0);
+    });
   }
 
   private renderJumbotron() {
