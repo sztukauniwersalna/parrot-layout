@@ -1,6 +1,6 @@
 {
   "name": "parrot-layout",
-  "version": "1.13.13",
+  "version": "1.14.0",
   "description": "",
   "main": "index.js",
   "scripts": {
