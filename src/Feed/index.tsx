@@ -25,7 +25,7 @@ export class Feed extends PureComponent<Props, State> {
   constructor(props : Props) {
     super(props);
 
-    const batchSize = Math.max(props.pages.length, props.batchSize || DEFAULT_BATCH_SIZE);
+    const batchSize = Math.min(props.pages.length, props.batchSize || DEFAULT_BATCH_SIZE);
 
     this.state = {
       loading: batchSize,
