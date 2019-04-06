@@ -102,10 +102,10 @@ export class Feed extends PureComponent<Props, State> {
   }
 
   private needsMoreContent() {
-    const { scrollY } = window;
+    const { scrollY, innerHeight } = window;
 
     const offsetTop = this.getOffsetTop(this.loadTrigger);
-    return scrollY >= offsetTop;
+    return scrollY + innerHeight >= offsetTop;
   }
 
   private loadNextBatch() {
