@@ -78,6 +78,6 @@
     "sharp": "^0.22.0"
   },
   "peerDependencies": {
-    "paramorph": "^2.0.0-beta.77"
+    "paramorph": "^2.0.0-beta.79"
   }
 }

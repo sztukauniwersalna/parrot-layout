@@ -9,7 +9,7 @@ declare var GA_TRACKING_ID : string | undefined;
 
 const GTAG_API_URL = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
 
-export function Root({ paramorph, page, localBundles, externalBundles } : RootProps) {
+export function Root({ paramorph, page, localBundles, externalBundles, preload } : RootProps) {
   const gtagConfigScript = getGtagConfigBundle(localBundles.js);
   const deferredScripts = externalBundles.js.concat(removeGtagConfigBundle(localBundles.js));
   const deferredStyles = externalBundles.css;
@@ -25,6 +25,10 @@ export function Root({ paramorph, page, localBundles, externalBundles } : RootPr
         <script async type='text/javascript' src={ GTAG_API_URL } />
         <script type='text/javascript' src={ gtagConfigScript } />
         <FoucRemovalTrick/>
+
+        { preload.map(url => (
+          <meta name='paramorph-preload' content={ url } />
+        )) }
 
         <meta property='og:url' content={ `${paramorph.config.baseUrl}${page.url}` } />
         <meta property='og:title' content={ page.title } />

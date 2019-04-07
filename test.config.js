@@ -122,6 +122,7 @@ module.exports = {
           ],
           css: [],
         },
+        preload: [],
       },
       globals: {
         window: {},

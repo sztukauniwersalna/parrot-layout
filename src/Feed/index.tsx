@@ -46,7 +46,7 @@ export class Feed extends PureComponent<Props, State> {
     const { loading, loaded } = this.state;
 
     if (respectLimit) {
-      return <TocBranch pages={ pages } shallow respectLimit { ...props } />;
+      return <TocBranch pages={ pages.slice(0, page.limit) } shallow { ...props } />;
     }
     const content = this.getContent();
 
@@ -78,12 +78,13 @@ export class Feed extends PureComponent<Props, State> {
     this.onScroll();
   }
   componentWillUnmount() {
+    const { paramorph } = this.context;
     const { respectLimit = false } = this.props;
 
     if (!respectLimit) {
       paramorph.removeContentListener(this.onContent);
     }
-    window.removeEventListener('scroll', this.onScroll);a
+    window.removeEventListener('scroll', this.onScroll);
   }
 
   private getContent() : React.ComponentType<{}>[] {
@@ -94,13 +95,13 @@ export class Feed extends PureComponent<Props, State> {
     const content : React.ComponentType<{}>[] = [];
     for (const page of pages) {
       const pageContent = paramorph.content[page.url];
-      if (!pageContent) {
+      if (pageContent === undefined) {
         break;
       }
       content.push(pageContent);
 
       if (content.length === loading) {
-        return;
+        break;
       }
     }
     return content;

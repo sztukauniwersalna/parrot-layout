@@ -50,13 +50,13 @@ paramorph.addPage(createPage('Sitemap', '/sitemap', './sitemap', false));
 paramorph.addPage(createPage('NotFound', '/404', './notfound', false));
 
 paramorph.addLayoutLoader('parrot-layout', () => Promise.resolve(ParrotLayout));
-paramorph.addPageLoader('/', () => Promise.resolve(FeedPage));
-paramorph.addPageLoader('/article', () => Promise.resolve(ArticlePage));
-paramorph.addPageLoader('/typography', () => Promise.resolve(TypographyPage));
-paramorph.addPageLoader('/images', () => Promise.resolve(ImagesPage));
-paramorph.addPageLoader('/recipe', () => Promise.resolve(RecipePage));
-paramorph.addPageLoader('/sitemap', () => Promise.resolve(SitemapPage));
-paramorph.addPageLoader('/404', () => Promise.resolve(NotFoundPage));
+paramorph.addContentLoader('/', () => Promise.resolve(FeedPage));
+paramorph.addContentLoader('/article', () => Promise.resolve(ArticlePage));
+paramorph.addContentLoader('/typography', () => Promise.resolve(TypographyPage));
+paramorph.addContentLoader('/images', () => Promise.resolve(ImagesPage));
+paramorph.addContentLoader('/recipe', () => Promise.resolve(RecipePage));
+paramorph.addContentLoader('/sitemap', () => Promise.resolve(SitemapPage));
+paramorph.addContentLoader('/404', () => Promise.resolve(NotFoundPage));
 
 function createPage(
   title : string,
