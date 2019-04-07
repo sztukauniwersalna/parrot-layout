@@ -69,13 +69,14 @@ export class Feed extends PureComponent<Props, State> {
   componentDidMount() {
     const { paramorph } = this.context;
     const { respectLimit = false } = this.props;
+    const { loaded } = this.state;
 
     if (!respectLimit) {
       paramorph.addContentListener(this.onContent);
     }
     window.addEventListener('scroll', this.onScroll);
 
-    this.onScroll();
+    this.maybeLoadInitialBatch();
   }
   componentWillUnmount() {
     const { paramorph } = this.context;
@@ -137,6 +138,25 @@ export class Feed extends PureComponent<Props, State> {
     const { loading, loaded } = this.state;
 
     return loading !== loaded;
+  }
+
+  private maybeLoadInitialBatch() {
+    const { paramorph } = this.context;
+    const { loading, loaded } = this.state;
+    const { pages } = this.props;
+
+    const content = this.getContent();
+    if (content.length === loaded) {
+      this.onScroll();
+      return;
+    }
+    this.setState(
+      prev => ({ loaded: content.length }),
+      () => {
+        const batch = pages.slice(0, loading);
+        batch.map(page => paramorph.loadContent(page.url));
+      },
+    );
   }
 
   private loadNextBatch() {

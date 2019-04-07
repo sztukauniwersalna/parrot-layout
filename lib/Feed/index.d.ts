@@ -21,6 +21,7 @@ export declare class Feed extends PureComponent<Props, State> {
     private onContent;
     private needsMoreContent;
     private isLoading;
+    private maybeLoadInitialBatch;
     private loadNextBatch;
     private getOffsetTop;
     private isAtEnd;
