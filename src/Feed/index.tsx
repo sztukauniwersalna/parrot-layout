@@ -8,16 +8,18 @@ import { Branch as TocBranch } from '../TableOfContents';
 
 export interface Props {
   pages : Page[];
+  preloadSize ?: number;
   batchSize ?: number;
   respectLimit ?: boolean;
 };
 
 export interface State {
-  loaded : number;
   loading : number;
+  loaded : number;
 }
 
-const DEFAULT_BATCH_SIZE = 20;
+const DEFAULT_PRELOAD_SIZE = 20;
+const DEFAULT_BATCH_SIZE = 5;
 
 export class Feed extends PureComponent<Props, State> {
   private loadTrigger : HTMLDivElement;
@@ -25,36 +27,17 @@ export class Feed extends PureComponent<Props, State> {
   constructor(props : Props) {
     super(props);
 
-    const batchSize = Math.min(props.pages.length, props.batchSize || DEFAULT_BATCH_SIZE);
-
+    const preloadSize = Math.min(
+      props.preloadSize || props.batchSize || DEFAULT_PRELOAD_SIZE,
+      props.pages.length,
+    );
     this.state = {
-      loading: batchSize,
-      loaded: batchSize,
+      loading: preloadSize,
+      loaded: preloadSize,
     };
 
+    this.onContent = this.onContent.bind(this);
     this.onScroll = this.onScroll.bind(this);
-  }
-
-  componentWillMount() {
-    const { paramorph, page } = this.context;
-    const { pages, respectLimit = false } = this.props;
-    const { loading } = this.state;
-
-    if (respectLimit) {
-      // Everything contained in props.pages. No need to fetch.
-      return;
-    }
-    const firstBatch = pages.slice(0, loading);
-
-    paramorph
-      .loadData(
-        page.url,
-        () => Promise.all(firstBatch.map(page => paramorph.loadPage(page.url))),
-      )
-      .then(() => {
-        this.forceUpdate();
-      })
-    ;
   }
 
   render() {
@@ -63,16 +46,13 @@ export class Feed extends PureComponent<Props, State> {
     const { loading, loaded } = this.state;
 
     if (respectLimit) {
-      return <TocBranch pages={ pages } shallow { ...props } />;
+      return <TocBranch pages={ pages } shallow respectLimit { ...props } />;
     }
-    const data = paramorph.data[page.url] as React.ComponentType<{}>[] || [];
+    const content = this.getContent();
 
-    if (data.length > pages.length) {
-      throw new Error(`${page.url}: pages.length (${pages.length}) < data.length (${data.length})`);
-    }
     return (
       <div>
-        { data.map((Content, i) => {
+        { content.map((Content, i) => {
           const page = pages[i];
 
           return (
@@ -87,17 +67,61 @@ export class Feed extends PureComponent<Props, State> {
   }
 
   componentDidMount() {
+    const { paramorph } = this.context;
+    const { respectLimit = false } = this.props;
+
+    if (!respectLimit) {
+      paramorph.addContentListener(this.onContent);
+    }
     window.addEventListener('scroll', this.onScroll);
 
     this.onScroll();
   }
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll);
+    const { respectLimit = false } = this.props;
+
+    if (!respectLimit) {
+      paramorph.removeContentListener(this.onContent);
+    }
+    window.removeEventListener('scroll', this.onScroll);a
+  }
+
+  private getContent() : React.ComponentType<{}>[] {
+    const { paramorph } = this.context;
+    const { pages } = this.props;
+    const { loading } = this.state;
+
+    const content : React.ComponentType<{}>[] = [];
+    for (const page of pages) {
+      const pageContent = paramorph.content[page.url];
+      if (!pageContent) {
+        break;
+      }
+      content.push(pageContent);
+
+      if (content.length === loading) {
+        return;
+      }
+    }
+    return content;
   }
 
   private onScroll() {
-    if (this.needsMoreContent() && !this.isAtEnd()) {
+    if (this.needsMoreContent() && !this.isAtEnd() && !this.isLoading()) {
       this.loadNextBatch();
+    }
+  }
+
+  private onContent() {
+    if (!this.isLoading()) {
+      // not loaded by us
+      return;
+    }
+    const { loaded } = this.state;
+    const content = this.getContent();
+
+    if (content.length > loaded) {
+      this.setState(prev => ({ loaded: content.length }));
     }
   }
 
@@ -108,39 +132,22 @@ export class Feed extends PureComponent<Props, State> {
     return scrollY + innerHeight >= offsetTop;
   }
 
+  private isLoading() {
+    const { loading, loaded } = this.state;
+
+    return loading !== loaded;
+  }
+
   private loadNextBatch() {
     const { paramorph, page } = this.context;
     const { pages, batchSize = DEFAULT_BATCH_SIZE } = this.props;
-    const { loading, loaded } = this.state;
-
-    if (loading !== loaded) {
-      return;
-    }
+    const { loading } = this.state;
 
     const nextLoading = Math.min(loading + batchSize, pages.length);
-    const batch = pages.slice(loaded, nextLoading);
+    const batch = pages.slice(loading, nextLoading);
 
-    const previousData : React.ComponentType<{}>[] = paramorph.data[page.url] || [];
-    const dataLoaded = paramorph.loadData<React.ComponentType<{}>[]>(
-      page.url,
-      () => {
-        return Promise.all(batch.map(page => paramorph.loadPage(page.url)))
-          .then(newData => previousData.concat(newData))
-        ;
-      },
-    );
-
-    this.setState(
-      prev => ({ ...prev, loading: nextLoading }),
-      () => {
-        dataLoaded.then(() => {
-          this.setState(
-            prev => ({ ...prev, loaded: nextLoading }),
-            this.onScroll,
-          );
-        });
-      },
-    );
+    batch.map(page => paramorph.loadContent(page.url));
+    this.setState(prev => ({ ...prev, loading: nextLoading }));
   }
 
   private getOffsetTop(elem : HTMLElement) : number {
@@ -159,4 +166,8 @@ export class Feed extends PureComponent<Props, State> {
 }
 
 export default Feed;
+
+export interface HashMap<T> {
+  [_ : string] : T;
+}
 
