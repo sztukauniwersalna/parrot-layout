@@ -9,11 +9,15 @@ export class FeedPage extends PureComponent<{}, {}> {
     const { paramorph } = this.context;
 
     return (
-      <Feed pages={
-        Object.keys(paramorph.pages)
-        .map(url => paramorph.pages[url] as Page)
-        .filter(page => page.output && page.feed)
-        .sort((a, b) => a.compareTo(b)) }
+      <Feed
+        pages={
+          Object.keys(paramorph.pages)
+          .map(url => paramorph.pages[url] as Page)
+          .filter(page => page.output && page.feed)
+          .sort((a, b) => a.compareTo(b))
+        }
+        preloadSize={ 2 }
+        batchSize={ 1 }
       />
     );
   }
