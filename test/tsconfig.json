@@ -33,8 +33,7 @@
   "include": [
     "./**/*.tsx",
     "./**/*.ts",
-    "../src/**/*.tsx",
-    "../src/**/*.ts",
+    "../lib/**/*.ts",
     "../node_modules/paramorph/**/*.ts"
   ],
   "exclude": [
