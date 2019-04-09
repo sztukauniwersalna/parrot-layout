@@ -21,6 +21,8 @@ export interface State {
 const DEFAULT_PRELOAD_SIZE = 20;
 const DEFAULT_BATCH_SIZE = 5;
 
+const s = require('./style.scss');
+
 export class Feed extends PureComponent<Props, State> {
   private loadTrigger : HTMLDivElement;
 
@@ -51,7 +53,7 @@ export class Feed extends PureComponent<Props, State> {
     const content = this.getContent();
 
     return (
-      <div>
+      <div className={ loaded !== loading ? s.loading : '' }>
         { content.map((Content, i) => {
           const page = pages[i];
 
@@ -59,8 +61,11 @@ export class Feed extends PureComponent<Props, State> {
             <Tile key={ page.url } page={ page } Content={ Content } />
           );
         }) }
-        <div ref={ e => this.loadTrigger = e as HTMLDivElement }>
-          { loading !== loaded ? 'Loading...' : null }
+        <div
+          className={ s.loadTrigger }
+          ref={ e => this.loadTrigger = e as HTMLDivElement }
+        >
+          <div><span/><span/><span/><span/></div>
         </div>
       </div>
     );
