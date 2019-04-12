@@ -26,10 +26,6 @@ export function Root({ paramorph, page, localBundles, externalBundles, preload }
         <script type='text/javascript' src={ gtagConfigScript } />
         <FoucRemovalTrick/>
 
-        { preload.map(url => (
-          <meta name='paramorph-preload' content={ url } />
-        )) }
-
         <meta property='og:url' content={ `${paramorph.config.baseUrl}${page.url}` } />
         <meta property='og:title' content={ page.title } />
         {
@@ -41,6 +37,9 @@ export function Root({ paramorph, page, localBundles, externalBundles, preload }
         <meta property='og:locale' content={ paramorph.config.locale } />
         <meta property='og:type' content={ page.url === '/' ? 'website' : 'article' } />
 
+        { preload.map((url, i) => (
+          <meta name='paramorph-preload' content={ url } key={ `preload-${i}` } />
+        )) }
         { localBundles.css.map(url => (
           <link type='text/css' rel='stylesheet' href={ url } key={ url } />
         )) }
