@@ -5,6 +5,7 @@ import { Page, PureComponent } from 'paramorph';
 
 import Tile from '../Tile';
 import { Branch as TocBranch } from '../TableOfContents';
+import Spinner from '../Spinner';
 
 export interface Props {
   pages : Page[];
@@ -65,7 +66,7 @@ export class Feed extends PureComponent<Props, State> {
           className={ s.loadTrigger }
           ref={ e => this.loadTrigger = e as HTMLDivElement }
         >
-          <div><span/><span/><span/><span/></div>
+          <Spinner />
         </div>
       </div>
     );
