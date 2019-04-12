@@ -22,7 +22,7 @@ export interface State {
 const DEFAULT_PRELOAD_SIZE = 20;
 const DEFAULT_BATCH_SIZE = 5;
 
-const s = require('./style.scss');
+const s = require('./style');
 
 export class Feed extends PureComponent<Props, State> {
   private loadTrigger : HTMLDivElement;

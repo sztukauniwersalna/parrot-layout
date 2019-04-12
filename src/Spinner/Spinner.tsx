@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-const s = require('./Spinner.scss');
+const s = require('./style');
 
 export function Spinner() {
   return (
