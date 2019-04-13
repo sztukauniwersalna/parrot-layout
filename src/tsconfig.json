@@ -27,7 +27,6 @@
       "webpack",
       "webpack-env",
       "react",
-      "react-router-dom"
     ]
   },
   "include": [

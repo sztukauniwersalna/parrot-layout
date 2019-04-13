@@ -39,7 +39,7 @@ export declare class Tile extends PureComponent<Props, {}> {
     getChildContext(): {
         page: Page;
         paramorph: import("paramorph").Paramorph;
-        history: import("history").History<any>;
+        history: any;
     };
     render(): JSX.Element;
 }
