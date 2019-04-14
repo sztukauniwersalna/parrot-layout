@@ -7,6 +7,7 @@ import DeferredStyles from 'paramorph/react/DeferredStyles';
 
 declare var GA_TRACKING_ID : string | undefined;
 
+const GA_API_URL = 'https://www.google-analytics.com/analytics.js';
 const GTAG_API_URL = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
 
 export function Root({ paramorph, page, localBundles, externalBundles, preload } : RootProps) {
@@ -22,8 +23,9 @@ export function Root({ paramorph, page, localBundles, externalBundles, preload }
         <meta name='description' content={ page.description } />
         <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 
+        <script async type="text/javascript" src={ GA_API_URL }></script>
+        <script async type='text/javascript' src={ GTAG_API_URL } />
         <script type='text/javascript' src={ gtagConfigScript } />
-        <script type='text/javascript' src={ GTAG_API_URL } />
         <FoucRemovalTrick/>
 
         <meta property='og:url' content={ `${paramorph.config.baseUrl}${page.url}` } />
