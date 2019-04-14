@@ -106,7 +106,7 @@ export class SideMenu extends React.Component<Props, State> {
 
     return (
       <li key={ item.props.url }>
-        <Link to={ item.props.url }>
+        <Link to={ item.props.url } onClick={ onCloseRequested }>
           <span className={ s.itemIcon }><Icon name={ item.props.icon } /></span>
           <span className={ s.itemTitle }>{ item.props.title }</span>
         </Link>
