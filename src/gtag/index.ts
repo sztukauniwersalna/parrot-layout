@@ -32,6 +32,7 @@ function sendPageviewOnLocationChange() {
 
     page_path = location.pathname;
     gtag('config', GA_TRACKING_ID, { page_path });
+    console.log(`page view: ${page_path}`);
   }, 300);
 }
 
