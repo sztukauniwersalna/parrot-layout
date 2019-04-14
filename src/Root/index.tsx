@@ -22,8 +22,8 @@ export function Root({ paramorph, page, localBundles, externalBundles, preload }
         <meta name='description' content={ page.description } />
         <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 
-        <script async type='text/javascript' src={ GTAG_API_URL } />
         <script type='text/javascript' src={ gtagConfigScript } />
+        <script type='text/javascript' src={ GTAG_API_URL } />
         <FoucRemovalTrick/>
 
         <meta property='og:url' content={ `${paramorph.config.baseUrl}${page.url}` } />
