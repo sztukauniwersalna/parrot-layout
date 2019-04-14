@@ -16,7 +16,7 @@ module.exports = {
     libraryTarget: 'commonjs',
   },
 
-  mode: 'production',
+  mode: process.env.NODE_ENV || 'development',
   target: 'node',
   devtool: false,
 

@@ -14,7 +14,7 @@ export class Footer extends PureComponent<{}, {}> {
     const { paramorph, page } = this.context;
 
     const index = paramorph.pages['/'] as Page;
-    const sitemap = paramorph.pages['/sitemap'] as Page;
+    const sitemap = paramorph.pages['/sitemap/'] as Page;
 
     return (
       <footer className={ s.footer }>

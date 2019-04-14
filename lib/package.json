@@ -15,7 +15,7 @@
     "build": "npm run compile && npm run copy",
     "clean-build": "npm run clean && npm run build",
     "test": "npm run clean-build && npm run compile-test && npm run serve",
-    "deploy": "npm run clean-build && npm publish lib"
+    "deploy": "NODE_ENV=production npm run clean-build && npm publish lib"
   },
   "repository": {
     "type": "git",
@@ -52,6 +52,7 @@
     "material-design-icons": "^3.0.1",
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.11.0",
+    "paramorph": "^2.2.3",
     "postcss-loader": "^3.0.0",
     "postcss-scss": "^2.0.0",
     "react": "^16.8.6",
@@ -75,6 +76,6 @@
     "sharp": "^0.22.0"
   },
   "peerDependencies": {
-    "paramorph": "^2.0.0"
+    "paramorph": "^2.2.2"
   }
 }

@@ -26,7 +26,7 @@ const config : Config = {
     {
       title: 'Sitemap',
       short: 'Sitemap',
-      url: '/sitemap',
+      url: '/sitemap/',
     },
   ],
   collections: {
@@ -41,22 +41,22 @@ export default paramorph;
 paramorph.addLayout(new Layout('parrot-layout', require.resolve('parrot-layout')));
 paramorph.addCollection(new Collection("pages", "pages", "./_pages", undefined, undefined, undefined));
 
-paramorph.addPage(createPage('Feed', '/', require.resolve('./feed'), false));
-paramorph.addPage(createPage('Article', '/article', './article', true));
-paramorph.addPage(createPage('Typography Test', '/typography', './typography', true));
-paramorph.addPage(createPage('Images Test', '/images', './images', true));
-paramorph.addPage(createPage('Recipe Test', '/recipe', './recipe', true));
-paramorph.addPage(createPage('Sitemap', '/sitemap', './sitemap', false));
-paramorph.addPage(createPage('NotFound', '/404', './notfound', false));
+paramorph.addPage(createPage('Feed', '/', './feed', false));
+paramorph.addPage(createPage('Article', '/article/', './article', true));
+paramorph.addPage(createPage('Typography Test', '/typography/', './typography', true));
+paramorph.addPage(createPage('Images Test', '/images/', './images', true));
+paramorph.addPage(createPage('Recipe Test', '/recipe/', './recipe', true));
+paramorph.addPage(createPage('Sitemap', '/sitemap/', './sitemap', false));
+paramorph.addPage(createPage('NotFound', '/404/', './notfound', false));
 
 paramorph.addLayoutLoader('parrot-layout', () => Promise.resolve(ParrotLayout));
 paramorph.addContentLoader('/', () => Promise.resolve(FeedPage));
-paramorph.addContentLoader('/article', () => Promise.resolve(ArticlePage));
-paramorph.addContentLoader('/typography', () => Promise.resolve(TypographyPage));
-paramorph.addContentLoader('/images', () => Promise.resolve(ImagesPage));
-paramorph.addContentLoader('/recipe', () => Promise.resolve(RecipePage));
-paramorph.addContentLoader('/sitemap', () => Promise.resolve(SitemapPage));
-paramorph.addContentLoader('/404', () => Promise.resolve(NotFoundPage));
+paramorph.addContentLoader('/article/', () => Promise.resolve(ArticlePage));
+paramorph.addContentLoader('/typography/', () => Promise.resolve(TypographyPage));
+paramorph.addContentLoader('/images/', () => Promise.resolve(ImagesPage));
+paramorph.addContentLoader('/recipe/', () => Promise.resolve(RecipePage));
+paramorph.addContentLoader('/sitemap/', () => Promise.resolve(SitemapPage));
+paramorph.addContentLoader('/404/', () => Promise.resolve(NotFoundPage));
 
 function createPage(
   title : string,
