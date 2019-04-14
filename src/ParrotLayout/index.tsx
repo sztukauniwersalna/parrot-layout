@@ -21,19 +21,18 @@ const s = require('./style');
 
 export interface State {
   sideMenuClassName : string;
+  currentPage : Page | null;
 }
 
 export class ParrotLayout extends PureComponent<{}, State> {
-  private unregister : any;
-
   constructor(props : {}) {
     super(props);
 
     this.state = {
       sideMenuClassName: s.closed,
+      currentPage : null,
     };
 
-    this.onLocationChange = this.onLocationChange.bind(this);
     this.hideMenu = this.hideMenu.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.disableMenu = this.disableMenu.bind(this);
@@ -74,21 +73,30 @@ export class ParrotLayout extends PureComponent<{}, State> {
 
     document.body.addEventListener('swipe-left', this.hideMenu);
     document.body.addEventListener('swipe-right', this.showMenu);
-    this.unregister = history.listen(this.onLocationChange);
+
+    this.setState(prev => ({ ...prev, currentPage: page }));
   }
   componentWillUnmount() {
     document.body.removeEventListener('swipe-left', this.hideMenu);
     document.body.removeEventListener('swipe-right', this.showMenu);
-    this.unregister();
   }
 
-  private onLocationChange() {
-    setImmediate(() => {
-      const { page, paramorph } = this.context;
+  componentDidUpdate(prevProps : {}, prevState : State) {
+    const { page, paramorph } = this.context;
+    const { sideMenuClassName } = this.state;
 
-      document.title = `${page.title} | ${paramorph.config.title}`;
-      window.scrollTo(0, 0);
-    });
+    if (prevState.currentPage === null) {
+      // after mount
+      return;
+    }
+    if (prevState.currentPage === page && prevState.sideMenuClassName !== sideMenuClassName) {
+      // just closing the menu
+      return;
+    }
+    window.scrollTo(0, 0);
+    document.title = `${page.title} | ${paramorph.config.title}`;
+
+    this.setState(prev => ({ ...prev, currentPage: page }));
   }
 
   private renderJumbotron() {
