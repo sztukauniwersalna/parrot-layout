@@ -9,13 +9,13 @@ const path = require('path');
 
 // const ThumbnailsPlugin = require('./plugins/thumbnails');
 
-const GA_TRACKING_ID = '';
+const GA_TRACKING_ID = 'UA-110945340-1';
 const VERSION = Date.now();
 
 module.exports = {
 	entry: {
     'gtagConfig': [
-      './lib/gtag',
+      './lib/gtagConfig',
     ],
     'styles': [
       './test/styles',
