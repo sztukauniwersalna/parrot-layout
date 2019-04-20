@@ -129,7 +129,7 @@ export class Feed extends PureComponent<Props, State> {
     const content = this.getContent();
 
     if (content.length > loaded) {
-      this.setState(prev => ({ loaded: content.length }));
+      this.setState(prev => ({ ...prev, loaded: content.length }));
     }
   }
 
@@ -157,7 +157,7 @@ export class Feed extends PureComponent<Props, State> {
       return;
     }
     this.setState(
-      prev => ({ loaded: content.length }),
+      prev => ({ ...prev, loaded: content.length }),
       () => {
         const batch = pages.slice(0, loading);
         batch.map(page => paramorph.loadContent(page.url));
@@ -171,10 +171,14 @@ export class Feed extends PureComponent<Props, State> {
     const { loading } = this.state;
 
     const nextLoading = Math.min(loading + batchSize, pages.length);
-    const batch = pages.slice(loading, nextLoading);
 
-    batch.map(page => paramorph.loadContent(page.url));
-    this.setState(prev => ({ ...prev, loading: nextLoading }));
+    this.setState(
+      prev => ({ ...prev, loading: nextLoading }),
+      () => {
+        const batch = pages.slice(loading, nextLoading);
+        batch.map(page => paramorph.loadContent(page.url));
+      },
+    );
   }
 
   private getOffsetTop(elem : HTMLElement) : number {
