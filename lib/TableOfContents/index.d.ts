@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Page, PureComponent } from 'paramorph';
+import { Post, PureComponent } from 'paramorph';
 export interface Props {
     respectLimit?: boolean;
 }
@@ -8,8 +8,8 @@ export declare class TableOfContents extends PureComponent<Props, {}> {
 }
 export default TableOfContents;
 export interface BranchProps {
-    pages: Page[];
+    posts: Post[];
     shallow?: boolean;
     ellipsis?: boolean;
 }
-export declare function Branch({ pages, shallow, ellipsis }: BranchProps): React.ReactElement<BranchProps>;
+export declare function Branch({ posts, shallow, ellipsis }: BranchProps): React.ReactElement<BranchProps>;

@@ -10,7 +10,7 @@ declare var GA_TRACKING_ID : string | undefined;
 const GA_API_URL = 'https://www.google-analytics.com/analytics.js';
 const GTAG_API_URL = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
 
-export function Root({ paramorph, page, localBundles, externalBundles, preload } : RootProps) {
+export function Root({ paramorph, post, localBundles, externalBundles, preload } : RootProps) {
   const gtagConfigScript = getGtagConfigBundle(localBundles.js);
   const deferredScripts = externalBundles.js.concat(removeGtagConfigBundle(localBundles.js));
   const deferredStyles = externalBundles.css;
@@ -18,9 +18,9 @@ export function Root({ paramorph, page, localBundles, externalBundles, preload }
   return (
     <html>
       <head>
-        <title>{ page.title } | { paramorph.config.title }</title>
-        <meta name='keywords' content={ page.tags.join(', ') } />
-        <meta name='description' content={ page.description } />
+        <title>{ post.title } | { paramorph.config.title }</title>
+        <meta name='keywords' content={ post.tags.join(', ') } />
+        <meta name='description' content={ post.description } />
         <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
 
         <script async type="text/javascript" src={ GA_API_URL }></script>
@@ -28,16 +28,16 @@ export function Root({ paramorph, page, localBundles, externalBundles, preload }
         <script type='text/javascript' src={ gtagConfigScript } />
         <FoucRemovalTrick/>
 
-        <meta property='og:url' content={ `${paramorph.config.baseUrl}${page.url}` } />
-        <meta property='og:title' content={ page.title } />
+        <meta property='og:url' content={ `${paramorph.config.baseUrl}${post.url}` } />
+        <meta property='og:title' content={ post.title } />
         {
-          page.image !== null
-          ? <meta property='og:image' content={ page.image } />
+          post.image !== null
+          ? <meta property='og:image' content={ post.image } />
           : null
         }
-        <meta property='og:description' content={ page.description } />
+        <meta property='og:description' content={ post.description } />
         <meta property='og:locale' content={ paramorph.config.locale } />
-        <meta property='og:type' content={ page.url === '/' ? 'website' : 'article' } />
+        <meta property='og:type' content={ post.url === '/' ? 'website' : 'article' } />
 
         { preload.map((url, i) => (
           <meta name='paramorph-preload' content={ url } key={ `preload-${i}` } />

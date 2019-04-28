@@ -7,20 +7,20 @@ if (GA_TRACKING_ID) {
   gtag('js', new Date());
   gtag('config', GA_TRACKING_ID);
 
-  window.addEventListener('load', sendPageviewOnLocationChange);
+  window.addEventListener('load', sendPostviewOnLocationChange);
 }
 
-function sendPageviewOnLocationChange() {
-  let page_path = location.pathname;
+function sendPostviewOnLocationChange() {
+  let post_path = location.pathname;
 
   global.setInterval(() => {
-    if (page_path === location.pathname) {
+    if (post_path === location.pathname) {
       return;
     }
 
-    page_path = location.pathname;
-    gtag('config', GA_TRACKING_ID, { page_path });
-    console.log(`page view: ${page_path}`);
+    post_path = location.pathname;
+    gtag('config', GA_TRACKING_ID, { post_path });
+    console.log(`post view: ${post_path}`);
   }, 300);
 }
 

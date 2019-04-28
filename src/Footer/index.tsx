@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-import { PureComponent, Link, Page } from 'paramorph';
+import { PureComponent, Link, Post } from 'paramorph';
 
 import Button from '../Button';
 import Icon from '../Icon';
@@ -11,10 +11,10 @@ const s = require('./style');
 
 export class Footer extends PureComponent<{}, {}> {
   render() {
-    const { paramorph, page } = this.context;
+    const { paramorph, post } = this.context;
 
-    const index = paramorph.pages['/'] as Page;
-    const sitemap = paramorph.pages['/sitemap/'] as Page;
+    const index = paramorph.posts['/'] as Post;
+    const sitemap = paramorph.posts['/sitemap/'] as Post;
 
     return (
       <footer className={ s.footer }>

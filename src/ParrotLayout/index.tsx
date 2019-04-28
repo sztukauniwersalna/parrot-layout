@@ -2,7 +2,7 @@
 import * as React from 'react';
 import ReactDisqusComments from 'react-disqus-comments';
 
-import { Page, Category, Tag, Link, PureComponent } from 'paramorph';
+import { Post, Category, Tag, Link, PureComponent } from 'paramorph';
 
 import TopBar from '../TopBar';
 import Crumbs from '../Crumbs';
@@ -21,7 +21,7 @@ const s = require('./style');
 
 export interface State {
   sideMenuClassName : string;
-  currentPage : Page | null;
+  currentPost : Post | null;
 }
 
 export class ParrotLayout extends PureComponent<{}, State> {
@@ -30,7 +30,7 @@ export class ParrotLayout extends PureComponent<{}, State> {
 
     this.state = {
       sideMenuClassName: s.closed,
-      currentPage : null,
+      currentPost : null,
     };
 
     this.hideMenu = this.hideMenu.bind(this);
@@ -40,7 +40,7 @@ export class ParrotLayout extends PureComponent<{}, State> {
 
   render() {
     const { children } = this.props;
-    const { paramorph, page } = this.context;
+    const { paramorph, post } = this.context;
 
     return (
       <div id={ s.all }>
@@ -56,7 +56,7 @@ export class ParrotLayout extends PureComponent<{}, State> {
             { children }
 
             <div className={ s.bottomLike }>
-              <FacebookLike url={ `${paramorph.config.baseUrl}${page.url}` } />
+              <FacebookLike url={ `${paramorph.config.baseUrl}${post.url}` } />
             </div>
           </main>
         </div>
@@ -69,12 +69,12 @@ export class ParrotLayout extends PureComponent<{}, State> {
   }
 
   componentDidMount() {
-    const { page, paramorph, history } = this.context;
+    const { post, paramorph, history } = this.context;
 
     document.body.addEventListener('swipe-left', this.hideMenu);
     document.body.addEventListener('swipe-right', this.showMenu);
 
-    this.setState(prev => ({ ...prev, currentPage: page }));
+    this.setState(prev => ({ ...prev, currentPost: post }));
   }
   componentWillUnmount() {
     document.body.removeEventListener('swipe-left', this.hideMenu);
@@ -82,27 +82,27 @@ export class ParrotLayout extends PureComponent<{}, State> {
   }
 
   componentDidUpdate(prevProps : {}, prevState : State) {
-    const { page, paramorph } = this.context;
+    const { post, paramorph } = this.context;
     const { sideMenuClassName } = this.state;
 
-    if (prevState.currentPage === null) {
+    if (prevState.currentPost === null) {
       // after mount
       return;
     }
-    if (prevState.currentPage === page && prevState.sideMenuClassName !== sideMenuClassName) {
+    if (prevState.currentPost === post && prevState.sideMenuClassName !== sideMenuClassName) {
       // just closing the menu
       return;
     }
     window.scrollTo(0, 0);
-    document.title = `${page.title} | ${paramorph.config.title}`;
+    document.title = `${post.title} | ${paramorph.config.title}`;
 
-    this.setState(prev => ({ ...prev, currentPage: page }));
+    this.setState(prev => ({ ...prev, currentPost: post }));
   }
 
   private renderJumbotron() {
-    const { page, paramorph } = this.context;
+    const { post, paramorph } = this.context;
 
-    if (page.url === '/') {
+    if (post.url === '/') {
       return (
         <div className={ s.indexJumbo }>
           <Jumbotron fullscreen align='center'>
@@ -117,7 +117,7 @@ export class ParrotLayout extends PureComponent<{}, State> {
       );
     }
 
-    const menuEntry = this.getMenuEntryForCurrentPage();
+    const menuEntry = this.getMenuEntryForCurrentPost();
 
     if (menuEntry) {
       return (
@@ -125,7 +125,7 @@ export class ParrotLayout extends PureComponent<{}, State> {
           <Jumbotron fullscreen align='bottom'>
             <h2>
               <Icon name={ menuEntry.icon } />
-              <Link to={ page.url }>{ page.title }</Link>
+              <Link to={ post.url }>{ post.title }</Link>
             </h2>
             <Crumbs responsive />
           </Jumbotron>
@@ -133,22 +133,22 @@ export class ParrotLayout extends PureComponent<{}, State> {
       );
     }
 
-    if (page instanceof Category) {
+    if (post instanceof Category) {
       return (
         <div className={ s.categoryJumbo }>
           <Jumbotron fullscreen align='bottom'>
-            <h2><Link to={ page.url }>{ page.title }</Link></h2>
+            <h2><Link to={ post.url }>{ post.title }</Link></h2>
             <Crumbs responsive />
           </Jumbotron>
         </div>
       );
     }
 
-    if (page instanceof Tag) {
+    if (post instanceof Tag) {
       return (
         <div className={ s.tagJumbo }>
           <Jumbotron fullscreen align='bottom'>
-            <h2><Link to={ page.url}>{ (page as Tag).originalTitle }</Link></h2>
+            <h2><Link to={ post.url}>{ (post as Tag).originalTitle }</Link></h2>
             <Crumbs responsive />
           </Jumbotron>
         </div>
@@ -163,36 +163,36 @@ export class ParrotLayout extends PureComponent<{}, State> {
   }
 
   private maybeRenderTitle() {
-    const { page, paramorph } = this.context;
+    const { post, paramorph } = this.context;
 
-    if (page.url === '/' || page instanceof Category || page instanceof Tag) {
+    if (post.url === '/' || post instanceof Category || post instanceof Tag) {
       return null;
     }
 
     return (
       <div className={ s.title }>
-        <h1><Link to={ page.url }>{ page.title }</Link></h1>
+        <h1><Link to={ post.url }>{ post.title }</Link></h1>
         <Tags />
         <div className={ s.topLike }>
-          <FacebookLike url={ `${paramorph.config.baseUrl}${page.url}` } />
+          <FacebookLike url={ `${paramorph.config.baseUrl}${post.url}` } />
         </div>
       </div>
     );
   }
 
   private maybeRenderComments() {
-    const { page, paramorph } = this.context;
+    const { post, paramorph } = this.context;
 
-    if (page.url === '/' || page instanceof Category || page instanceof Tag) {
+    if (post.url === '/' || post instanceof Category || post instanceof Tag) {
       return null;
     }
     return (
       <div className={ s.comments }>
         <ReactDisqusComments
           shortname='sztukauniwersalna'
-          identifier={ page.title }
-          title={ page.title }
-          url={ `http://sztukauniwersalna.pl${page.url}` }
+          identifier={ post.title }
+          title={ post.title }
+          url={ `http://sztukauniwersalna.pl${post.url}` }
         />
       </div>
     );
@@ -223,7 +223,7 @@ export class ParrotLayout extends PureComponent<{}, State> {
   }
 
   private renderSideMenu() {
-    const { page, paramorph } = this.context;
+    const { post, paramorph } = this.context;
     const { sideMenuClassName } = this.state;
 
     return (
@@ -235,7 +235,7 @@ export class ParrotLayout extends PureComponent<{}, State> {
           visible={ sideMenuClassName === s.visible }
           onCloseRequested={ this.hideMenu }
           onClosed={ this.disableMenu }
-          currentUrl={ page.url }
+          currentUrl={ post.url }
         >
         { paramorph.config.menu.map(entry => (
           <Item
@@ -250,10 +250,10 @@ export class ParrotLayout extends PureComponent<{}, State> {
     );
   }
 
-  private getMenuEntryForCurrentPage() {
-    const { page, paramorph } = this.context;
+  private getMenuEntryForCurrentPost() {
+    const { post, paramorph } = this.context;
 
-    const found = paramorph.config.menu.filter(entry => entry.url === page.url);
+    const found = paramorph.config.menu.filter(entry => entry.url === post.url);
     return found.length === 0 ? undefined : found[0];
   }
 

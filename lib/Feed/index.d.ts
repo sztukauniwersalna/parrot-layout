@@ -1,7 +1,7 @@
 /// <reference types="react" />
-import { Page, PureComponent } from 'paramorph';
+import { Post, PureComponent } from 'paramorph';
 export interface Props {
-    pages: Page[];
+    posts: Post[];
     preloadSize?: number;
     batchSize?: number;
     respectLimit?: boolean;
@@ -16,6 +16,8 @@ export declare class Feed extends PureComponent<Props, State> {
     render(): JSX.Element;
     componentDidMount(): void;
     componentWillUnmount(): void;
+    private renderPreviousLink;
+    private renderNextLink;
     private getContent;
     private onScroll;
     private onContent;
@@ -25,8 +27,13 @@ export declare class Feed extends PureComponent<Props, State> {
     private loadNextBatch;
     private getOffsetTop;
     private isAtEnd;
+    private isOnFirstPage;
+    private isOnLastPage;
+    private getPageNumber;
+    private getPageSize;
+    private getPageOffset;
+    private getPreviousUrl;
+    private getNextUrl;
+    private hasPathParam;
 }
 export default Feed;
-export interface HashMap<T> {
-    [_: string]: T;
-}

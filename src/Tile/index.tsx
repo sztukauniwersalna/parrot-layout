@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-import { Page, PureComponent, Link, ContextTypes } from 'paramorph';
+import { Post, PureComponent, Link, ContextTypes } from 'paramorph';
 
 import Tags from '../Tags';
 import Button from '../Button';
@@ -11,7 +11,7 @@ import { Branch as TocBranch } from '../TableOfContents';
 const s = require('./style');
 
 export interface Props {
-  page : Page;
+  post : Post;
   Content : React.ComponentType<any>;
 }
 
@@ -19,42 +19,42 @@ export class Tile extends PureComponent<Props, {}> {
   static readonly childContextTypes = ContextTypes;
 
   getChildContext() {
-    const { page } = this.props;
+    const { post } = this.props;
 
     return {
       ...this.context,
-      page,
+      post,
     }
   }
 
   render() {
-    const { page, Content, ...props } = this.props;
+    const { post, Content, ...props } = this.props;
 
     return (
       <article>
-        <h1><Link to={ page.url }>{ page.title }</Link></h1>
+        <h1><Link to={ post.url }>{ post.title }</Link></h1>
         <div className={ s.tags }>
           <Tags />
         </div>
 
-        { maybeRenderImage(page) }
+        { maybeRenderImage(post) }
         <Content { ...props } respectLimit={ true } />
 
         <div className={ s.more }>
-          <Button url={ page.url } variant='raised' color='purple'>Read More</Button>
+          <Button url={ post.url } variant='raised' color='purple'>Read More</Button>
         </div>
       </article>
     );
   }
 }
 
-function maybeRenderImage(page : Page) {
-  if (!page.image) {
+function maybeRenderImage(post : Post) {
+  if (!post.image) {
     return null;
   }
   return (
-    <Link to={ page.url }>
-      <Image src={ page.image } alt={ `${page.title}` } />
+    <Link to={ post.url }>
+      <Image src={ post.image } alt={ `${post.title}` } />
     </Link>
   );
 }

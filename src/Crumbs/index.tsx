@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-import { Page, PureComponent, Link } from 'paramorph';
+import { Post, PureComponent, Link } from 'paramorph';
 
 const s = require('./style');
 
@@ -12,18 +12,18 @@ export interface Props {
 export class Crumbs extends PureComponent<Props, {}> {
   render() {
     const { responsive = false } = this.props;
-    const { paramorph, page } = this.context;
+    const { paramorph, post } = this.context;
 
     return (
       <div className={ `${s.crumbs} ${responsive ? s.responsive : ''}` }>
 
-    { paramorph.getCrumbs(page)
-      .map((crumbs : Page[], key : number) => (
+    { paramorph.getCrumbs(post)
+      .map((crumbs : Post[], key : number) => (
         <ul key={ key }>
-        { crumbs.map((page : Page) => (
-          <li key={ page.url }>
-            <Link to={ page.url }>
-              { page.url === '/' ? paramorph.config.title : page.title }
+        { crumbs.map((post : Post) => (
+          <li key={ post.url }>
+            <Link to={ post.url }>
+              { post.url === '/' ? paramorph.config.title : post.title }
             </Link>
           </li>
         )) }

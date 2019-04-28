@@ -1,9 +1,9 @@
 /// <reference types="react" />
-import { Page, PureComponent } from 'paramorph';
+import { Post, PureComponent } from 'paramorph';
 import '../polyfill/swipe-events';
 export interface State {
     sideMenuClassName: string;
-    currentPage: Page | null;
+    currentPost: Post | null;
 }
 export declare class ParrotLayout extends PureComponent<{}, State> {
     constructor(props: {});
@@ -16,7 +16,7 @@ export declare class ParrotLayout extends PureComponent<{}, State> {
     private maybeRenderComments;
     private renderFooter;
     private renderSideMenu;
-    private getMenuEntryForCurrentPage;
+    private getMenuEntryForCurrentPost;
     private showMenu;
     private hideMenu;
     private disableMenu;
