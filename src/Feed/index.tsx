@@ -77,7 +77,7 @@ export class Feed extends PureComponent<Props, State> {
   }
 
   componentDidMount() {
-    const { paramorph, post } = this.context;
+    const { paramorph, post, requestParameterizedRender } = this.context;
     const { respectLimit = false } = this.props;
     const { loaded } = this.state;
 
@@ -90,6 +90,12 @@ export class Feed extends PureComponent<Props, State> {
 
     if (!this.hasPathParam()) {
       console.error(`'${PAGE_PATH_PARAM}' path param not found in permalink of '${post.url}'`);
+    } else {
+      const lastPageNumber = this.getLastPageNumber();
+
+      for (let i = 0; i <= lastPageNumber; ++i) {
+        requestParameterizedRender({ [PAGE_PATH_PARAM]: `${i}` });
+      }
     }
   }
   componentWillUnmount() {
@@ -234,17 +240,19 @@ export class Feed extends PureComponent<Props, State> {
     return this.getPageNumber() === 0;
   }
   private isOnLastPage() {
-    const { posts } = this.props;
-    const pageSize = this.getPageSize();
-
-    const lastPageNumber = Math.round(posts.length / pageSize)
-    return this.getPageNumber() === lastPageNumber;
+    return this.getPageNumber() === this.getLastPageNumber();
   }
 
   private getPageNumber() {
     const { pathParams } = this.context;
 
     return Number.parseInt(pathParams.get('pageNumber') || '0');
+  }
+  private getLastPageNumber() {
+    const { posts } = this.props;
+    const pageSize = this.getPageSize();
+
+    return Math.round(posts.length / pageSize)
   }
   private getPageSize() {
     const { preloadSize = DEFAULT_PRELOAD_SIZE } = this.props;
