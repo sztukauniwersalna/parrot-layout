@@ -13,14 +13,6 @@ export declare class Tile extends PureComponent<Props, {}> {
             categories: import("prop-types").Validator<object>;
             tags: import("prop-types").Validator<object>;
         }>>;
-        pathParams: import("prop-types").Requireable<import("prop-types").InferProps<{
-            set: import("prop-types").Validator<(...args: any[]) => any>;
-            get: import("prop-types").Validator<(...args: any[]) => any>;
-            on: import("prop-types").Validator<(...args: any[]) => any>;
-            once: import("prop-types").Validator<(...args: any[]) => any>;
-            removeListener: import("prop-types").Validator<(...args: any[]) => any>;
-            removeAllListeners: import("prop-types").Validator<(...args: any[]) => any>;
-        }>>;
         history: import("prop-types").Validator<import("prop-types").InferProps<{
             push: import("prop-types").Validator<(...args: any[]) => any>;
             replace: import("prop-types").Validator<(...args: any[]) => any>;
@@ -43,12 +35,22 @@ export declare class Tile extends PureComponent<Props, {}> {
             tags: import("prop-types").Validator<any[]>;
             timestamp: import("prop-types").Validator<number>;
         }>>;
+        pathParams: import("prop-types").Requireable<import("prop-types").InferProps<{
+            set: import("prop-types").Validator<(...args: any[]) => any>;
+            get: import("prop-types").Validator<(...args: any[]) => any>;
+            on: import("prop-types").Validator<(...args: any[]) => any>;
+            once: import("prop-types").Validator<(...args: any[]) => any>;
+            removeListener: import("prop-types").Validator<(...args: any[]) => any>;
+            removeAllListeners: import("prop-types").Validator<(...args: any[]) => any>;
+        }>>;
+        requestParameterizedRender: import("prop-types").Validator<(...args: any[]) => any>;
     };
     getChildContext(): {
         post: Post;
         paramorph: import("paramorph").Paramorph;
-        pathParams: import("paramorph").PathParams;
         history: any;
+        pathParams: import("paramorph").PathParams;
+        requestParameterizedRender: (params: any) => void;
     };
     render(): JSX.Element;
 }

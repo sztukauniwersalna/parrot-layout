@@ -30,6 +30,7 @@ export declare class Feed extends PureComponent<Props, State> {
     private isOnFirstPage;
     private isOnLastPage;
     private getPageNumber;
+    private getLastPageNumber;
     private getPageSize;
     private getPageOffset;
     private getPreviousUrl;
