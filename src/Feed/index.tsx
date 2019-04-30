@@ -45,6 +45,20 @@ export class Feed extends PureComponent<Props, State> {
     this.onScroll = this.onScroll.bind(this);
   }
 
+  componentWillMount() {
+    const { post, requestParameterizedRender } = this.context;
+
+    if (!this.hasPathParam()) {
+      console.error(`'${PAGE_PATH_PARAM}' path param not found in permalink of '${post.url}'`);
+      return;
+    }
+    const lastPageNumber = this.getLastPageNumber();
+
+    for (let i = 0; i <= lastPageNumber; ++i) {
+      requestParameterizedRender({ [PAGE_PATH_PARAM]: `${i}` });
+    }
+  }
+
   render() {
     const { paramorph, post } = this.context;
     const { posts, respectLimit = false, ...props } = this.props;
@@ -77,7 +91,7 @@ export class Feed extends PureComponent<Props, State> {
   }
 
   componentDidMount() {
-    const { paramorph, post, requestParameterizedRender } = this.context;
+    const { paramorph, post } = this.context;
     const { respectLimit = false } = this.props;
     const { loaded } = this.state;
 
@@ -87,16 +101,6 @@ export class Feed extends PureComponent<Props, State> {
     window.addEventListener('scroll', this.onScroll);
 
     this.maybeLoadInitialBatch();
-
-    if (!this.hasPathParam()) {
-      console.error(`'${PAGE_PATH_PARAM}' path param not found in permalink of '${post.url}'`);
-    } else {
-      const lastPageNumber = this.getLastPageNumber();
-
-      for (let i = 0; i <= lastPageNumber; ++i) {
-        requestParameterizedRender({ [PAGE_PATH_PARAM]: `${i}` });
-      }
-    }
   }
   componentWillUnmount() {
     const { paramorph } = this.context;

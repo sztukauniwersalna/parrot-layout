@@ -13,6 +13,7 @@ export interface State {
 export declare class Feed extends PureComponent<Props, State> {
     private loadTrigger;
     constructor(props: Props);
+    componentWillMount(): void;
     render(): JSX.Element;
     componentDidMount(): void;
     componentWillUnmount(): void;
