@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-export function ImagePage() {
+export function ImagePost() {
   return (
     <div>
       <img
@@ -20,5 +20,5 @@ export function ImagePage() {
   );
 }
 
-export default ImagePage;
+export default ImagePost;
 

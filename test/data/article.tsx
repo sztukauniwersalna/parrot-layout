@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-export function ArticlePage() {
+export function ArticlePost() {
   return (
     <div>
       <p>
@@ -37,5 +37,5 @@ export function ArticlePage() {
   );
 }
 
-export default ArticlePage;
+export default ArticlePost;
 

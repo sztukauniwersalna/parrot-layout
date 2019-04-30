@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { TableOfContents } from 'parrot-layout';
 
-export function SitemapPage() {
+export function SitemapPost() {
   return (
     <div className='compact'>
       <TableOfContents />
@@ -11,5 +11,5 @@ export function SitemapPage() {
   );
 }
 
-export default SitemapPage;
+export default SitemapPost;
 

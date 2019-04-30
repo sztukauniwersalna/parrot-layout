@@ -1,15 +1,15 @@
 
-import { Paramorph, Config, Layout, Collection, Page } from 'paramorph/model';
+import { Paramorph, Config, Layout, Collection, Post } from 'paramorph/model';
 
 import { ParrotLayout } from 'parrot-layout';
 
-import FeedPage from './feed';
-import ArticlePage from './article';
-import TypographyPage from './typography';
-import ImagesPage from './images';
-import RecipePage from './recipe';
-import SitemapPage from './sitemap';
-import NotFoundPage from './notfound';
+import FeedPost from './feed';
+import ArticlePost from './article';
+import TypographyPost from './typography';
+import ImagesPost from './images';
+import RecipePost from './recipe';
+import SitemapPost from './sitemap';
+import NotFoundPost from './notfound';
 
 const config : Config = {
   title: 'Parrot',
@@ -19,7 +19,7 @@ const config : Config = {
   locale: 'pl_PL',
   menu: [
     {
-      title: 'Main Page',
+      title: 'Main Post',
       short: 'Home',
       url: '/',
     },
@@ -30,7 +30,7 @@ const config : Config = {
     },
   ],
   collections: {
-    pages: {
+    posts: {
     },
   },
 };
@@ -39,37 +39,37 @@ export const paramorph = new Paramorph(config);
 export default paramorph;
 
 paramorph.addLayout(new Layout('parrot-layout', require.resolve('parrot-layout')));
-paramorph.addCollection(new Collection("pages", "pages", "./_pages", undefined, undefined, undefined));
+paramorph.addCollection(new Collection("posts", "posts", "./_posts", undefined, undefined, undefined));
 
-paramorph.addPage(createPage('Feed', '/', './feed', false));
-paramorph.addPage(createPage('Article', '/article/', './article', true));
-paramorph.addPage(createPage('Typography Test', '/typography/', './typography', true));
-paramorph.addPage(createPage('Images Test', '/images/', './images', true));
-paramorph.addPage(createPage('Recipe Test', '/recipe/', './recipe', true));
-paramorph.addPage(createPage('Sitemap', '/sitemap/', './sitemap', false));
-paramorph.addPage(createPage('NotFound', '/404/', './notfound', false));
+paramorph.addPost(createPost('Feed', '/', './feed', false));
+paramorph.addPost(createPost('Article', '/article/', './article', true));
+paramorph.addPost(createPost('Typography Test', '/typography/', './typography', true));
+paramorph.addPost(createPost('Images Test', '/images/', './images', true));
+paramorph.addPost(createPost('Recipe Test', '/recipe/', './recipe', true));
+paramorph.addPost(createPost('Sitemap', '/sitemap/', './sitemap', false));
+paramorph.addPost(createPost('NotFound', '/404/', './notfound', false));
 
 paramorph.addLayoutLoader('parrot-layout', () => Promise.resolve(ParrotLayout));
-paramorph.addContentLoader('/', () => Promise.resolve(FeedPage));
-paramorph.addContentLoader('/article/', () => Promise.resolve(ArticlePage));
-paramorph.addContentLoader('/typography/', () => Promise.resolve(TypographyPage));
-paramorph.addContentLoader('/images/', () => Promise.resolve(ImagesPage));
-paramorph.addContentLoader('/recipe/', () => Promise.resolve(RecipePage));
-paramorph.addContentLoader('/sitemap/', () => Promise.resolve(SitemapPage));
-paramorph.addContentLoader('/404/', () => Promise.resolve(NotFoundPage));
+paramorph.addContentLoader('/', () => Promise.resolve(FeedPost));
+paramorph.addContentLoader('/article/', () => Promise.resolve(ArticlePost));
+paramorph.addContentLoader('/typography/', () => Promise.resolve(TypographyPost));
+paramorph.addContentLoader('/images/', () => Promise.resolve(ImagesPost));
+paramorph.addContentLoader('/recipe/', () => Promise.resolve(RecipePost));
+paramorph.addContentLoader('/sitemap/', () => Promise.resolve(SitemapPost));
+paramorph.addContentLoader('/404/', () => Promise.resolve(NotFoundPost));
 
-function createPage(
+function createPost(
   title : string,
   url : string,
   filepath : string,
   feed : boolean,
 ) {
-  const page : Page = new Page(
+  const post : Post = new Post(
     url,
     title,
     '',
     null,
-    'pages',
+    'posts',
     'parrot-layout',
     filepath,
     true,
@@ -79,6 +79,6 @@ function createPage(
     [],
     0,
   );
-  return page;
+  return post;
 }
 

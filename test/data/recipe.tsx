@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { Recipe, Ingredient, Method } from 'parrot-layout';
 
-export function RecipePage() {
+export function RecipePost() {
   return (
     <div>
       <Recipe
@@ -36,5 +36,5 @@ export function RecipePage() {
   );
 }
 
-export default RecipePage;
+export default RecipePost;
 

@@ -1,19 +1,19 @@
 
 import * as React from 'react';
 
-import { PureComponent, Page } from 'paramorph';
+import { PureComponent, Post } from 'paramorph';
 import { Feed } from 'parrot-layout';
 
-export class FeedPage extends PureComponent<{}, {}> {
+export class FeedPost extends PureComponent<{}, {}> {
   render() {
     const { paramorph } = this.context;
 
     return (
       <Feed
-        pages={
-          Object.keys(paramorph.pages)
-          .map(url => paramorph.pages[url] as Page)
-          .filter(page => page.output && page.feed)
+        posts={
+          Object.keys(paramorph.posts)
+          .map(url => paramorph.posts[url] as Post)
+          .filter(post => post.output && post.feed)
           .sort((a, b) => a.compareTo(b))
         }
         preloadSize={ 2 }
@@ -23,5 +23,5 @@ export class FeedPage extends PureComponent<{}, {}> {
   }
 }
 
-export default FeedPage;
+export default FeedPost;
 

@@ -99,10 +99,11 @@ module.exports = {
             locale: 'pl_PL',
           },
         },
-        page: {
+        post: {
           title: 'Feed',
           tags: [],
           description: '',
+          permalink: '/',
           url: '/',
           image: null,
         },

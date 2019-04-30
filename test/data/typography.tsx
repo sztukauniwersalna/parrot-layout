@@ -42,7 +42,7 @@ const elements = [(
   <hr />
 )];
 
-export function TypographyPage() {
+export function TypographyPost() {
   return (
     <div>
       <table key='normal'>
@@ -93,5 +93,5 @@ export function TypographyPage() {
   );
 }
 
-export default TypographyPage;
+export default TypographyPost;
 

@@ -1,10 +1,10 @@
 
 import * as React from 'react';
 
-export function NotFoundPage() {
+export function NotFoundPost() {
   return (
-    <p>Page you requested cound not be found...</p>
+    <p>Post you requested cound not be found...</p>
   );
 }
-export default NotFoundPage;
+export default NotFoundPost;
 
