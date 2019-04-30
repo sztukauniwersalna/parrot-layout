@@ -117,7 +117,9 @@ export class Feed extends PureComponent<Props, State> {
       return null;
     }
     return (
-      <p><Link to={ this.getPreviousUrl() }>Previous Posts</Link></p>
+      <p className={ s.staticLink }>
+        <Link to={ this.getPreviousUrl() }>Previous Posts</Link>
+      </p>
     );
   }
   private renderNextLink() {
@@ -125,7 +127,9 @@ export class Feed extends PureComponent<Props, State> {
       return null;
     }
     return (
-      <p><Link to={ this.getNextUrl() }>Next Posts</Link></p>
+      <p className={ s.staticLink }>
+        <Link to={ this.getNextUrl() }>Next Posts</Link>
+      </p>
     );
   }
 

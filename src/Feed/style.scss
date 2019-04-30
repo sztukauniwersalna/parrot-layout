@@ -11,3 +11,9 @@
   }
 }
 
+.staticLink {
+  :global(body.ready) & {
+    display: none;
+  }
+}
+
