@@ -41,7 +41,7 @@ export default paramorph;
 paramorph.addLayout(new Layout('parrot-layout', require.resolve('parrot-layout')));
 paramorph.addCollection(new Collection("posts", "posts", "./_posts", undefined, undefined, undefined));
 
-paramorph.addPost(createPost('Feed', '/', './feed', false));
+paramorph.addPost(createPost('Feed', '/:pageNumber?/', './feed', false));
 paramorph.addPost(createPost('Article', '/article/', './article', true));
 paramorph.addPost(createPost('Typography Test', '/typography/', './typography', true));
 paramorph.addPost(createPost('Images Test', '/images/', './images', true));
