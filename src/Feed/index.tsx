@@ -24,7 +24,7 @@ export interface State {
 
 const DEFAULT_PRELOAD_SIZE = 20;
 const DEFAULT_BATCH_SIZE = 5;
-const PAGE_PATH_PARAM = 'pageNumber';
+const PAGE_PATH_PARAM = 'pageNumber(\\d+)';
 
 export class Feed extends PureComponent<Props, State> {
   private loadTrigger : HTMLDivElement;
