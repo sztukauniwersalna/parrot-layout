@@ -291,7 +291,7 @@ export class Feed extends PureComponent<Props, State> {
   private hasPathParam() {
     const { post } = this.context;
 
-    return post.permalink.match(new RegExp(`/:${PAGE_PATH_PARAM}\\?(/|$)`));
+    return post.permalink.indexOf(`:${PAGE_PATH_PARAM}/`) !== -1;
   }
 }
 
