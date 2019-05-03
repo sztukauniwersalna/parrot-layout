@@ -12,6 +12,8 @@
 }
 
 .staticLink {
+  text-align: center;
+
   :global(body.ready) & {
     display: none;
   }

@@ -6,7 +6,8 @@ import { Post, PureComponent } from 'paramorph';
 import Tile from '../Tile';
 import { Branch as TocBranch } from '../TableOfContents';
 import Spinner from '../Spinner';
-import Link from 'paramorph/react/Link';
+import Button from '../Button';
+import Icon from '../Icon';
 
 const s = require('./style');
 
@@ -120,7 +121,9 @@ export class Feed extends PureComponent<Props, State> {
     }
     return (
       <p className={ s.staticLink }>
-        <Link to={ this.getPreviousUrl() }>Previous Posts</Link>
+        <Button variant='flat' color='gray' url={ this.getPreviousUrl() }>
+          <Icon name='arrow_back' /> Previous Posts
+        </Button>
       </p>
     );
   }
@@ -130,7 +133,9 @@ export class Feed extends PureComponent<Props, State> {
     }
     return (
       <p className={ s.staticLink }>
-        <Link to={ this.getNextUrl() }>Next Posts</Link>
+        <Button variant='flat' color='gray' url={ this.getNextUrl() }>
+          <Icon name='arrow_forward' /> Next Posts
+        </Button>
       </p>
     );
   }
