@@ -52,10 +52,10 @@ export class Feed extends PureComponent<Props, State> {
       console.error(`'${PAGE_PATH_PARAM}' path param not found in permalink: '${post.permalink}'`);
       return;
     }
-
     // pages in url are numbered starting from 1
     const lastPageNumber = this.getLastPageNumber() + 1;
 
+    // first page is already rendered
     for (let i = 2; i <= lastPageNumber + 1; ++i) {
       requestParameterizedRender({ [PAGE_PATH_PARAM]: `page/${i}` });
     }
@@ -295,7 +295,7 @@ export class Feed extends PureComponent<Props, State> {
     // pages in url are numbered starting from 1
     const pageNumber = this.getPageNumber() + 1;
 
-    return post.url.replace(`:${PAGE_PATH_PARAM}?`, `${pageNumber + 1}`);
+    return post.permalink.replace(`:${PAGE_PATH_PARAM}?`, `${pageNumber + 1}`);
   }
 
   private hasPathParam() {
