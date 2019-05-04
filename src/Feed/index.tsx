@@ -25,7 +25,7 @@ export interface State {
 
 const DEFAULT_PRELOAD_SIZE = 20;
 const DEFAULT_BATCH_SIZE = 5;
-const PAGE_PATH_PARAM = 'pageNumber(page-\\d+)';
+const PAGE_PATH_PARAM = 'pageNumber(-\\d+-)';
 
 export class Feed extends PureComponent<Props, State> {
   private loadTrigger : HTMLDivElement;
@@ -58,7 +58,7 @@ export class Feed extends PureComponent<Props, State> {
 
     // first page is already rendered
     for (let i = 2; i <= lastPageNumber + 1; ++i) {
-      requestParameterizedRender({ [PAGE_PATH_PARAM]: `page/${i}` });
+      requestParameterizedRender({ [PAGE_PATH_PARAM]: `-${i}-` });
     }
   }
 
@@ -291,7 +291,7 @@ export class Feed extends PureComponent<Props, State> {
     if (pageNumber === 2) {
       return post.url;
     } else {
-      return post.permalink.replace(`:${PAGE_PATH_PARAM}?`, `${pageNumber - 1}`);
+      return post.permalink.replace(`:${PAGE_PATH_PARAM}?`, `-${pageNumber - 1}-`);
     }
   }
   private getNextUrl() {
@@ -300,7 +300,7 @@ export class Feed extends PureComponent<Props, State> {
     // pages in url are numbered starting from 1
     const pageNumber = this.getPageNumber() + 1;
 
-    return post.permalink.replace(`:${PAGE_PATH_PARAM}?`, `${pageNumber + 1}`);
+    return post.permalink.replace(`:${PAGE_PATH_PARAM}?`, `-${pageNumber + 1}-`);
   }
 
   private hasPathParam() {
