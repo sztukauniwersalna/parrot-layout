@@ -134,7 +134,7 @@ export class Feed extends PureComponent<Props, State> {
     return (
       <p className={ s.staticLink }>
         <Button variant='flat' color='gray' url={ this.getNextUrl() }>
-          <Icon name='arrow_forward' /> Next Posts
+          Next Posts <Icon name='arrow_forward' />
         </Button>
       </p>
     );

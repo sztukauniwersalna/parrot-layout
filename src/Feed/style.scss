@@ -17,5 +17,8 @@
   :global(body.ready) & {
     display: none;
   }
+  i {
+    vertical-align: text-top;
+  }
 }
 
