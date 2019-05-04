@@ -25,7 +25,7 @@ export interface State {
 
 const DEFAULT_PRELOAD_SIZE = 20;
 const DEFAULT_BATCH_SIZE = 5;
-const PAGE_PATH_PARAM = 'pageNumber(–\\d+–)';
+const PAGE_PATH_PARAM = 'pageNumber(~\\d+~)';
 
 export class Feed extends PureComponent<Props, State> {
   private loadTrigger : HTMLDivElement;
@@ -261,7 +261,7 @@ export class Feed extends PureComponent<Props, State> {
   private getPageNumber() {
     const { pathParams } = this.context;
 
-    const pageNumber = pathParams.get('pageNumber') || '–0–';
+    const pageNumber = pathParams.get('pageNumber') || '~0~';
     return Number.parseInt(pageNumber.replace(/[^\d]+/g, ''));
   }
   private getLastPageNumber() {
@@ -292,7 +292,7 @@ export class Feed extends PureComponent<Props, State> {
     if (pageNumber === 2) {
       return post.url;
     } else {
-      return post.permalink.replace(`:${PAGE_PATH_PARAM}?`, `–${pageNumber - 1}–`);
+      return post.permalink.replace(`:${PAGE_PATH_PARAM}?`, `~${pageNumber - 1}~`);
     }
   }
   private getNextUrl() {
@@ -301,7 +301,7 @@ export class Feed extends PureComponent<Props, State> {
     // pages in url are numbered starting from 1
     const pageNumber = this.getPageNumber() + 1;
 
-    return post.permalink.replace(`:${PAGE_PATH_PARAM}?`, `–${pageNumber + 1}–`);
+    return post.permalink.replace(`:${PAGE_PATH_PARAM}?`, `~${pageNumber + 1}~`);
   }
 
   private hasPathParam() {
