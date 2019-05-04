@@ -58,7 +58,7 @@ export class Feed extends PureComponent<Props, State> {
 
     // first page is already rendered
     for (let i = 2; i <= lastPageNumber + 1; ++i) {
-      requestParameterizedRender({ [PAGE_PATH_PARAM]: `-${i}-` });
+      requestParameterizedRender({ [PAGE_PATH_PARAM]: `~${i}~` });
     }
   }
 
