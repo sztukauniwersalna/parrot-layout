@@ -261,8 +261,8 @@ export class Feed extends PureComponent<Props, State> {
   private getPageNumber() {
     const { pathParams } = this.context;
 
-    const pageNumber = pathParams.get('pageNumber') || '~0~';
-    return Number.parseInt(pageNumber.replace(/[^\d]+/g, ''));
+    const pageNumber = pathParams.get('pageNumber') || '~1~';
+    return Number.parseInt(pageNumber.replace(/[^\d]+/g, '')) - 1;
   }
   private getLastPageNumber() {
     const { posts } = this.props;
