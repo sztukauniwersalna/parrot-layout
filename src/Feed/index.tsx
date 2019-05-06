@@ -313,10 +313,7 @@ export class Feed extends PureComponent<Props, State> {
   private createUrl(pageNumber : number) {
     const { post } = this.context;
 
-    return post.permalink.replace(
-      `:${PAGE_PATH_PARAM}${PAGE_PARAM_FORMAT}?`,
-      `~${pageNumber - 1}~`,
-    );
+    return post.permalink.replace(`:${PAGE_PATH_PARAM}${PAGE_PARAM_FORMAT}?`, `~${pageNumber}~`);
   }
 
   private hasPathParam() {
