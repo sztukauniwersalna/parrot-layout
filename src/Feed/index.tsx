@@ -125,7 +125,7 @@ export class Feed extends PureComponent<Props, State> {
       return null;
     }
     return (
-      <p className={ s.staticLink }>
+      <p className={ `${s.staticLink} ${s.previous}` }>
         <Button variant='flat' color='gray' url={ this.getPreviousUrl() }>
           <Icon name='arrow_back' /> Previous Posts
         </Button>
@@ -137,7 +137,7 @@ export class Feed extends PureComponent<Props, State> {
       return null;
     }
     return (
-      <p className={ s.staticLink }>
+      <p className={ `${s.staticLink} ${s.next}` }>
         <Button variant='flat' color='gray' url={ this.getNextUrl() }>
           Next Posts <Icon name='arrow_forward' />
         </Button>
