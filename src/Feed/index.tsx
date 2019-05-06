@@ -25,7 +25,8 @@ export interface State {
 
 const DEFAULT_PRELOAD_SIZE = 20;
 const DEFAULT_BATCH_SIZE = 5;
-const PAGE_PATH_PARAM = 'pageNumber(~\\d+~)';
+const PAGE_PATH_PARAM = 'pageNumber';
+const PAGE_PARAM_FORMAT = '(~\\d+~)';
 
 export class Feed extends PureComponent<Props, State> {
   private loadTrigger : HTMLDivElement;
@@ -50,7 +51,11 @@ export class Feed extends PureComponent<Props, State> {
     const { post, requestParameterizedRender } = this.context;
 
     if (!this.hasPathParam()) {
-      console.error(`'${PAGE_PATH_PARAM}' path param not found in permalink: '${post.permalink}'`);
+      console.error(`'${
+        PAGE_PATH_PARAM}${PAGE_PARAM_FORMAT
+      }' path param not found in permalink: '${
+        post.permalink
+      }'`);
       return;
     }
     // pages in url are numbered starting from 1
@@ -261,6 +266,7 @@ export class Feed extends PureComponent<Props, State> {
   private getPageNumber() {
     const { pathParams } = this.context;
 
+    // pages in url are numbered starting from 1
     const pageNumber = pathParams.get('pageNumber') || '~1~';
     return Number.parseInt(pageNumber.replace(/[^\d]+/g, '')) - 1;
   }
@@ -292,22 +298,31 @@ export class Feed extends PureComponent<Props, State> {
     if (pageNumber === 2) {
       return post.url;
     } else {
-      return post.permalink.replace(`:${PAGE_PATH_PARAM}?`, `~${pageNumber - 1}~`);
+      return this.createUrl(pageNumber - 1);
     }
   }
+
   private getNextUrl() {
-    const { pathParams, post } = this.context;
+    const { pathParams } = this.context;
 
     // pages in url are numbered starting from 1
     const pageNumber = this.getPageNumber() + 1;
+    return this.createUrl(pageNumber + 1);
+  }
 
-    return post.permalink.replace(`:${PAGE_PATH_PARAM}?`, `~${pageNumber + 1}~`);
+  private createUrl(pageNumber : number) {
+    const { post } = this.context;
+
+    return post.permalink.replace(
+      `:${PAGE_PATH_PARAM}${PAGE_PARAM_FORMAT}?`,
+      `~${pageNumber - 1}~`,
+    );
   }
 
   private hasPathParam() {
     const { post } = this.context;
 
-    return post.permalink.indexOf(`:${PAGE_PATH_PARAM}?/`) !== -1;
+    return post.permalink.indexOf(`:${PAGE_PATH_PARAM}${PAGE_PARAM_FORMAT}?/`) !== -1;
   }
 }
 

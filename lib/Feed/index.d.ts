@@ -36,6 +36,7 @@ export declare class Feed extends PureComponent<Props, State> {
     private getPageOffset;
     private getPreviousUrl;
     private getNextUrl;
+    private createUrl;
     private hasPathParam;
 }
 export default Feed;
