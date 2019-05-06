@@ -12,10 +12,14 @@
 }
 
 .staticLink {
+  position: relative;
   text-align: center;
 
+  &.previous {
+    margin-bottom: -3rem;
+  }
   &.next {
-    margin-top: -22rem;
+    margin-top: -24rem;
   }
 
   :global(body.ready) & {
