@@ -79,7 +79,7 @@ export class Feed extends PureComponent<Props, State> {
 
     return (
       <div className={ loaded !== loading ? s.loading : '' }>
-        { this.renderPreviousLink() }
+        { this.renderNextLink() }
 
         { content.map(({ post, Content }) => {
           return (
@@ -93,7 +93,7 @@ export class Feed extends PureComponent<Props, State> {
           <Spinner />
         </div>
 
-        { this.renderNextLink() }
+        { this.renderPreviousLink() }
       </div>
     );
   }
@@ -127,7 +127,7 @@ export class Feed extends PureComponent<Props, State> {
     return (
       <p className={ `${s.staticLink} ${s.previous}` }>
         <Button variant='flat' color='gray' url={ this.getPreviousUrl() }>
-          <Icon name='arrow_back' /> Previous Posts
+          Previous Posts <Icon name='arrow_forward' />
         </Button>
       </p>
     );
@@ -139,7 +139,7 @@ export class Feed extends PureComponent<Props, State> {
     return (
       <p className={ `${s.staticLink} ${s.next}` }>
         <Button variant='flat' color='gray' url={ this.getNextUrl() }>
-          Next Posts <Icon name='arrow_forward' />
+          <Icon name='arrow_back' /> Next Posts
         </Button>
       </p>
     );
@@ -289,7 +289,7 @@ export class Feed extends PureComponent<Props, State> {
     return offset;
   }
 
-  private getPreviousUrl() {
+  private getNextUrl() {
     const { pathParams, post } = this.context;
 
     // pages in url are numbered starting from 1
@@ -302,7 +302,7 @@ export class Feed extends PureComponent<Props, State> {
     }
   }
 
-  private getNextUrl() {
+  private getPreviousUrl() {
     const { pathParams } = this.context;
 
     // pages in url are numbered starting from 1
