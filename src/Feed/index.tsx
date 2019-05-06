@@ -121,7 +121,7 @@ export class Feed extends PureComponent<Props, State> {
   }
 
   private renderPreviousLink() {
-    if (this.isOnFirstPage() || !this.hasPathParam()) {
+    if (this.isOnLastPage() || !this.hasPathParam()) {
       return null;
     }
     return (
@@ -133,7 +133,7 @@ export class Feed extends PureComponent<Props, State> {
     );
   }
   private renderNextLink() {
-    if (this.isOnLastPage() || !this.hasPathParam()) {
+    if (this.isOnFirstPage() || !this.hasPathParam()) {
       return null;
     }
     return (
