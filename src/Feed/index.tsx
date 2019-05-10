@@ -53,8 +53,8 @@ export class Feed extends PureComponent<Props, State> {
     if (!this.hasPathParam()) {
       console.error(`'${
         PAGE_PATH_PARAM}${PAGE_PARAM_FORMAT
-      }' path param not found in permalink: '${
-        post.permalink
+      }' path param not found in pathSpec: '${
+        post.pathSpec
       }'`);
       return;
     }
@@ -313,13 +313,13 @@ export class Feed extends PureComponent<Props, State> {
   private createUrl(pageNumber : number) {
     const { post } = this.context;
 
-    return post.permalink.replace(`:${PAGE_PATH_PARAM}${PAGE_PARAM_FORMAT}?`, `-${pageNumber}-`);
+    return post.pathSpec.replace(`:${PAGE_PATH_PARAM}${PAGE_PARAM_FORMAT}?`, `-${pageNumber}-`);
   }
 
   private hasPathParam() {
     const { post } = this.context;
 
-    return post.permalink.indexOf(`:${PAGE_PATH_PARAM}${PAGE_PARAM_FORMAT}?/`) !== -1;
+    return post.pathSpec.indexOf(`:${PAGE_PATH_PARAM}${PAGE_PARAM_FORMAT}?/`) !== -1;
   }
 }
 
