@@ -71,6 +71,7 @@
     "webpack-external-react": "^1.1.0"
   },
   "dependencies": {
+    "paramorph": "^2.6.6",
     "react-disqus-comments": "^1.4.0",
     "sharp": "^0.22.0"
   },

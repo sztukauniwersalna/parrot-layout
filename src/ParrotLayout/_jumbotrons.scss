@@ -26,10 +26,23 @@
 .indexJumbo {
   :global(.image) {
     background-image: url('./cover.jpg');
+    opacity: 0;
+
+    animation: fade-in;
+    animation-delay: 1s;
+    animation-duration: 400ms;
+    animation-fill-mode: forwards;
   }
 
   :global(.text) {
     padding-left: 6rem;
+    opacity: 0;
+    position: relative;
+
+    animation: park-up;
+    animation-duration: 500ms;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
 
     @include break(700, 900) {
       padding-left: 0;
@@ -77,6 +90,26 @@
         opacity: 1;
       }
     }
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes park-up {
+  0% {
+    opacity: 0;
+    top: 20px;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
   }
 }
 
