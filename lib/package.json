@@ -1,6 +1,6 @@
 {
   "name": "parrot-layout",
-  "version": "1.20.20",
+  "version": "1.21.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "build": "npm run compile && npm run copy",
     "clean-build": "npm run clean && npm run build",
     "test": "npm run clean-build && npm run compile-test && npm run serve",
-    "deploy": "NODE_ENV=production npm run clean-build && npm publish lib"
+    "deploy": "npm install && NODE_ENV=production npm run clean-build && npm publish lib"
   },
   "repository": {
     "type": "git",
