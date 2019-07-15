@@ -39,7 +39,7 @@ function loader(content) {
 
     const origRequire = module.require;
     module.require = (request) => {
-      if (request.match(/\.(scss|jpg|svg|eot|woff2?|ttf)$/)) {
+      if (request.match(/\.(scss|jpg|png|svg|eot|woff2?|ttf)$/)) {
         return request;
       }
       return origRequire.apply(module, [request]);

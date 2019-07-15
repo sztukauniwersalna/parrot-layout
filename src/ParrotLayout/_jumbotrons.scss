@@ -25,24 +25,69 @@
 
 .indexJumbo {
   :global(.image) {
-    background-image: url('./cover.jpg');
-    opacity: 0;
+    display: block;
+    position: relative;
 
-    animation: fade-in;
-    animation-delay: 200ms;
-    animation-duration: 400ms;
-    animation-fill-mode: forwards;
+    &::before {
+      content: '';
+      display: block;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      background-image: url('./cover.jpg');
+      opacity: 0;
+    }
+  }
+  :global(.loaded) {
+    :global(.image) {
+      &::before {
+        transition: opacity 300ms ease-out;
+        opacity: 1;
+      }
+    }
   }
 
   :global(.text) {
     padding-left: 6rem;
-    opacity: 0;
-    position: relative;
 
-    animation: park-up;
-    animation-duration: 500ms;
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards;
+    h2 {
+      opacity: 0;
+
+      animation: appear;
+      animation-duration: 1100ms;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
+
+      @include break(300) {
+        animation: appear-mobile;
+        animation-duration: 1100ms;
+        animation-timing-function: ease-out;
+        animation-fill-mode: forwards;
+      }
+    }
+
+    li {
+      opacity: 0;
+
+      animation: park-right;
+      animation-duration: 500ms;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
+
+      &:nth-child(1) {
+        animation-delay: 1000ms;
+      }
+      &:nth-child(2) {
+        animation-delay: 1100ms;
+      }
+      &:nth-child(3) {
+        animation-delay: 1200ms;
+      }
+    }
 
     @include break(700, 900) {
       padding-left: 0;
@@ -93,23 +138,56 @@
   }
 }
 
-@keyframes fade-in {
+@keyframes appear {
   0% {
     opacity: 0;
+    transform: translate(0, 52px);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(0, 52px);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 52px);
   }
   100% {
     opacity: 1;
+    transform: translate(0, 0);
   }
 }
 
-@keyframes park-up {
+@keyframes appear-mobile {
   0% {
     opacity: 0;
-    top: 20px;
+    transform: translate(0, 88px);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(0, 88px);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(0, 88px);
   }
   100% {
     opacity: 1;
-    top: 0;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes park-right {
+  0% {
+    opacity: 0;
+    transform: translate(-20px, 0);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(4px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
 

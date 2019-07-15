@@ -16,7 +16,7 @@ export function Root({ paramorph, post, localBundles, externalBundles, preload }
   const deferredStyles = externalBundles.css;
 
   return (
-    <html>
+    <html className='noscript'>
       <head>
         <title>{ post.title } | { paramorph.config.title }</title>
         <meta name='keywords' content={ post.tags.join(', ') } />
@@ -27,6 +27,7 @@ export function Root({ paramorph, post, localBundles, externalBundles, preload }
         <script async type='text/javascript' src={ GTAG_API_URL } />
         <script type='text/javascript' src={ gtagConfigScript } />
         <FoucRemovalTrick/>
+        <NoScriptTrick />
 
         <meta property='og:url' content={ `${paramorph.config.baseUrl}${post.url}` } />
         <meta property='og:title' content={ post.title } />
@@ -91,3 +92,12 @@ function FoucRemovalTrick() {
     } />
   );
 }
+
+function NoScriptTrick() {
+  return (
+    <script type='text/javascript' dangerouslySetInnerHTML={
+      { __html: 'document.documentElement.classList.remove("noscript");' }
+    } />
+  );
+}
+
