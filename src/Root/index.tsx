@@ -18,7 +18,7 @@ export function Root({ paramorph, post, localBundles, externalBundles, preload }
   return (
     <html className='noscript'>
       <head>
-        <meta httpEquiv='Content-Security-Policy' content="default-src 'self' * 'unsafe-inline' data:;" />
+        <meta httpEquiv='Content-Security-Policy' content="default-src 'self' * 'unsafe-inline' 'unsafe-eval' data:;" />
         <title>{ post.title } | { paramorph.config.title }</title>
         <meta name='keywords' content={ post.tags.join(', ') } />
         <meta name='description' content={ post.description } />

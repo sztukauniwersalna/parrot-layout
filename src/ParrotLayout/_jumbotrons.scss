@@ -45,7 +45,7 @@
   :global(.loaded) {
     :global(.image) {
       &::before {
-        transition: opacity 300ms ease-out;
+        transition: opacity 300ms ease-in 1000ms;
         opacity: 1;
       }
     }
@@ -64,13 +64,13 @@
       opacity: 0;
 
       animation: appear;
-      animation-duration: 1100ms;
+      animation-duration: 2200ms;
       animation-timing-function: ease-out;
       animation-fill-mode: forwards;
 
       @include break(300) {
         animation: appear-mobile;
-        animation-duration: 1100ms;
+        animation-duration: 2200ms;
         animation-timing-function: ease-out;
         animation-fill-mode: forwards;
       }
@@ -145,13 +145,17 @@
     opacity: 0;
     transform: translate(0, 52px);
   }
-  20% {
+  10% {
     opacity: 1;
     transform: translate(0, 52px);
   }
-  60% {
+  30% {
     opacity: 1;
     transform: translate(0, 52px);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
   100% {
     opacity: 1;
@@ -164,13 +168,17 @@
     opacity: 0;
     transform: translate(0, 88px);
   }
-  20% {
+  10% {
     opacity: 1;
     transform: translate(0, 88px);
   }
-  60% {
+  30% {
     opacity: 1;
     transform: translate(0, 88px);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
   100% {
     opacity: 1;
@@ -182,10 +190,6 @@
   0% {
     opacity: 0;
     transform: translate(-20px, 0);
-  }
-  80% {
-    opacity: 1;
-    transform: translate(4px, 0);
   }
   100% {
     opacity: 1;
