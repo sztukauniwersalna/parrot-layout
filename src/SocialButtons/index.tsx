@@ -27,6 +27,15 @@ export function SocialButtons() {
           <Icon name='instagram' />
         </Button>
       </li>
+      <li key='youtube'>
+        <Button
+          variant='action'
+          color='green'
+          url='https://www.youtube.com/channel/UCkFoI7DqK6OsofJlzv8PQPw'
+        >
+          <Icon name='youtube' />
+        </Button>
+      </li>
     </ul>
   );
 }
