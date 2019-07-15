@@ -22,6 +22,7 @@ export function Root({ paramorph, post, localBundles, externalBundles, preload }
         <meta name='keywords' content={ post.tags.join(', ') } />
         <meta name='description' content={ post.description } />
         <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+        <meta httpEquiv='Content-Security-Policy' content="default-src 'self' ; script-src 'self' 'unsafe-inline' *.disqus.com a.disquscdn.com requirejs.org www.google-analytics.com; style-src 'self' 'unsafe-inline' a.disquscdn.com; img-src 'self' *; media-src 'self' ; frame-src disqus.com;" />
 
         <script async type="text/javascript" src={ GA_API_URL }></script>
         <script async type='text/javascript' src={ GTAG_API_URL } />
