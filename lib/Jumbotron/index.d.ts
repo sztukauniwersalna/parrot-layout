@@ -6,6 +6,7 @@ export interface Props {
     align?: Align;
 }
 export interface State {
+    animation: boolean;
     imageLoaded: boolean;
 }
 export declare class Jumbotron extends PureComponent<Props, State> {
@@ -16,5 +17,6 @@ export declare class Jumbotron extends PureComponent<Props, State> {
     componentDidMount(): void;
     componentWillUnmount(): void;
     private onImageLoaded;
+    private onAnimationEnd;
 }
 export default Jumbotron;

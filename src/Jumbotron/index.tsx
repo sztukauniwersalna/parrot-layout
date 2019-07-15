@@ -13,6 +13,7 @@ export interface Props {
   align ?: Align;
 }
 export interface State {
+  animation : boolean;
   imageLoaded : boolean;
 }
 
@@ -24,15 +25,17 @@ export class Jumbotron extends PureComponent<Props, State> {
     super(props);
 
     this.state = {
+      animation: true,
       imageLoaded: false,
     };
 
     this.onImageLoaded = this.onImageLoaded.bind(this);
+    this.onAnimationEnd = this.onAnimationEnd.bind(this);
   }
 
   render() {
     const { children, fullscreen = false, align = 'center' } = this.props;
-    const { imageLoaded } = this.state;
+    const { imageLoaded, animation } = this.state;
 
     const classNames = [ s.container, s[align] ];
     if (fullscreen) {
@@ -41,12 +44,15 @@ export class Jumbotron extends PureComponent<Props, State> {
     if (imageLoaded) {
       classNames.push('loaded');
     }
+    if (animation) {
+      classNames.push('animation');
+    }
 
     return (
       <div className={ classNames.join(' ') }>
         <div className={ `${s.jumbo} contrast compact non-responsive strong` }>
           <div className={ `${s.text} ${align === 'center' ? 'centered' : ''}` }>
-            <div className='text'>
+            <div className='text' onAnimationEnd={ this.onAnimationEnd }>
               { children }
             </div>
           </div>
@@ -89,6 +95,10 @@ export class Jumbotron extends PureComponent<Props, State> {
   private onImageLoaded() {
     this.setState(prev => ({ ...prev, imageLoaded: true }));
     this.loader.src = '';
+  }
+
+  private onAnimationEnd() {
+    this.setState(prev => ({ ...prev, animation: false }));
   }
 }
 
