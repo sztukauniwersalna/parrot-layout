@@ -29,7 +29,7 @@ const PAGE_PATH_PARAM = 'pageNumber';
 const PAGE_PARAM_FORMAT = '(-\\d+-)';
 
 export class Feed extends PureComponent<Props, State> {
-  private loadTrigger : HTMLDivElement;
+  private loadTrigger : HTMLDivElement | null = null;
 
   constructor(props : Props) {
     super(props);
@@ -88,7 +88,7 @@ export class Feed extends PureComponent<Props, State> {
         }) }
         <div
           className={ s.loadTrigger }
-          ref={ e => this.loadTrigger = e as HTMLDivElement }
+          ref={ e => this.loadTrigger = e }
         >
           <Spinner />
         </div>
@@ -189,8 +189,11 @@ export class Feed extends PureComponent<Props, State> {
 
   private needsMoreContent() {
     const { scrollY, innerHeight } = window;
+    if (!this.loadTrigger) {
+      return false;
+    }
 
-    const offsetTop = this.getOffsetTop(this.loadTrigger);
+    const offsetTop = getOffsetTop(this.loadTrigger);
     return scrollY + innerHeight >= offsetTop;
   }
 
@@ -240,13 +243,6 @@ export class Feed extends PureComponent<Props, State> {
         batch.map(post => paramorph.loadContent(post.url));
       },
     );
-  }
-
-  private getOffsetTop(elem : HTMLElement) : number {
-    const { offsetParent } = elem;
-
-    const parentOffset = (offsetParent ? this.getOffsetTop(offsetParent as HTMLElement) : 0);
-    return elem.offsetTop + parentOffset;
   }
 
   private isAtEnd() {
@@ -324,4 +320,11 @@ export class Feed extends PureComponent<Props, State> {
 }
 
 export default Feed;
+
+function getOffsetTop(elem : HTMLElement) : number {
+  const { offsetParent } = elem;
+
+  const parentOffset = (offsetParent ? getOffsetTop(offsetParent as HTMLElement) : 0);
+  return elem.offsetTop + parentOffset;
+}
 

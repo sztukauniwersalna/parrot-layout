@@ -70,7 +70,15 @@ module.exports = {
               transform: (exports) => exports.locals,
             },
           },
-          'css-loader?modules&localIdentName=[local]-[hash:base64:5]',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local',
+                localIdentName: '[local]-[hash:base64:5]',
+              },
+            },
+          },
           'resolve-url-loader',
           'postcss-loader?sourceMap',
           'sass-loader?sourceMap',

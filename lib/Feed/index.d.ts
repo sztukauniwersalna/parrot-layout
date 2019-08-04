@@ -26,7 +26,6 @@ export declare class Feed extends PureComponent<Props, State> {
     private isLoading;
     private maybeLoadInitialBatch;
     private loadNextBatch;
-    private getOffsetTop;
     private isAtEnd;
     private isOnFirstPage;
     private isOnLastPage;
