@@ -1,6 +1,6 @@
 {
   "name": "parrot-layout",
-  "version": "1.22.6",
+  "version": "1.22.7",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "build": "npm run compile && npm run copy",
     "clean-build": "npm run clean && npm run build",
     "test": "npm run clean-build && npm run compile-test && npm run serve",
-    "deploy": "npm install && NODE_ENV=production npm run clean-build && npm publish lib"
+    "deploy": "npm install && npm install --peer paramorph && NODE_ENV=production npm run clean-build && npm publish lib"
   },
   "repository": {
     "type": "git",
@@ -71,6 +71,7 @@
     "webpack-external-react": "^1.1.0"
   },
   "dependencies": {
+    "paramorph": "^2.6.7",
     "react-disqus-comments": "^1.4.0",
     "sharp": "^0.23.0"
   },
