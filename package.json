@@ -73,7 +73,7 @@
   "dependencies": {
     "paramorph": "^2.6.7",
     "react-disqus-comments": "^1.4.0",
-    "sharp": "^0.23.0"
+    "sharp": "^0.30.5"
   },
   "peerDependencies": {
     "paramorph": "^2.6.7"
